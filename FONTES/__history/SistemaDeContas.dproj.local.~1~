@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/08/18 21:07:32.000.584,=C:\Users\henri\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/08/18 21:08:46.000.731,=C:\Users\henri\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2020/08/18 21:23:11.000.147,=C:\Users\henri\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2020/08/18 21:23:35.000.204,C:\Users\henri\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Sistema de Contas\FONTES\UPrincipal.dfm</Transaction>
+    <Transaction>2020/08/18 21:23:35.000.204,C:\Users\henri\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Sistema de Contas\FONTES\UPrincipal.pas</Transaction>
+    <Transaction>2020/08/18 21:23:40.000.807,C:\Users\henri\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Sistema de Contas\FONTES\UDM.pas</Transaction>
+    <Transaction>2020/08/18 21:23:40.000.807,C:\Users\henri\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Sistema de Contas\FONTES\UDM.dfm</Transaction>
+    <Transaction>2020/08/18 21:23:56.000.943,C:\Users\henri\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Sistema de Contas\FONTES\SistemaDeContas.dproj</Transaction>
+    <Transaction>2020/08/18 21:33:27.000.740,=C:\Sistema de Contas\FONTES\Unit1.pas</Transaction>
+    <Transaction>2020/08/18 21:35:17.000.910,C:\Sistema de Contas\FONTES\Unit1.pas=C:\Sistema de Contas\FONTES\CONTAS_PAGAR.pas</Transaction>
+    <Transaction>2020/08/18 21:35:17.000.910,C:\Sistema de Contas\FONTES\Unit1.dfm=C:\Sistema de Contas\FONTES\CONTAS_PAGAR.dfm</Transaction>
+    <Transaction>2020/08/18 21:40:18.000.348,=C:\Sistema de Contas\FONTES\Unit1.pas</Transaction>
+    <Transaction>2020/08/18 21:42:25.000.700,C:\Sistema de Contas\FONTES\Unit1.pas=C:\Sistema de Contas\FONTES\SOBRE.pas</Transaction>
+    <Transaction>2020/08/18 21:42:25.000.700,C:\Sistema de Contas\FONTES\Unit1.dfm=C:\Sistema de Contas\FONTES\SOBRE.dfm</Transaction>
+    <Transaction>2020/08/19 10:44:42.000.673,=C:\CursoDelphi\GERNERICO\EFuncoes.pas</Transaction>
+    <Transaction>2020/09/26 23:47:06.000.797,=C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 23:50:16.000.497,C:\Sistema de Contas IMPLEMENTACOES\FONTES\uCadEmpresa.pas=C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.pas</Transaction>
+    <Transaction>2020/09/26 23:50:16.000.497,C:\Sistema de Contas IMPLEMENTACOES\FONTES\uCadEmpresa.dfm=C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.dfm</Transaction>
+    <Transaction>2020/09/27 21:18:51.000.580,=C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.pas</Transaction>
+    <Transaction>2020/09/27 21:19:02.000.840,C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.pas=C:\Sistema de Contas IMPLEMENTACOES\FONTES\uConsEmpresa.pas</Transaction>
+    <Transaction>2020/09/27 21:19:02.000.840,C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.dfm=C:\Sistema de Contas IMPLEMENTACOES\FONTES\uConsEmpresa.dfm</Transaction>
+    <Transaction>2020/09/27 22:44:38.000.265,=C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.pas</Transaction>
+    <Transaction>2020/09/27 22:44:49.000.001,C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.pas=C:\Sistema de Contas IMPLEMENTACOES\FONTES\uCadCliente.pas</Transaction>
+    <Transaction>2020/09/27 22:44:49.000.001,C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.dfm=C:\Sistema de Contas IMPLEMENTACOES\FONTES\uCadCliente.dfm</Transaction>
+    <Transaction>2020/09/29 08:48:34.000.376,=C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.pas</Transaction>
+    <Transaction>2020/09/29 08:50:16.000.914,C:\Sistema de Contas IMPLEMENTACOES\FONTES\uConsCliente.pas=C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.pas</Transaction>
+    <Transaction>2020/09/29 08:50:16.000.914,C:\Sistema de Contas IMPLEMENTACOES\FONTES\uConsCliente.dfm=C:\Sistema de Contas IMPLEMENTACOES\FONTES\Unit1.dfm</Transaction>
+    <Transaction>2020/12/05 10:35:01.000.181,=C:\Sistema de Contas PRONTO\FONTES\Unit1.pas</Transaction>
+    <Transaction>2020/12/05 10:35:40.000.101,C:\Sistema de Contas PRONTO\FONTES\Unit1.pas=C:\Sistema de Contas PRONTO\FONTES\UAgenda.pas</Transaction>
+    <Transaction>2020/12/05 10:35:40.000.101,C:\Sistema de Contas PRONTO\FONTES\Unit1.dfm=C:\Sistema de Contas PRONTO\FONTES\UAgenda.dfm</Transaction>
+    <Transaction>2021/02/27 10:09:06.000.373,=C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.pas</Transaction>
+    <Transaction>2021/02/27 10:22:57.000.219,C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.pas=C:\Projetos\Sistema de Contas PRONTO\FONTES\uPagamento.pas</Transaction>
+    <Transaction>2021/02/27 10:22:57.000.219,C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.dfm=C:\Projetos\Sistema de Contas PRONTO\FONTES\uPagamento.dfm</Transaction>
+    <Transaction>2021/02/27 11:19:14.000.605,=C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.pas</Transaction>
+    <Transaction>2021/02/27 11:20:53.000.892,C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.pas=C:\Projetos\Sistema de Contas PRONTO\FONTES\uRecebimento.pas</Transaction>
+    <Transaction>2021/02/27 11:20:53.000.892,C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.dfm=C:\Projetos\Sistema de Contas PRONTO\FONTES\uRecebimento.dfm</Transaction>
+    <Transaction>2021/02/27 11:34:22.000.433,=C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.pas</Transaction>
+    <Transaction>2021/02/27 11:35:35.000.753,C:\Projetos\Sistema de Contas PRONTO\FONTES\uRecebimento.dfm=C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.dfm</Transaction>
+    <Transaction>2021/02/27 11:35:35.000.751,C:\Projetos\Sistema de Contas PRONTO\FONTES\uRecebimento.pas=C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.pas</Transaction>
+    <Transaction>2021/02/27 12:16:03.000.043,C:\Projetos\Sistema de Contas PRONTO\FONTES\uRecebimento.pas=</Transaction>
+    <Transaction>2021/02/27 12:19:30.000.622,=C:\Projetos\Sistema de Contas PRONTO\FONTES\uPagamento.pas</Transaction>
+    <Transaction>2021/02/27 12:19:42.000.496,=C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.pas</Transaction>
+    <Transaction>2021/02/27 12:20:05.000.479,C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.dfm=C:\Projetos\Sistema de Contas PRONTO\FONTES\uRecebimento.dfm</Transaction>
+    <Transaction>2021/02/27 12:20:05.000.479,C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.pas=C:\Projetos\Sistema de Contas PRONTO\FONTES\uRecebimento.pas</Transaction>
+    <Transaction>2021/02/27 20:39:10.127,=C:\Projetos\Sistema de Contas PRONTO\FONTES\CONTAS_RECEBER.pas</Transaction>
+    <Transaction>2021/02/27 22:29:19.034,=C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.pas</Transaction>
+    <Transaction>2021/02/27 22:32:27.005,C:\Projetos\Sistema de Contas PRONTO\FONTES\uConsCidades.pas=C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.pas</Transaction>
+    <Transaction>2021/02/27 22:32:27.005,C:\Projetos\Sistema de Contas PRONTO\FONTES\uConsCidades.dfm=C:\Projetos\Sistema de Contas PRONTO\FONTES\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

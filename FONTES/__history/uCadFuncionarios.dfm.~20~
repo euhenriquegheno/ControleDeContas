@@ -1,0 +1,664 @@
+object FrmCadFuncionarios: TFrmCadFuncionarios
+  Left = 0
+  Top = 0
+  Caption = 'FUNCION'#193'RIOS'
+  ClientHeight = 583
+  ClientWidth = 1120
+  Color = clSkyBlue
+  CustomTitleBar.CaptionAlignment = taCenter
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PopupMenu = PopupMenu1
+  Position = poScreenCenter
+  WindowState = wsMaximized
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1120
+    Height = 57
+    Align = alTop
+    Caption = 'FUNCION'#193'RIOS'
+    Color = clHotLight
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -15
+    Font.Name = 'Verdana'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 0
+  end
+  object pcPrincipal: TPageControl
+    Left = 0
+    Top = 57
+    Width = 1120
+    Height = 526
+    ActivePage = tsCadastro
+    Align = alClient
+    TabOrder = 1
+    OnChange = pcPrincipalChange
+    object tsConsulta: TTabSheet
+      Caption = 'CONSULTA'
+      object DBGrid1: TDBGrid
+        Left = 0
+        Top = 57
+        Width = 1112
+        Height = 441
+        Align = alClient
+        DataSource = dsFuncionarios
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDblClick = Button2Click
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'CODIGO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NOME'
+            Width = 400
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CPF_CNPJ'
+            Title.Caption = 'CPF / CNPJ'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CIDADE'
+            Width = 200
+            Visible = True
+          end>
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 0
+        Width = 1112
+        Height = 57
+        Align = alTop
+        TabOrder = 1
+        object Label10: TLabel
+          Left = 26
+          Top = 21
+          Width = 69
+          Height = 13
+          Caption = 'CONSULTAR'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Button1: TButton
+          AlignWithMargins = True
+          Left = 998
+          Top = 4
+          Width = 110
+          Height = 49
+          Align = alRight
+          Caption = 'CADASTRAR | F2'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          OnClick = Button1Click
+        end
+        object Button2: TButton
+          AlignWithMargins = True
+          Left = 886
+          Top = 4
+          Width = 106
+          Height = 49
+          Align = alRight
+          Caption = 'ALTERAR | F3'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          OnClick = Button2Click
+        end
+        object Button3: TButton
+          AlignWithMargins = True
+          Left = 774
+          Top = 4
+          Width = 106
+          Height = 49
+          Align = alRight
+          Caption = 'EXCLUIR | F4'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+          OnClick = Button3Click
+        end
+        object edtConsulta: TEdit
+          Left = 98
+          Top = 18
+          Width = 223
+          Height = 21
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+        end
+        object Button4: TButton
+          Left = 327
+          Top = 6
+          Width = 81
+          Height = 41
+          Caption = 'BUSCAR'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 4
+          OnClick = Button4Click
+        end
+        object rgOrdenacao: TRadioGroup
+          Left = 448
+          Top = 10
+          Width = 241
+          Height = 41
+          Caption = 'Ordena'#231#227'o'
+          Columns = 2
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ItemIndex = 0
+          Items.Strings = (
+            'CODIGO'
+            'NOME')
+          ParentFont = False
+          TabOrder = 5
+        end
+      end
+    end
+    object tsCadastro: TTabSheet
+      Caption = 'CADASTRO'
+      ImageIndex = 1
+      object Label1: TLabel
+        Left = 28
+        Top = 16
+        Width = 50
+        Height = 13
+        Caption = 'CODIGO'
+        FocusControl = DBEdit1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 28
+        Top = 62
+        Width = 33
+        Height = 13
+        Caption = 'NOME'
+        FocusControl = DBEdit2
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 28
+        Top = 108
+        Width = 64
+        Height = 13
+        Caption = 'ENDERE'#199'O'
+        FocusControl = DBEdit3
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label4: TLabel
+        Left = 28
+        Top = 157
+        Width = 47
+        Height = 13
+        Caption = 'CIDADE'
+        FocusControl = DBEdit4
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 555
+        Top = 159
+        Width = 14
+        Height = 13
+        Caption = 'UF'
+        FocusControl = DBEdit5
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 30
+        Top = 203
+        Width = 46
+        Height = 13
+        Caption = 'BAIRRO'
+        FocusControl = DBEdit6
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 28
+        Top = 249
+        Width = 64
+        Height = 13
+        Caption = 'CPF / CNPJ'
+        FocusControl = DBEdit7
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 28
+        Top = 309
+        Width = 120
+        Height = 13
+        Caption = 'DATA DE CADASTRO'
+        FocusControl = DBEdit8
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+      end
+      object DBEdit1: TDBEdit
+        Left = 28
+        Top = 35
+        Width = 134
+        Height = 21
+        DataField = 'CODIGO'
+        DataSource = dsFuncionarios
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+      end
+      object DBEdit2: TDBEdit
+        Left = 28
+        Top = 81
+        Width = 500
+        Height = 21
+        DataField = 'NOME'
+        DataSource = dsFuncionarios
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+      end
+      object DBEdit3: TDBEdit
+        Left = 28
+        Top = 127
+        Width = 500
+        Height = 21
+        DataField = 'ENDERECO'
+        DataSource = dsFuncionarios
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+      end
+      object DBEdit4: TDBEdit
+        Left = 28
+        Top = 176
+        Width = 500
+        Height = 21
+        DataField = 'CIDADE'
+        DataSource = dsFuncionarios
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+      end
+      object DBEdit5: TDBEdit
+        Left = 548
+        Top = 176
+        Width = 30
+        Height = 21
+        DataField = 'UF'
+        DataSource = dsFuncionarios
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+      end
+      object DBEdit6: TDBEdit
+        Left = 28
+        Top = 222
+        Width = 300
+        Height = 21
+        DataField = 'BAIRRO'
+        DataSource = dsFuncionarios
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 5
+      end
+      object DBEdit7: TDBEdit
+        Left = 28
+        Top = 268
+        Width = 200
+        Height = 21
+        DataField = 'CPF_CNPJ'
+        DataSource = dsFuncionarios
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 6
+      end
+      object DBEdit8: TDBEdit
+        Left = 28
+        Top = 328
+        Width = 134
+        Height = 21
+        DataField = 'DATA_CADASTRO'
+        DataSource = dsFuncionarios
+        Enabled = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 7
+      end
+      object Panel3: TPanel
+        Left = 0
+        Top = 436
+        Width = 1112
+        Height = 62
+        Align = alBottom
+        Color = clSkyBlue
+        ParentBackground = False
+        TabOrder = 8
+        object Panel4: TPanel
+          AlignWithMargins = True
+          Left = 960
+          Top = 4
+          Width = 148
+          Height = 54
+          Cursor = crHandPoint
+          Align = alRight
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          OnClick = Panel4Click
+          object Label9: TLabel
+            AlignWithMargins = True
+            Left = 64
+            Top = 16
+            Width = 64
+            Height = 15
+            Cursor = crHandPoint
+            Caption = 'GRAVAR | F1'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Roboto Cn'
+            Font.Style = []
+            ParentFont = False
+            OnClick = Panel4Click
+          end
+          object Image1: TImage
+            Left = 10
+            Top = 7
+            Width = 48
+            Height = 33
+            Cursor = crHandPoint
+            Picture.Data = {
+              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000240000
+              00240806000000E1009898000002294944415478DAED983F2845511CC77FCA60
+              30180D0C8A62A32C8A4126138A643318948432189427064A61324926144546EA
+              2D94A218DFA028CA2B06C31B0CAFF87EBBE7E6BAEE79F7BC73EF7D24DFFA74EB
+              75FF7CDEB9E79CDFEFBD32F96529FB69813F2BD40C7AD4B15AC13C822CB80207
+              E03649A1723006A6418DE13519B004B6E316E268AC80FA62BFB1CA0D18076771
+              08CD8194A5883779300A366D85F88A76407F0C32DEAC81291BA105301BB38C9B
+              11D18C944E6810EC2624C3F0F5754AC09C0A12AA0077F2B994E3081FCCD774EC
+              B92F277A8B89505C93D82BD30D72A011A43D52C3E2DB12FC421C9D275095808C
+              2891B41263B84F351512EA02A7259271D3209E1DDD2FB421CE5E512A1966062C
+              EB842E416B0965987D30A0137A90EF758AC572488D9EEEA6B632EE351D3AA1F7
+              0019EE1719839BDBC830F7A0CE5428A384B2210FB19561D8B2D4EA849EE4FB86
+              1826154586B9006D3AA16B719A2E7F74522F11659843D0A713DA1267F70C4A90
+              542EA20C9302F33AA11E65AC8B5FCA8DAD0CC37A76A313AA04CFE2941053A928
+              325F26749010B30A26436EE44A49041951CF590F136261BD93F0029B51475B19
+              D62F16D67C981033214EAB99647AC191FFC3422D6CA115173529F1AC2C53214E
+              EC13D01EB3CC97625A8C902BC5A23A1C93CCA21A99BCEE04D31F8A9C5329B1EF
+              24B9457045ED859D58CC4F69CAB0DF6603576178CDAB388B830DD89BC905367F
+              3670F364ABCB5552E8CF06CE95735391284289E65F282C1F255D88258A22E776
+              0000000049454E44AE426082}
+            OnClick = Panel4Click
+          end
+        end
+        object Panel5: TPanel
+          AlignWithMargins = True
+          Left = 768
+          Top = 4
+          Width = 186
+          Height = 54
+          Cursor = crHandPoint
+          Align = alRight
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 1
+          OnClick = Panel5Click
+          object Label11: TLabel
+            Left = 55
+            Top = 16
+            Width = 84
+            Height = 15
+            Cursor = crHandPoint
+            Caption = 'CANCELAR | ESC'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Roboto Cn'
+            Font.Style = []
+            ParentFont = False
+            OnClick = Panel5Click
+          end
+          object Image2: TImage
+            Left = 9
+            Top = 7
+            Width = 40
+            Height = 38
+            Cursor = crHandPoint
+            Picture.Data = {
+              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000240000
+              00240806000000E1009898000002614944415478DAED9831481C4114869F6061
+              61616161A185608A8082425208B1105B838A86585858084991100329022A0A2A
+              5A28D1C242AC24481414142C84A4341048A16520168242026952585804E2FFB3
+              BBB8B7CC9B991DF650C41F3ED0DBDBBD6FDFCD9B99BD0AB965A9B869813B2BD4
+              0AFA4133A88B61CEC16F700CB6C0493985AAC00BF00ED47B9EF303CC830DF0AF
+              48A11EB0009AF2DE711C56EC35382C42681A8C078AA4C30ABD02ABA14295E013
+              182840269D25F03644680EBC2F5826C94B512AA5093D079B659261F8F5758A61
+              4C9984AAC14FB96EE56C38405B3D3FD8F65E1E7B2C99EE33094D8229E522C9F7
+              FF018C3A64787C45ECE37018ACDB8438D7FC02358693F7C1D3D4FF3629BEBE1C
+              FFCDE6F8AE548AF3D4439B5017F8A27C084B3B08761C526919E64D5C592D0F24
+              35A36785D6C088E56497545E198673DCAC26C4D23E725C40933A0D9061B6C133
+              4DE84CFCD62993543ABE320C5BBF4313FAEF79119B541E19E614341621C464C7
+              0CE33325A4C32D4B8326C496AFF3BC90492644EA1B68D7848EC46F16367513EF
+              D4352598B20BFA34A18F6028408663C6779ECA66064C68423DB1715E99242152
+              6D12AD6B46212EAC7F245A42ACA515BD9B4C52DA502819D02621D71D251572B5
+              765ACA77CD53856A25DA7ED4281761A57AC51D4A1D806EE538D7AF1670E91212
+              8F0A1411DED45EF645DB16D6A7E34253D259BE421CD89FC19382654A16D33C42
+              8914B72445556A3EAE8CFAD0E8FBA0C8313525FA4077858FD7ECA82DD71BF33C
+              4AB3FBC6247A84A9F23CE7AF44CDB1082E7C4E08F9B1819327B7BADCB8DB7E6C
+              E063D457C9B4753984CA9A7B2157AE00E0C18C2535E3F5D10000000049454E44
+              AE426082}
+            OnClick = Panel5Click
+          end
+        end
+      end
+    end
+  end
+  object qrFuncionarios: TFDQuery
+    AfterInsert = qrFuncionariosAfterInsert
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'SELECT * FROM FUNCIONARIOS')
+    Left = 288
+    Top = 264
+    object qrFuncionariosCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrFuncionariosNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 200
+    end
+    object qrFuncionariosENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 100
+    end
+    object qrFuncionariosCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'CIDADE'
+      Size = 100
+    end
+    object qrFuncionariosUF: TStringField
+      FieldName = 'UF'
+      Origin = 'UF'
+      Size = 2
+    end
+    object qrFuncionariosBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      Size = 50
+    end
+    object qrFuncionariosCPF_CNPJ: TStringField
+      FieldName = 'CPF_CNPJ'
+      Origin = 'CPF_CNPJ'
+      Size = 50
+    end
+    object qrFuncionariosDATA_CADASTRO: TDateField
+      FieldName = 'DATA_CADASTRO'
+      Origin = 'DATA_CADASTRO'
+    end
+  end
+  object dsFuncionarios: TDataSource
+    DataSet = qrFuncionarios
+    Left = 392
+    Top = 288
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 628
+    Top = 161
+    object CANCELAR: TMenuItem
+      Caption = 'CANCELAR'
+      ShortCut = 27
+      OnClick = Panel5Click
+    end
+    object GRAVAR1: TMenuItem
+      Caption = 'GRAVAR'
+      ShortCut = 112
+      OnClick = Panel4Click
+    end
+    object CADASTRAR1: TMenuItem
+      Caption = 'CADASTRAR'
+      ShortCut = 113
+      OnClick = Button1Click
+    end
+    object ALTERAR1: TMenuItem
+      Caption = 'ALTERAR'
+      ShortCut = 114
+      OnClick = Button2Click
+    end
+    object CANCELAR1: TMenuItem
+      Caption = 'CANCELAR'
+      ShortCut = 115
+      OnClick = Button3Click
+    end
+  end
+end

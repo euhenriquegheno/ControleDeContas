@@ -1,0 +1,211 @@
+unit uCadCliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UDM, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Imaging.pngimage,
+  Vcl.Mask, Vcl.DBCtrls, Vcl.Menus;
+
+type
+  TFrmCadCliente = class(TForm)
+    pcPrincipal: TPageControl;
+    tsConsulta: TTabSheet;
+    tsCadCliente: TTabSheet;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    qrCliente: TFDQuery;
+    dsCliente: TDataSource;
+    DBGrid1: TDBGrid;
+    qrClienteCODIGO: TIntegerField;
+    qrClienteNOME: TStringField;
+    qrClienteENDERECO: TStringField;
+    qrClienteCIDADE: TStringField;
+    qrClienteBAIRRO: TStringField;
+    qrClienteUF: TStringField;
+    qrClienteCPFCNPJ: TStringField;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Label1: TLabel;
+    edtConsulta: TEdit;
+    Button4: TButton;
+    rgOrdenacao: TRadioGroup;
+    Label2: TLabel;
+    DBEdit1: TDBEdit;
+    Label3: TLabel;
+    DBEdit2: TDBEdit;
+    Label4: TLabel;
+    DBEdit3: TDBEdit;
+    Label5: TLabel;
+    DBEdit4: TDBEdit;
+    Label6: TLabel;
+    DBEdit5: TDBEdit;
+    Label7: TLabel;
+    DBEdit6: TDBEdit;
+    Label8: TLabel;
+    DBEdit7: TDBEdit;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Label9: TLabel;
+    Image1: TImage;
+    Panel5: TPanel;
+    Label10: TLabel;
+    Image2: TImage;
+    PopupMenu1: TPopupMenu;
+    GRAVAR1: TMenuItem;
+    CANCELAR1: TMenuItem;
+    CADASTRAR1: TMenuItem;
+    ALTERAR1: TMenuItem;
+    CANCELAR2: TMenuItem;
+    qrClienteDATA_CADASTRO: TDateField;
+    Label11: TLabel;
+    DBEdit8: TDBEdit;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure qrClienteAfterInsert(DataSet: TDataSet);
+    procedure Panel4Click(Sender: TObject);
+    procedure Panel5Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
+    procedure pcPrincipalChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    Procedure ListarClientes;
+  end;
+
+var
+  FrmCadCliente: TFrmCadCliente;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TFrmCadCliente.Button1Click(Sender: TObject);
+begin
+  qrCliente.Insert;
+  pcPrincipal.ActivePage := tsCadCliente;
+  DBEdit2.SetFocus;
+  DBEdit8.Text := DateToStr(Date);
+end;
+
+procedure TFrmCadCliente.Button2Click(Sender: TObject);
+begin
+  qrCliente.Edit;
+  pcPrincipal.ActivePage := tsCadCliente;
+end;
+
+procedure TFrmCadCliente.Button3Click(Sender: TObject);
+begin
+  Try
+    If Application.MessageBox('Deseja realmente excluir o Cliente?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
+      qrCliente.delete;
+  Except
+    ShowMessage('Nenhum Cliente para excluir!');
+  End;
+end;
+
+procedure TFrmCadCliente.Button4Click(Sender: TObject);
+begin
+  ListarClientes;
+end;
+
+procedure TFrmCadCliente.DBEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if (Key = #13) then
+    Self.Perform(WM_NEXTDLGCTL,0,0);
+end;
+
+procedure TFrmCadCliente.FormActivate(Sender: TObject);
+begin
+  pcPrincipal.ActivePage := tsConsulta;
+  qrCliente.Active := True;
+end;
+
+procedure TFrmCadCliente.ListarClientes;
+begin
+  qrCliente.Close;
+  qrCliente.SQL.Clear;
+  qrCliente.SQL.Add('SELECT * FROM CLIENTE');
+
+  if (edtConsulta.Text <> '') then
+    Begin
+      Try
+      StrToInt(edtConsulta.Text);
+      qrCliente.SQL.Add('WHERE (CODIGO = ' + edtConsulta.Text + ')')
+      Except
+      qrCliente.SQL.Add('WHERE(UPPER(NOME) LIKE' + QuotedStr('%' + AnsiUpperCase(edtConsulta.Text) +'%')+ ')');
+      End;
+    End;
+
+    if (rgOrdenacao.ItemIndex = 0) then
+    qrCliente.SQL.Add('ORDER BY CODIGO')
+    Else if (rgOrdenacao.ItemIndex = 1) then
+    qrCliente.SQL.Add('ORDER BY NOME');
+    qrCliente.Active := True;
+end;
+
+procedure TFrmCadCliente.Panel4Click(Sender: TObject);
+begin
+  Try
+  qrCliente.Post;
+  pcPrincipal.ActivePage := tsConsulta;
+  Except
+  showMessage('Faltam dados obrigatórios a serem preenchidos!')
+  End;
+end;
+
+procedure TFrmCadCliente.Panel5Click(Sender: TObject);
+begin
+  if Application.MessageBox('Deseja realmente cancelar?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
+    Begin
+    qrCliente.Cancel;
+    pcPrincipal.ActivePage := tsConsulta;
+    End;
+end;
+
+procedure TFrmCadCliente.pcPrincipalChange(Sender: TObject);
+begin
+  if (qrCliente.State = dsInsert) or
+        (qrCliente.State = dsEdit) then
+        Begin
+          Application.MessageBox('Grave ou cancele antes de voltar!', 'ATENÇÃO', MB_ICONEXCLAMATION);
+          pcPrincipal.ActivePage := tsCadCliente;
+        End
+    Else
+        Begin
+           Application.MessageBox('Voce so pode acessar essa aba inserindo ou editando algum Cliente!', 'ATENÇÃO', MB_ICONEXCLAMATION);
+           pcPrincipal.ActivePage := tsConsulta;
+        End;
+end;
+
+procedure TFrmCadCliente.qrClienteAfterInsert(DataSet: TDataSet);
+ var query : TFDQuery;
+    codigo : Integer;
+begin
+  query := TFDQuery.Create(Self);
+  query.Connection := Dm.Conexao;
+  query.Active := false;
+  query.SQL.Clear;
+  query.SQL.Add('SELECT MAX (CODIGO) AS CODIGO FROM CLIENTE');
+  query.Active := True;
+
+  if (query.FieldByName('CODIGO').IsNull) then
+  codigo := 1
+  else
+  codigo := query.FieldByName('CODIGO').AsInteger + 1;
+
+  query.Free;
+
+  qrClienteCODIGO.AsInteger := codigo;
+end;
+
+end.

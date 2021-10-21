@@ -1,0 +1,32 @@
+program SistemaDeContas;
+
+uses
+  Vcl.Forms,
+  UPrincipal in 'UPrincipal.pas' {FrmPrincipal},
+  UDM in 'UDM.pas' {Dm: TDataModule},
+  CONTAS_PAGAR in 'CONTAS_PAGAR.pas' {FrmContasPagar},
+  SOBRE in 'SOBRE.pas' {FrmSobre},
+  EFuncoes in 'C:\CursoDelphi\GERNERICO\EFuncoes.pas',
+  uCadEmpresa in 'uCadEmpresa.pas' {FrmEmpresa},
+  uConsEmpresa in 'uConsEmpresa.pas' {FrmConsEmpresa},
+  uCadCliente in 'uCadCliente.pas' {FrmCadCliente},
+  uConsCliente in 'uConsCliente.pas' {FrmConsCliente},
+  UAgenda in 'UAgenda.pas' {FrmAgenda},
+  uPagamento in 'uPagamento.pas' {FrmPagamento},
+  uRecebimento in 'uRecebimento.pas' {FrmRecebimento},
+  CONTAS_RECEBER in 'CONTAS_RECEBER.pas' {FrmContasReceber},
+  uConsCidades in 'uConsCidades.pas' {FrmConsCidades};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDm, Dm);
+  Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+  Application.CreateForm(TFrmPagamento, FrmPagamento);
+  Application.CreateForm(TFrmRecebimento, FrmRecebimento);
+  Application.CreateForm(TFrmContasReceber, FrmContasReceber);
+  Application.CreateForm(TFrmConsCidades, FrmConsCidades);
+  Application.Run;
+end.

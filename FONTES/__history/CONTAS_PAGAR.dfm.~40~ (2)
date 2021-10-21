@@ -1,0 +1,684 @@
+object FrmContasPagar: TFrmContasPagar
+  Left = 0
+  Top = 0
+  Width = 1296
+  Height = 766
+  AutoScroll = True
+  Caption = 'Contas a Pagar'
+  Color = clAppWorkSpace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PopupMenu = PopupMenu1
+  Position = poScreenCenter
+  WindowState = wsMaximized
+  OnActivate = FormActivate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pcContasPagar: TPageControl
+    Left = 0
+    Top = 49
+    Width = 1280
+    Height = 678
+    ActivePage = tsContasPagar
+    Align = alClient
+    TabOrder = 0
+    OnChange = pcContasPagarChange
+    object tsContasPagar: TTabSheet
+      Caption = 'CONTAS A PAGAR'
+      object Panel2: TPanel
+        Left = 0
+        Top = 0
+        Width = 1272
+        Height = 49
+        Align = alTop
+        TabOrder = 0
+        object Label6: TLabel
+          Left = 168
+          Top = 2
+          Width = 118
+          Height = 13
+          Caption = 'FILTRAR POR EMITENTE'
+        end
+        object Label8: TLabel
+          Left = 800
+          Top = 2
+          Width = 52
+          Height = 13
+          Caption = 'SITUA'#199#195'O'
+        end
+        object Label11: TLabel
+          Left = 432
+          Top = 2
+          Width = 180
+          Height = 13
+          Caption = 'FILTRAR POR DATA DE VENCIMENTO'
+        end
+        object Button1: TButton
+          AlignWithMargins = True
+          Left = 1091
+          Top = 4
+          Width = 81
+          Height = 41
+          Align = alRight
+          Caption = 'EXCLUIR | F3'
+          TabOrder = 0
+          OnClick = Button1Click
+        end
+        object Button2: TButton
+          AlignWithMargins = True
+          Left = 4
+          Top = 4
+          Width = 77
+          Height = 41
+          Align = alLeft
+          Caption = 'SAIR'
+          TabOrder = 1
+          OnClick = Button2Click
+        end
+        object Button5: TButton
+          AlignWithMargins = True
+          Left = 1178
+          Top = 4
+          Width = 90
+          Height = 41
+          Align = alRight
+          Caption = 'INCLUIR | F2'
+          TabOrder = 2
+          OnClick = Button5Click
+        end
+        object Button8: TButton
+          AlignWithMargins = True
+          Left = 993
+          Top = 4
+          Width = 92
+          Height = 41
+          Align = alRight
+          Caption = 'ALTERAR | F4'
+          TabOrder = 3
+          OnClick = Button8Click
+        end
+        object edtConsulta: TEdit
+          Left = 118
+          Top = 21
+          Width = 217
+          Height = 21
+          TabOrder = 4
+          OnChange = edtConsultaChange
+          OnKeyPress = edtConsultaKeyPress
+        end
+        object Button9: TButton
+          Left = 341
+          Top = 9
+          Width = 75
+          Height = 34
+          Caption = 'BUSCAR'
+          TabOrder = 5
+          OnClick = Button9Click
+        end
+        object DateTimePicker1: TDateTimePicker
+          Left = 432
+          Top = 21
+          Width = 180
+          Height = 21
+          Date = 44085.000000000000000000
+          Time = 0.735156076385465000
+          TabOrder = 6
+        end
+        object Button3: TButton
+          Left = 632
+          Top = 10
+          Width = 75
+          Height = 34
+          Caption = 'BUSCAR'
+          TabOrder = 7
+          OnClick = Button3Click
+        end
+        object ComboBox1: TComboBox
+          Left = 745
+          Top = 21
+          Width = 177
+          Height = 21
+          ItemIndex = 0
+          TabOrder = 8
+          Text = 'TODOS'
+          OnChange = ComboBox1Change
+          Items.Strings = (
+            'TODOS'
+            'ABERTO'
+            'QUITADO')
+        end
+      end
+      object Panel4: TPanel
+        Left = 0
+        Top = 49
+        Width = 1272
+        Height = 601
+        Align = alClient
+        Caption = 'Panel4'
+        TabOrder = 1
+        object DBGrid1: TDBGrid
+          Left = 1
+          Top = 49
+          Width = 1270
+          Height = 551
+          Align = alClient
+          DataSource = DataSource1
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 0
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -13
+          TitleFont.Name = 'Tahoma'
+          TitleFont.Style = []
+          OnDrawColumnCell = DBGrid1DrawColumnCell
+          OnDblClick = Button8Click
+          Columns = <
+            item
+              Alignment = taCenter
+              Expanded = False
+              FieldName = 'CODIGO'
+              Title.Alignment = taCenter
+              Visible = True
+            end
+            item
+              Alignment = taCenter
+              Expanded = False
+              FieldName = 'NUMERO_BOLETO'
+              Title.Alignment = taCenter
+              Title.Caption = 'NUMERO BOLETO'
+              Width = 140
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'EMITENTE'
+              Title.Alignment = taCenter
+              Width = 661
+              Visible = True
+            end
+            item
+              Alignment = taCenter
+              Expanded = False
+              FieldName = 'VALOR'
+              Title.Alignment = taCenter
+              Width = 136
+              Visible = True
+            end
+            item
+              Alignment = taCenter
+              Expanded = False
+              FieldName = 'DATA_VENCIMENTO'
+              Title.Alignment = taCenter
+              Title.Caption = 'DATA VENCIMENTO'
+              Width = 162
+              Visible = True
+            end
+            item
+              Alignment = taCenter
+              Expanded = False
+              FieldName = 'SITUACAO'
+              Title.Alignment = taCenter
+              Width = 83
+              Visible = True
+            end>
+        end
+        object Panel7: TPanel
+          Left = 1
+          Top = 1
+          Width = 1270
+          Height = 48
+          Align = alTop
+          TabOrder = 1
+          object Button4: TButton
+            AlignWithMargins = True
+            Left = 1136
+            Top = 4
+            Width = 130
+            Height = 40
+            Align = alRight
+            Caption = 'PAGAR CONTA | F5'
+            TabOrder = 0
+            OnClick = Button4Click
+          end
+          object Button6: TButton
+            AlignWithMargins = True
+            Left = 1000
+            Top = 4
+            Width = 130
+            Height = 40
+            Align = alRight
+            Caption = 'ESTORNAR | F6'
+            TabOrder = 1
+            OnClick = Button6Click
+          end
+        end
+      end
+    end
+    object tsIncluir: TTabSheet
+      Caption = 'INCLUIR'
+      ImageIndex = 1
+      object Label1: TLabel
+        Left = 39
+        Top = 78
+        Width = 42
+        Height = 15
+        Caption = 'CODIGO'
+        FocusControl = DBEdit1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 38
+        Top = 150
+        Width = 91
+        Height = 15
+        Caption = 'NUMERO BOLETO'
+        FocusControl = DBEdit2
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 38
+        Top = 218
+        Width = 52
+        Height = 15
+        Caption = 'EMITENTE'
+        FocusControl = DBEdit3
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label4: TLabel
+        Left = 38
+        Top = 290
+        Width = 35
+        Height = 15
+        Caption = 'VALOR'
+        FocusControl = DBEdit4
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 39
+        Top = 358
+        Width = 101
+        Height = 15
+        Caption = 'DATA VENCIMENTO'
+        FocusControl = DBEdit5
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 38
+        Top = 428
+        Width = 54
+        Height = 15
+        Caption = 'SITUACAO'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+      end
+      object StaticText1: TStaticText
+        Left = 38
+        Top = 27
+        Width = 148
+        Height = 27
+        Caption = 'CONTA A PAGAR'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Roboto Bk'
+        Font.Style = [fsItalic]
+        ParentFont = False
+        TabOrder = 0
+      end
+      object Panel3: TPanel
+        Left = 0
+        Top = 592
+        Width = 1272
+        Height = 58
+        Align = alBottom
+        Color = clBackground
+        ParentBackground = False
+        TabOrder = 1
+        object Panel5: TPanel
+          Left = 952
+          Top = 8
+          Width = 161
+          Height = 41
+          Cursor = crHandPoint
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          OnClick = Panel5Click
+          object Label9: TLabel
+            Left = 55
+            Top = 12
+            Width = 84
+            Height = 15
+            Cursor = crHandPoint
+            Caption = 'CANCELAR | ESC'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Roboto Cn'
+            Font.Style = []
+            ParentFont = False
+            OnClick = Panel5Click
+          end
+          object Image1: TImage
+            Left = 1
+            Top = 3
+            Width = 40
+            Height = 38
+            Cursor = crHandPoint
+            Picture.Data = {
+              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000240000
+              00240806000000E1009898000002614944415478DAED9831481C4114869F6061
+              61616161A185608A8082425208B1105B838A86585858084991100329022A0A2A
+              5A28D1C242AC24481414142C84A4341048A16520168242026952585804E2FFB3
+              BBB8B7CC9B991DF650C41F3ED0DBDBBD6FDFCD9B99BD0AB965A9B869813B2BD4
+              0AFA4133A88B61CEC16F700CB6C0493985AAC00BF00ED47B9EF303CC830DF0AF
+              48A11EB0009AF2DE711C56EC35382C42681A8C078AA4C30ABD02ABA14295E013
+              182840269D25F03644680EBC2F5826C94B512AA5093D079B659261F8F5758A61
+              4C9984AAC14FB96EE56C38405B3D3FD8F65E1E7B2C99EE33094D8229E522C9F7
+              FF018C3A64787C45ECE37018ACDB8438D7FC02358693F7C1D3D4FF3629BEBE1C
+              FFCDE6F8AE548AF3D4439B5017F8A27C084B3B08761C526919E64D5C592D0F24
+              35A36785D6C088E56497545E198673DCAC26C4D23E725C40933A0D9061B6C133
+              4DE84CFCD62993543ABE320C5BBF4313FAEF79119B541E19E614341621C464C7
+              0CE33325A4C32D4B8326C496AFF3BC90492644EA1B68D7848EC46F16367513EF
+              D4352598B20BFA34A18F6028408663C6779ECA66064C68423DB1715E99242152
+              6D12AD6B46212EAC7F245A42ACA515BD9B4C52DA502819D02621D71D251572B5
+              765ACA77CD53856A25DA7ED4281761A57AC51D4A1D806EE538D7AF1670E91212
+              8F0A1411DED45EF645DB16D6A7E34253D259BE421CD89FC19382654A16D33C42
+              8914B72445556A3EAE8CFAD0E8FBA0C8313525FA4077858FD7ECA82DD71BF33C
+              4AB3FBC6247A84A9F23CE7AF44CDB1082E7C4E08F9B1819327B7BADCB8DB7E6C
+              E063D457C9B4753984CA9A7B2157AE00E0C18C2535E3F5D10000000049454E44
+              AE426082}
+            OnClick = Panel5Click
+          end
+        end
+        object Panel6: TPanel
+          Left = 1128
+          Top = 8
+          Width = 128
+          Height = 41
+          Cursor = crHandPoint
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 1
+          OnClick = Panel6Click
+          object Label10: TLabel
+            Left = 72
+            Top = 12
+            Width = 43
+            Height = 15
+            Cursor = crHandPoint
+            Caption = 'GRAVAR'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Roboto Cn'
+            Font.Style = []
+            ParentFont = False
+            OnClick = Panel6Click
+          end
+          object Image2: TImage
+            Left = 10
+            Top = 5
+            Width = 48
+            Height = 33
+            Cursor = crHandPoint
+            Picture.Data = {
+              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000240000
+              00240806000000E1009898000002294944415478DAED983F2845511CC77FCA60
+              30180D0C8A62A32C8A4126138A643318948432189427064A61324926144546EA
+              2D94A218DFA028CA2B06C31B0CAFF87EBBE7E6BAEE79F7BC73EF7D24DFFA74EB
+              75FF7CDEB9E79CDFEFBD32F96529FB69813F2BD40C7AD4B15AC13C822CB80207
+              E03649A1723006A6418DE13519B004B6E316E268AC80FA62BFB1CA0D18076771
+              08CD8194A5883779300A366D85F88A76407F0C32DEAC81291BA105301BB38C9B
+              11D18C944E6810EC2624C3F0F5754AC09C0A12AA0077F2B994E3081FCCD774EC
+              B92F277A8B89505C93D82BD30D72A011A43D52C3E2DB12FC421C9D275095808C
+              2891B41263B84F351512EA02A7259271D3209E1DDD2FB421CE5E512A1966062C
+              EB842E416B0965987D30A0137A90EF758AC572488D9EEEA6B632EE351D3AA1F7
+              0019EE1719839BDBC830F7A0CE5428A384B2210FB19561D8B2D4EA849EE4FB86
+              1826154586B9006D3AA16B719A2E7F74522F11659843D0A713DA1267F70C4A90
+              542EA20C9302F33AA11E65AC8B5FCA8DAD0CC37A76A313AA04CFE2941053A928
+              325F26749010B30A26436EE44A49041951CF590F136261BD93F0029B51475B19
+              D62F16D67C981033214EAB99647AC191FFC3422D6CA115173529F1AC2C53214E
+              EC13D01EB3CC97625A8C902BC5A23A1C93CCA21A99BCEE04D31F8A9C5329B1EF
+              24B9457045ED859D58CC4F69CAB0DF6603576178CDAB388B830DD89BC905367F
+              3670F364ABCB5552E8CF06CE95735391284289E65F282C1F255D88258A22E776
+              0000000049454E44AE426082}
+            OnClick = Panel6Click
+          end
+        end
+      end
+      object DBEdit1: TDBEdit
+        Left = 39
+        Top = 99
+        Width = 134
+        Height = 23
+        DataField = 'CODIGO'
+        DataSource = DataSource1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 2
+        OnKeyPress = DBEdit1KeyPress
+      end
+      object DBEdit2: TDBEdit
+        Left = 38
+        Top = 171
+        Width = 134
+        Height = 23
+        DataField = 'NUMERO_BOLETO'
+        DataSource = DataSource1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+        OnKeyPress = DBEdit1KeyPress
+      end
+      object DBEdit3: TDBEdit
+        Left = 38
+        Top = 239
+        Width = 500
+        Height = 23
+        DataField = 'EMITENTE'
+        DataSource = DataSource1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+        OnKeyPress = DBEdit1KeyPress
+      end
+      object DBEdit4: TDBEdit
+        Left = 38
+        Top = 311
+        Width = 251
+        Height = 23
+        DataField = 'VALOR'
+        DataSource = DataSource1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 5
+        OnKeyPress = DBEdit1KeyPress
+      end
+      object DBEdit5: TDBEdit
+        Left = 39
+        Top = 379
+        Width = 134
+        Height = 23
+        DataField = 'DATA_VENCIMENTO'
+        DataSource = DataSource1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 6
+        OnChange = DBEdit5Change
+        OnKeyPress = DBEdit1KeyPress
+      end
+      object DBComboBox1: TDBComboBox
+        Left = 39
+        Top = 449
+        Width = 145
+        Height = 23
+        DataField = 'SITUACAO'
+        DataSource = DataSource1
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Roboto Cn'
+        Font.Style = []
+        Items.Strings = (
+          'ABERTO'
+          'QUITADO')
+        ParentFont = False
+        TabOrder = 7
+        OnKeyPress = DBEdit1KeyPress
+      end
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1280
+    Height = 49
+    Align = alTop
+    Caption = 'CONTAS A PAGAR'
+    Color = clBackground
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Roboto Cn'
+    Font.Style = []
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 1
+  end
+  object qrContasPagar: TFDQuery
+    AfterInsert = qrContasPagarAfterInsert
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'Select * from CONTAS_PAGAR')
+    Left = 224
+    Top = 256
+    object qrContasPagarCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrContasPagarNUMERO_BOLETO: TIntegerField
+      FieldName = 'NUMERO_BOLETO'
+      Origin = 'NUMERO_BOLETO'
+    end
+    object qrContasPagarEMITENTE: TStringField
+      FieldName = 'EMITENTE'
+      Origin = 'EMITENTE'
+      Size = 100
+    end
+    object qrContasPagarVALOR: TFMTBCDField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      DisplayFormat = '###,###,##0.00'
+      Precision = 18
+      Size = 2
+    end
+    object qrContasPagarDATA_VENCIMENTO: TDateField
+      FieldName = 'DATA_VENCIMENTO'
+      Origin = 'DATA_VENCIMENTO'
+    end
+    object qrContasPagarSITUACAO: TStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SITUACAO'
+      Size = 10
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = qrContasPagar
+    Left = 344
+    Top = 256
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 500
+    Top = 297
+    object EXCLUIR1: TMenuItem
+      Caption = 'EXCLUIR'
+      ShortCut = 114
+      OnClick = EXCLUIR1Click
+    end
+    object INCLUIR1: TMenuItem
+      Caption = 'INCLUIR'
+      ShortCut = 113
+      OnClick = INCLUIR1Click
+    end
+    object ALTERAR1: TMenuItem
+      Caption = 'ALTERAR'
+      ShortCut = 115
+      OnClick = ALTERAR1Click
+    end
+    object CANCELAR1: TMenuItem
+      Caption = 'CANCELAR'
+      ShortCut = 27
+      OnClick = Panel5Click
+    end
+    object PAGAR1: TMenuItem
+      Caption = 'PAGAR'
+      ShortCut = 116
+      OnClick = Button4Click
+    end
+  end
+end

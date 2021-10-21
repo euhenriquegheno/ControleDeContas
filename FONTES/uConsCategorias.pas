@@ -1,0 +1,86 @@
+unit uConsCategorias;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UDM, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TFrmConsCategorias = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    edtConsulta: TEdit;
+    btConsultar: TButton;
+    rgOrdenacao: TRadioGroup;
+    qrConsCategorias: TFDQuery;
+    dsCategorias: TDataSource;
+    DBGrid1: TDBGrid;
+    qrConsCategoriasCODIGO: TIntegerField;
+    qrConsCategoriasCATEGORIA: TStringField;
+    procedure FormActivate(Sender: TObject);
+    procedure btConsultarClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure edtConsultaChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+  cod_categoria : Integer;
+  categoria_nome : String;
+
+  Procedure ListarCategorias;
+
+  end;
+
+var
+  FrmConsCategorias: TFrmConsCategorias;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmConsCategorias.btConsultarClick(Sender: TObject);
+begin
+  ListarCategorias;
+end;
+
+procedure TFrmConsCategorias.DBGrid1DblClick(Sender: TObject);
+begin
+  cod_categoria := qrConsCategoriasCODIGO.AsInteger;
+  categoria_nome := qrConsCategoriasCATEGORIA.AsString;
+
+  FrmConsCategorias.Close;
+end;
+
+procedure TFrmConsCategorias.edtConsultaChange(Sender: TObject);
+begin
+  listarCategorias;
+end;
+
+procedure TFrmConsCategorias.FormActivate(Sender: TObject);
+begin
+  ListarCategorias;
+end;
+
+procedure TFrmConsCategorias.ListarCategorias;
+begin
+  qrConsCategorias.Close;
+  qrConsCategorias.SQL.Clear;
+  qrConsCategorias.SQL.Add('SELECT * FROM CATEGORIAS');
+
+  if (edtConsulta.Text <> ' ') then
+    qrConsCategorias.SQL.Add('WHERE (UPPER(CATEGORIA) LIKE ''%' + (AnsiUpperCase(edtConsulta.Text)) + '%'')');
+
+  if (rgOrdenacao.ItemIndex = 0) then
+    qrConsCategorias.SQL.Add('ORDER BY CODIGO')
+  else if (rgOrdenacao.ItemIndex = 1) then
+    qrConsCategorias.SQL.Add('ORDER BY CATEGORIA');
+
+  qrConsCategorias.Open;
+end;
+
+end.

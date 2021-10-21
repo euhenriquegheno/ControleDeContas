@@ -1,0 +1,25 @@
+unit uRecebimento;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uPagamento, Vcl.Menus, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+
+type
+  TFrmRecebimento = class(TFrmPagamento)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmRecebimento: TFrmRecebimento;
+
+implementation
+
+{$R *.dfm}
+
+end.

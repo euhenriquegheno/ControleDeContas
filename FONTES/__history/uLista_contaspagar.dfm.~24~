@@ -1,0 +1,779 @@
+object frmLista_contaspagar: TfrmLista_contaspagar
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'RELAT'#211'RIOS CONTAS A PAGAR'
+  ClientHeight = 514
+  ClientWidth = 540
+  Color = clWhite
+  CustomTitleBar.CaptionAlignment = taCenter
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    AlignWithMargins = True
+    Left = 3
+    Top = 462
+    Width = 534
+    Height = 49
+    Align = alBottom
+    TabOrder = 0
+    ExplicitTop = 437
+    ExplicitWidth = 476
+    object Button1: TButton
+      Left = 225
+      Top = 3
+      Width = 89
+      Height = 41
+      Caption = 'IMPRIMIR'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      OnClick = Button1Click
+    end
+  end
+  object Panel2: TPanel
+    AlignWithMargins = True
+    Left = 3
+    Top = 3
+    Width = 534
+    Height = 453
+    Align = alClient
+    TabOrder = 1
+    ExplicitLeft = -2
+    ExplicitWidth = 476
+    ExplicitHeight = 428
+    object Label1: TLabel
+      Left = 232
+      Top = 21
+      Width = 72
+      Height = 14
+      Caption = 'RELAT'#211'RIOS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 128
+      Top = 344
+      Width = 36
+      Height = 14
+      Caption = 'INICIO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 368
+      Top = 344
+      Width = 19
+      Height = 14
+      Caption = 'FIM'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 247
+      Top = 102
+      Width = 47
+      Height = 14
+      Caption = 'FILTROS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 32
+      Top = 150
+      Width = 59
+      Height = 14
+      Caption = 'EMPRESAS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 19
+      Top = 190
+      Width = 85
+      Height = 14
+      Caption = 'FUNCIONARIOS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 24
+      Top = 230
+      Width = 73
+      Height = 14
+      Caption = 'CATEGORIAS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 38
+      Top = 270
+      Width = 39
+      Height = 14
+      Caption = 'BANCO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label9: TLabel
+      Left = 28
+      Top = 310
+      Width = 59
+      Height = 14
+      Caption = 'SITUA'#199#195'O'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 311
+      Top = 416
+      Width = 25
+      Height = 14
+      Caption = 'ANO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Visible = False
+    end
+    object Label11: TLabel
+      Left = 12
+      Top = 122
+      Width = 511
+      Height = 14
+      Caption = 
+        'INFORME O ANO QUE DESEJA VER O TOTAL DE CONTAS A PAGAR SEPARADAS' +
+        ' POR MESES'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Visible = False
+    end
+    object cbRelacao: TComboBox
+      Left = 84
+      Top = 41
+      Width = 353
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnChange = cbRelacaoChange
+      Items.Strings = (
+        'RELA'#199#195'O DE CONTAS A PAGAR POR DATA DE VENCIMENTO'
+        'VALOR TOTAL DE CONTAS A PAGAR SEPARADA POR M'#202'S')
+    end
+    object dtInicio: TDateTimePicker
+      Left = 53
+      Top = 364
+      Width = 186
+      Height = 22
+      Date = 44292.000000000000000000
+      Time = 0.950773449076223200
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object dtFim: TDateTimePicker
+      Left = 287
+      Top = 364
+      Width = 186
+      Height = 22
+      Date = 44292.000000000000000000
+      Time = 0.950842164354980900
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+    end
+    object Panel3: TPanel
+      Left = 32
+      Top = 80
+      Width = 465
+      Height = 9
+      TabOrder = 3
+    end
+    object edtConsulta: TEdit
+      Left = 128
+      Top = 142
+      Width = 280
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+    end
+    object edtConsultaFuncionario: TEdit
+      Left = 128
+      Top = 187
+      Width = 280
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+    end
+    object edtConsultaCategoria: TEdit
+      Left = 128
+      Top = 227
+      Width = 280
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+    end
+    object cbSituacao: TComboBox
+      Left = 128
+      Top = 307
+      Width = 279
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ItemIndex = 0
+      ParentFont = False
+      TabOrder = 7
+      Text = 'TODOS'
+      Items.Strings = (
+        'TODOS'
+        'ABERTO'
+        'QUITADO')
+    end
+    object cbBanco: TComboBox
+      Left = 128
+      Top = 267
+      Width = 280
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
+      Items.Strings = (
+        'BANCO DO BRASIL'
+        'BANRISUL'
+        'BRADESCO'
+        'BANCO INTER'
+        'CAIXA'
+        'SICREDI'
+        'SANTANDER'
+        'SICOOB'
+        'ITA'#218)
+    end
+    object edtAno: TEdit
+      Left = 352
+      Top = 414
+      Width = 121
+      Height = 21
+      TabOrder = 9
+      Visible = False
+    end
+  end
+  object fxContasPagar: TfrxReport
+    Version = '6.9.6'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44292.946550983800000000
+    ReportOptions.LastChange = 44292.985980891200000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 347
+    Top = 235
+    Datasets = <
+      item
+        DataSet = qrContasPagar
+        DataSetName = 'frxDBDataset1'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+      MirrorMode = []
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 64.252010000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Left = 128.504020000000000000
+          Top = 26.456710000000000000
+          Width = 468.661720000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'RELA'#199#195'O DE CONTAS A PAGAR POR DATA DE VENCIMENTO')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Date: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 563.149970000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Date]')
+          ParentFont = False
+        end
+        object Page: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 668.976810000000000000
+          Width = 41.574830000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Page]')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 49.133890000000000000
+        Top = 200.315090000000000000
+        Width = 718.110700000000000000
+        DataSet = qrContasPagar
+        DataSetName = 'frxDBDataset1'
+        RowCount = 0
+        object frxDBDataset1CODIGO: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 7.559060000000000000
+          Top = 15.118120000000000000
+          Width = 56.692950000000000000
+          Height = 30.236240000000000000
+          DataField = 'CODIGO'
+          DataSet = qrContasPagar
+          DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxDBDataset1."CODIGO"]')
+          VAlign = vaCenter
+        end
+        object frxDBDataset1EMPRESA_NOME: TfrxMemoView
+          IndexTag = 2
+          AllowVectorExport = True
+          Left = 68.031540000000000000
+          Top = 15.118120000000000000
+          Width = 151.181200000000000000
+          Height = 30.236240000000000000
+          DataField = 'EMPRESA_NOME'
+          DataSet = qrContasPagar
+          DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxDBDataset1."EMPRESA_NOME"]')
+          VAlign = vaCenter
+        end
+        object frxDBDataset1SITUACAO: TfrxMemoView
+          IndexTag = 3
+          AllowVectorExport = True
+          Left = 627.401980000000000000
+          Top = 15.118120000000000000
+          Width = 79.370130000000000000
+          Height = 30.236240000000000000
+          DataSet = qrContasPagar
+          DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxDBDataset1."SITUACAO"]')
+          VAlign = vaCenter
+        end
+        object frxDBDataset1DATA_VENCIMENTO: TfrxMemoView
+          IndexTag = 4
+          AllowVectorExport = True
+          Left = 536.693260000000000000
+          Top = 15.118120000000000000
+          Width = 79.370130000000000000
+          Height = 30.236240000000000000
+          DataSet = qrContasPagar
+          DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxDBDataset1."DATA_VENCIMENTO"]')
+          VAlign = vaCenter
+        end
+        object frxDBDataset1VALOR: TfrxMemoView
+          IndexTag = 5
+          AllowVectorExport = True
+          Left = 419.527830000000000000
+          Top = 15.118120000000000000
+          Width = 113.385900000000000000
+          Height = 30.236240000000000000
+          DataSet = qrContasPagar
+          DataSetName = 'frxDBDataset1'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'R$ [frxDBDataset1."VALOR"]')
+          VAlign = vaCenter
+        end
+        object frxDBDataset1NUMERO_BOLETO: TfrxMemoView
+          IndexTag = 6
+          AllowVectorExport = True
+          Left = 222.992270000000000000
+          Top = 15.118120000000000000
+          Width = 196.535560000000000000
+          Height = 30.236240000000000000
+          DataField = 'NUMERO_BOLETO'
+          DataSet = qrContasPagar
+          DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxDBDataset1."NUMERO_BOLETO"]')
+          VAlign = vaCenter
+        end
+        object Line1: TfrxLineView
+          AllowVectorExport = True
+          Top = 7.559060000000000000
+          Width = 718.110700000000000000
+          Color = clBlack
+          Frame.Typ = []
+          Diagonal = True
+        end
+      end
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 34.015770000000000000
+        Top = 105.826840000000000000
+        Width = 718.110700000000000000
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Top = 11.338590000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftRight]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'CODIGO')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 222.992270000000000000
+          Top = 11.338590000000000000
+          Width = 196.535560000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftRight]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'N'#186' BOLETO')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 423.307360000000000000
+          Top = 11.338590000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftRight]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'VALOR')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 498.897960000000000000
+          Top = 11.338590000000000000
+          Width = 132.283550000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftRight]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'DATA VENCIMENTO')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 634.961040000000000000
+          Top = 11.338590000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'SITUA'#199#195'O')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 68.031540000000000000
+          Top = 11.338590000000000000
+          Width = 151.181200000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftRight]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'EMPRESA')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object Footer1: TfrxFooter
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 60.472480000000000000
+        Top = 272.126160000000000000
+        Width = 718.110700000000000000
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 585.827150000000000000
+          Top = 30.236240000000000000
+          Width = 124.724490000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SUM(<frxDBDataset1."VALOR">,MasterData1)]')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Left = 415.748300000000000000
+          Top = 30.236240000000000000
+          Width = 170.078850000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'VALOR TOTAL A PAGAR:')
+          ParentFont = False
+        end
+        object Line2: TfrxLineView
+          AllowVectorExport = True
+          Top = 3.779530000000000000
+          Width = 718.110700000000000000
+          Color = clBlack
+          Frame.Typ = []
+          Diagonal = True
+        end
+      end
+    end
+  end
+  object qrContasPagar: TfrxDBDataset
+    UserName = 'frxDBDataset1'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'CODIGO=CODIGO'
+      'NUMERO_BOLETO=NUMERO_BOLETO'
+      'VALOR=VALOR'
+      'DATA_VENCIMENTO=DATA_VENCIMENTO'
+      'SITUACAO=SITUACAO'
+      'COD_EMPRESA=COD_EMPRESA'
+      'EMPRESA_NOME=EMPRESA_NOME'
+      'BANCO_PAGAMENTO=BANCO_PAGAMENTO'
+      'FORMA_PAGAMENTO=FORMA_PAGAMENTO'
+      'COD_FUNCIONARIO=COD_FUNCIONARIO'
+      'FUNCIONARIO_NOME=FUNCIONARIO_NOME'
+      'CAMINHO_ARQUIVOS=CAMINHO_ARQUIVOS'
+      'COD_CATEGORIA=COD_CATEGORIA'
+      'CATEGORIA_NOME=CATEGORIA_NOME')
+    DataSet = qrListaContasPagar
+    BCDToCurrency = False
+    Left = 347
+    Top = 299
+  end
+  object frxPDFExport1: TfrxPDFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Transparency = False
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
+    Left = 347
+    Top = 363
+  end
+  object qrListaContasPagar: TFDQuery
+    Active = True
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'SELECT * FROM CONTAS_PAGAR')
+    Left = 347
+    Top = 179
+  end
+end

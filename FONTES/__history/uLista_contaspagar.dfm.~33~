@@ -1,0 +1,467 @@
+object frmLista_contaspagar: TfrmLista_contaspagar
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'RELAT'#211'RIOS CONTAS A PAGAR'
+  ClientHeight = 514
+  ClientWidth = 540
+  Color = clWhite
+  CustomTitleBar.CaptionAlignment = taCenter
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    AlignWithMargins = True
+    Left = 3
+    Top = 462
+    Width = 534
+    Height = 49
+    Align = alBottom
+    TabOrder = 0
+    object Button1: TButton
+      Left = 225
+      Top = 3
+      Width = 89
+      Height = 41
+      Caption = 'IMPRIMIR'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      OnClick = Button1Click
+    end
+  end
+  object Panel2: TPanel
+    AlignWithMargins = True
+    Left = 3
+    Top = 3
+    Width = 534
+    Height = 453
+    Align = alClient
+    TabOrder = 1
+    object Label1: TLabel
+      Left = 232
+      Top = 21
+      Width = 72
+      Height = 14
+      Caption = 'RELAT'#211'RIOS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 128
+      Top = 344
+      Width = 36
+      Height = 14
+      Caption = 'INICIO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 368
+      Top = 344
+      Width = 19
+      Height = 14
+      Caption = 'FIM'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 247
+      Top = 102
+      Width = 47
+      Height = 14
+      Caption = 'FILTROS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 32
+      Top = 150
+      Width = 59
+      Height = 14
+      Caption = 'EMPRESAS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 19
+      Top = 190
+      Width = 85
+      Height = 14
+      Caption = 'FUNCIONARIOS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 24
+      Top = 230
+      Width = 73
+      Height = 14
+      Caption = 'CATEGORIAS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 38
+      Top = 270
+      Width = 39
+      Height = 14
+      Caption = 'BANCO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label9: TLabel
+      Left = 28
+      Top = 310
+      Width = 59
+      Height = 14
+      Caption = 'SITUA'#199#195'O'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 311
+      Top = 416
+      Width = 25
+      Height = 14
+      Caption = 'ANO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Visible = False
+    end
+    object Label11: TLabel
+      Left = 12
+      Top = 122
+      Width = 511
+      Height = 14
+      Caption = 
+        'INFORME O ANO QUE DESEJA VER O TOTAL DE CONTAS A PAGAR SEPARADAS' +
+        ' POR MESES'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Visible = False
+    end
+    object cbRelacao: TComboBox
+      Left = 84
+      Top = 41
+      Width = 353
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnChange = cbRelacaoChange
+      Items.Strings = (
+        'RELA'#199#195'O DE CONTAS A PAGAR POR DATA DE VENCIMENTO'
+        'VALOR TOTAL DE CONTAS A PAGAR SEPARADA POR M'#202'S')
+    end
+    object dtInicio: TDateTimePicker
+      Left = 53
+      Top = 364
+      Width = 186
+      Height = 22
+      Date = 44292.000000000000000000
+      Time = 0.950773449076223200
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object dtFim: TDateTimePicker
+      Left = 287
+      Top = 364
+      Width = 186
+      Height = 22
+      Date = 44292.000000000000000000
+      Time = 0.950842164354980900
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+    end
+    object Panel3: TPanel
+      Left = 32
+      Top = 80
+      Width = 465
+      Height = 9
+      TabOrder = 3
+    end
+    object edtConsulta: TEdit
+      Left = 128
+      Top = 142
+      Width = 280
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+    end
+    object edtConsultaFuncionario: TEdit
+      Left = 128
+      Top = 187
+      Width = 280
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+    end
+    object edtConsultaCategoria: TEdit
+      Left = 128
+      Top = 227
+      Width = 280
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+    end
+    object cbSituacao: TComboBox
+      Left = 128
+      Top = 307
+      Width = 279
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ItemIndex = 0
+      ParentFont = False
+      TabOrder = 7
+      Text = 'TODOS'
+      Items.Strings = (
+        'TODOS'
+        'ABERTO'
+        'QUITADO')
+    end
+    object cbBanco: TComboBox
+      Left = 128
+      Top = 267
+      Width = 280
+      Height = 22
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
+      Items.Strings = (
+        'BANCO DO BRASIL'
+        'BANRISUL'
+        'BRADESCO'
+        'BANCO INTER'
+        'CAIXA'
+        'SICREDI'
+        'SANTANDER'
+        'SICOOB'
+        'ITA'#218)
+    end
+    object edtAno: TEdit
+      Left = 352
+      Top = 414
+      Width = 121
+      Height = 21
+      TabOrder = 9
+      Visible = False
+    end
+  end
+  object frxPDFExport1: TfrxPDFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Transparency = False
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    Creator = 'FastReport'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
+    Left = 331
+    Top = 347
+  end
+  object qrListaContasPagar: TFDQuery
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'SELECT * FROM CONTAS_PAGAR')
+    Left = 331
+    Top = 179
+  end
+  object qrListaTotalContasPagar: TFDQuery
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'SELECT * FROM CONTAS_PAGAR')
+    Left = 451
+    Top = 179
+    object qrListaTotalContasPagarTOTAL_JANEIRO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_JANEIRO'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_FEVEREIRO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_FEVEREIRO'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_MARCO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_MARCO'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_ABRIL: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_ABRIL'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_MAIO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_MAIO'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_JUNHO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_JUNHO'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_JULHO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_JULHO'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_AGOSTO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_AGOSTO'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_SETEMBRO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_SETEMBRO'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_OUTUBRO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_OUTUBRO'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_NOVEMBRO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_NOVEMBRO'
+      Calculated = True
+    end
+    object qrListaTotalContasPagarTOTAL_DEZEMBRO: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL_DEZEMBRO'
+      Calculated = True
+    end
+  end
+  object qrTotalContasPagar: TfrxDBDataset
+    UserName = 'frxDBDataset1'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'TOTAL_JANEIRO=TOTAL_JANEIRO'
+      'TOTAL_FEVEREIRO=TOTAL_FEVEREIRO'
+      'TOTAL_MARCO=TOTAL_MARCO'
+      'TOTAL_ABRIL=TOTAL_ABRIL'
+      'TOTAL_MAIO=TOTAL_MAIO'
+      'TOTAL_JUNHO=TOTAL_JUNHO'
+      'TOTAL_JULHO=TOTAL_JULHO'
+      'TOTAL_AGOSTO=TOTAL_AGOSTO'
+      'TOTAL_SETEMBRO=TOTAL_SETEMBRO'
+      'TOTAL_OUTUBRO=TOTAL_OUTUBRO'
+      'TOTAL_NOVEMBRO=TOTAL_NOVEMBRO'
+      'TOTAL_DEZEMBRO=TOTAL_DEZEMBRO')
+    DataSet = qrListaTotalContasPagar
+    BCDToCurrency = False
+    Left = 451
+    Top = 235
+  end
+end

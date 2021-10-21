@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/08/25 14:47:15.000.838,C:\sistema_de_contas\Sistema de Contas\FONTES\uLista_contaspagar.pas=</Transaction>
+    <Transaction>2021/08/31 15:16:03.000.075,=C:\sistema_de_contas\Sistema de Contas\FONTES\Unit1.pas</Transaction>
+    <Transaction>2021/08/31 15:18:09.000.142,C:\sistema_de_contas\Sistema de Contas\FONTES\Unit1.pas=C:\sistema_de_contas\Sistema de Contas\FONTES\uRelContasPagar.pas</Transaction>
+    <Transaction>2021/08/31 15:18:09.000.142,C:\sistema_de_contas\Sistema de Contas\FONTES\Unit1.dfm=C:\sistema_de_contas\Sistema de Contas\FONTES\uRelContasPagar.dfm</Transaction>
+    <Transaction>2021/08/31 15:20:17.000.850,C:\sistema_de_contas\Sistema de Contas\FONTES\uRelContasPagar.pas=</Transaction>
+    <Transaction>2021/08/31 15:30:38.000.977,=C:\sistema_de_contas\Sistema de Contas\FONTES\Unit1.pas</Transaction>
+    <Transaction>2021/08/31 15:35:35.000.641,C:\sistema_de_contas\Sistema de Contas\FONTES\Unit1.pas=C:\sistema_de_contas\Sistema de Contas\FONTES\uRelContasPagar.pas</Transaction>
+    <Transaction>2021/08/31 15:35:35.000.641,C:\sistema_de_contas\Sistema de Contas\FONTES\Unit1.dfm=C:\sistema_de_contas\Sistema de Contas\FONTES\uRelContasPagar.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,132 @@
+unit UAgenda;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.ComCtrls, Data.DB,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, UDM, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Vcl.DBCtrls, Vcl.Mask, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TFrmAgenda = class(TForm)
+    Panel1: TPanel;
+    pcAgenda: TPageControl;
+    tsAgenda: TTabSheet;
+    tsCadastro: TTabSheet;
+    Panel2: TPanel;
+    Button1: TButton;
+    Button2: TButton;
+    DateTimePicker1: TDateTimePicker;
+    Label1: TLabel;
+    DBGrid1: TDBGrid;
+    qrAgenda: TFDQuery;
+    dsConsulta: TDataSource;
+    qrAgendaCODIGO: TIntegerField;
+    qrAgendaDATA: TDateField;
+    qrAgendaHORA: TTimeField;
+    qrAgendaDESCRICAO: TStringField;
+    qrAgendaNIVEL: TStringField;
+    qrAgendaLUGAR: TStringField;
+    Label2: TLabel;
+    DBEdit1: TDBEdit;
+    Label3: TLabel;
+    DBEdit2: TDBEdit;
+    Label4: TLabel;
+    DBEdit3: TDBEdit;
+    Label5: TLabel;
+    DBEdit4: TDBEdit;
+    Label6: TLabel;
+    Label7: TLabel;
+    AGENDAMENTO: TLabel;
+    DBMemo1: TDBMemo;
+    DBComboBox1: TDBComboBox;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    procedure FormCreate(Sender: TObject);
+    procedure Panel5Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Panel4Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure qrAgendaAfterInsert(DataSet: TDataSet);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmAgenda: TFrmAgenda;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmAgenda.Button1Click(Sender: TObject);
+begin
+  qrAgenda.Insert;
+  pcAgenda.ActivePage := tsCadastro;
+  DBEdit2.SetFocus;
+end;
+
+procedure TFrmAgenda.Button2Click(Sender: TObject);
+begin
+  Try
+  if Application.MessageBox('Deseja realmente excluir esse agendamento?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
+  qrAgenda.delete;
+  Except
+  ShowMessage('Nenhuma conta para excluir!');
+  End;
+end;
+
+procedure TFrmAgenda.DBGrid1DblClick(Sender: TObject);
+begin
+  qrAgenda.Edit;
+  pcAgenda.ActivePage := tsCadastro;
+end;
+
+procedure TFrmAgenda.FormCreate(Sender: TObject);
+begin
+  pcAgenda.ActivePage := tsAgenda;
+end;
+
+procedure TFrmAgenda.Panel4Click(Sender: TObject);
+begin
+  qrAgenda.Post;
+  pcAgenda.ActivePage := tsAgenda;
+end;
+
+procedure TFrmAgenda.Panel5Click(Sender: TObject);
+begin
+  if Application.MessageBox('Deseja realmente cancelar?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
+    Begin
+    qrAgenda.Cancel;
+    pcAgenda.ActivePage := tsAgenda;
+    End;
+end;
+
+procedure TFrmAgenda.qrAgendaAfterInsert(DataSet: TDataSet);
+  var query : TFDQuery;
+    codigo : Integer;
+begin
+  query := TFDQuery.Create(self);//CRIA COMPONENTE NA MEMORIA
+  query.Connection := Dm.Conexao;//VINCULA O COMPONENTE DE CONEXAO COM A QUERY
+  query.Active := false;//DESATIVA CONEXAO DO QUERY COM O BANCO DE DADOS
+  query.SQL.Add('SELECT MAX (CODIGO) AS CODIGO FROM AGENDAMENTOS');//SQL DE CONSULTA NO BANCO
+  query.Active := True;
+
+  if (query.FieldByName('CODIGO').IsNull) then //VALIDA SE A COLUNA CODIGO É NULL
+    Codigo := 1
+  else
+    codigo := query.FieldByName('CODIGO').AsInteger + 1;
+
+  query.Free;//LIMPA A VARIAVEL QUERY DA MEMÓRIA
+
+  qrAgendaCODIGO.AsInteger := codigo;
+end;
+
+end.

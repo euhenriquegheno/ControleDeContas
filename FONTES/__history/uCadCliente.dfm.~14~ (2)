@@ -1,0 +1,665 @@
+object FrmCadCliente: TFrmCadCliente
+  Left = 0
+  Top = 0
+  Caption = 'CLIENTES'
+  ClientHeight = 618
+  ClientWidth = 1007
+  Color = clAppWorkSpace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PopupMenu = PopupMenu1
+  Position = poScreenCenter
+  WindowState = wsMaximized
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pcPrincipal: TPageControl
+    Left = 0
+    Top = 50
+    Width = 1007
+    Height = 568
+    ActivePage = tsConsulta
+    Align = alClient
+    TabOrder = 0
+    object tsConsulta: TTabSheet
+      Caption = 'CONSULTA'
+      object Panel2: TPanel
+        Left = 0
+        Top = 0
+        Width = 999
+        Height = 57
+        Align = alTop
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 32
+          Top = 21
+          Width = 60
+          Height = 13
+          Caption = 'CONSULTAR'
+        end
+        object Button1: TButton
+          AlignWithMargins = True
+          Left = 905
+          Top = 4
+          Width = 90
+          Height = 49
+          Align = alRight
+          Caption = 'CADASTRAR'
+          TabOrder = 0
+          OnClick = Button1Click
+        end
+        object Button2: TButton
+          AlignWithMargins = True
+          Left = 809
+          Top = 4
+          Width = 90
+          Height = 49
+          Align = alRight
+          Caption = 'ALTERAR'
+          TabOrder = 1
+          OnClick = Button2Click
+        end
+        object Button3: TButton
+          AlignWithMargins = True
+          Left = 713
+          Top = 4
+          Width = 90
+          Height = 49
+          Align = alRight
+          Caption = 'EXCLUIR'
+          TabOrder = 2
+          OnClick = Button3Click
+        end
+        object edtConsulta: TEdit
+          Left = 98
+          Top = 16
+          Width = 191
+          Height = 21
+          TabOrder = 3
+        end
+        object Button4: TButton
+          Left = 295
+          Top = 8
+          Width = 75
+          Height = 43
+          Caption = 'BUSCAR'
+          TabOrder = 4
+          OnClick = Button4Click
+        end
+        object rgOrdenacao: TRadioGroup
+          Left = 408
+          Top = 10
+          Width = 233
+          Height = 41
+          Caption = 'Ordena'#231#227'o'
+          Columns = 2
+          ItemIndex = 0
+          Items.Strings = (
+            'CODIGO'
+            'NOME DO CLIENTE')
+          TabOrder = 5
+        end
+      end
+      object DBGrid1: TDBGrid
+        Left = 0
+        Top = 57
+        Width = 999
+        Height = 483
+        Align = alClient
+        DataSource = dsCliente
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDblClick = Button2Click
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'CODIGO'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NOME'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Width = 211
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ENDERECO'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Width = 210
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CIDADE'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Width = 163
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'BAIRRO'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Width = 176
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'UF'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CPF / CNPJ'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Visible = True
+          end>
+      end
+    end
+    object tsCadCliente: TTabSheet
+      Caption = 'CADASTRO'
+      ImageIndex = 1
+      object Label2: TLabel
+        Left = 32
+        Top = 32
+        Width = 41
+        Height = 13
+        Caption = 'CODIGO'
+        FocusControl = DBEdit1
+      end
+      object Label3: TLabel
+        Left = 31
+        Top = 94
+        Width = 29
+        Height = 13
+        Caption = 'NOME'
+        FocusControl = DBEdit2
+      end
+      object Label4: TLabel
+        Left = 32
+        Top = 157
+        Width = 54
+        Height = 13
+        Caption = 'ENDERECO'
+        FocusControl = DBEdit3
+      end
+      object Label5: TLabel
+        Left = 32
+        Top = 219
+        Width = 38
+        Height = 13
+        Caption = 'CIDADE'
+        FocusControl = DBEdit4
+      end
+      object Label6: TLabel
+        Left = 31
+        Top = 281
+        Width = 39
+        Height = 13
+        Caption = 'BAIRRO'
+        FocusControl = DBEdit5
+      end
+      object Label7: TLabel
+        Left = 31
+        Top = 341
+        Width = 13
+        Height = 13
+        Caption = 'UF'
+        FocusControl = DBEdit6
+      end
+      object Label8: TLabel
+        Left = 32
+        Top = 403
+        Width = 54
+        Height = 13
+        Caption = 'CPF / CNPJ'
+        FocusControl = DBEdit7
+      end
+      object DBEdit1: TDBEdit
+        Left = 32
+        Top = 51
+        Width = 134
+        Height = 21
+        DataField = 'CODIGO'
+        DataSource = dsCliente
+        ReadOnly = True
+        TabOrder = 0
+      end
+      object DBEdit2: TDBEdit
+        Left = 32
+        Top = 113
+        Width = 500
+        Height = 21
+        DataField = 'NOME'
+        DataSource = dsCliente
+        TabOrder = 1
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object DBEdit3: TDBEdit
+        Left = 31
+        Top = 176
+        Width = 500
+        Height = 21
+        DataField = 'ENDERECO'
+        DataSource = dsCliente
+        TabOrder = 2
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object DBEdit4: TDBEdit
+        Left = 31
+        Top = 238
+        Width = 500
+        Height = 21
+        DataField = 'CIDADE'
+        DataSource = dsCliente
+        TabOrder = 3
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object DBEdit5: TDBEdit
+        Left = 32
+        Top = 300
+        Width = 250
+        Height = 21
+        DataField = 'BAIRRO'
+        DataSource = dsCliente
+        TabOrder = 4
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object DBEdit6: TDBEdit
+        Left = 31
+        Top = 360
+        Width = 25
+        Height = 21
+        DataField = 'UF'
+        DataSource = dsCliente
+        TabOrder = 5
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object DBEdit7: TDBEdit
+        Left = 32
+        Top = 422
+        Width = 200
+        Height = 21
+        DataField = 'CPF / CNPJ'
+        DataSource = dsCliente
+        TabOrder = 6
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object Panel3: TPanel
+        Left = 0
+        Top = 480
+        Width = 999
+        Height = 60
+        Align = alBottom
+        Color = clBlack
+        ParentBackground = False
+        TabOrder = 7
+        object Panel4: TPanel
+          AlignWithMargins = True
+          Left = 847
+          Top = 4
+          Width = 148
+          Height = 52
+          Cursor = crHandPoint
+          Align = alRight
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 0
+          OnClick = Panel4Click
+          object Label9: TLabel
+            AlignWithMargins = True
+            Left = 64
+            Top = 16
+            Width = 65
+            Height = 15
+            Cursor = crHandPoint
+            Caption = 'GRAVAR | F1'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Roboto Cn'
+            Font.Style = []
+            ParentFont = False
+            OnClick = Panel4Click
+          end
+          object Image1: TImage
+            Left = 10
+            Top = 7
+            Width = 48
+            Height = 33
+            Cursor = crHandPoint
+            Picture.Data = {
+              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000240000
+              00240806000000E1009898000002294944415478DAED983F2845511CC77FCA60
+              30180D0C8A62A32C8A4126138A643318948432189427064A61324926144546EA
+              2D94A218DFA028CA2B06C31B0CAFF87EBBE7E6BAEE79F7BC73EF7D24DFFA74EB
+              75FF7CDEB9E79CDFEFBD32F96529FB69813F2BD40C7AD4B15AC13C822CB80207
+              E03649A1723006A6418DE13519B004B6E316E268AC80FA62BFB1CA0D18076771
+              08CD8194A5883779300A366D85F88A76407F0C32DEAC81291BA105301BB38C9B
+              11D18C944E6810EC2624C3F0F5754AC09C0A12AA0077F2B994E3081FCCD774EC
+              B92F277A8B89505C93D82BD30D72A011A43D52C3E2DB12FC421C9D275095808C
+              2891B41263B84F351512EA02A7259271D3209E1DDD2FB421CE5E512A1966062C
+              EB842E416B0965987D30A0137A90EF758AC572488D9EEEA6B632EE351D3AA1F7
+              0019EE1719839BDBC830F7A0CE5428A384B2210FB19561D8B2D4EA849EE4FB86
+              1826154586B9006D3AA16B719A2E7F74522F11659843D0A713DA1267F70C4A90
+              542EA20C9302F33AA11E65AC8B5FCA8DAD0CC37A76A313AA04CFE2941053A928
+              325F26749010B30A26436EE44A49041951CF590F136261BD93F0029B51475B19
+              D62F16D67C981033214EAB99647AC191FFC3422D6CA115173529F1AC2C53214E
+              EC13D01EB3CC97625A8C902BC5A23A1C93CCA21A99BCEE04D31F8A9C5329B1EF
+              24B9457045ED859D58CC4F69CAB0DF6603576178CDAB388B830DD89BC905367F
+              3670F364ABCB5552E8CF06CE95735391284289E65F282C1F255D88258A22E776
+              0000000049454E44AE426082}
+            OnClick = Panel4Click
+          end
+        end
+        object Panel5: TPanel
+          AlignWithMargins = True
+          Left = 655
+          Top = 4
+          Width = 186
+          Height = 52
+          Cursor = crHandPoint
+          Align = alRight
+          Color = clWhite
+          ParentBackground = False
+          TabOrder = 1
+          OnClick = Panel5Click
+          object Label10: TLabel
+            Left = 71
+            Top = 16
+            Width = 84
+            Height = 15
+            Cursor = crHandPoint
+            Caption = 'CANCELAR | ESC'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Roboto Cn'
+            Font.Style = []
+            ParentFont = False
+            OnClick = Panel5Click
+          end
+          object Image2: TImage
+            Left = 9
+            Top = 7
+            Width = 40
+            Height = 38
+            Cursor = crHandPoint
+            Picture.Data = {
+              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000240000
+              00240806000000E1009898000002614944415478DAED9831481C4114869F6061
+              61616161A185608A8082425208B1105B838A86585858084991100329022A0A2A
+              5A28D1C242AC24481414142C84A4341048A16520168242026952585804E2FFB3
+              BBB8B7CC9B991DF650C41F3ED0DBDBBD6FDFCD9B99BD0AB965A9B869813B2BD4
+              0AFA4133A88B61CEC16F700CB6C0493985AAC00BF00ED47B9EF303CC830DF0AF
+              48A11EB0009AF2DE711C56EC35382C42681A8C078AA4C30ABD02ABA14295E013
+              182840269D25F03644680EBC2F5826C94B512AA5093D079B659261F8F5758A61
+              4C9984AAC14FB96EE56C38405B3D3FD8F65E1E7B2C99EE33094D8229E522C9F7
+              FF018C3A64787C45ECE37018ACDB8438D7FC02358693F7C1D3D4FF3629BEBE1C
+              FFCDE6F8AE548AF3D4439B5017F8A27C084B3B08761C526919E64D5C592D0F24
+              35A36785D6C088E56497545E198673DCAC26C4D23E725C40933A0D9061B6C133
+              4DE84CFCD62993543ABE320C5BBF4313FAEF79119B541E19E614341621C464C7
+              0CE33325A4C32D4B8326C496AFF3BC90492644EA1B68D7848EC46F16367513EF
+              D4352598B20BFA34A18F6028408663C6779ECA66064C68423DB1715E99242152
+              6D12AD6B46212EAC7F245A42ACA515BD9B4C52DA502819D02621D71D251572B5
+              765ACA77CD53856A25DA7ED4281761A57AC51D4A1D806EE538D7AF1670E91212
+              8F0A1411DED45EF645DB16D6A7E34253D259BE421CD89FC19382654A16D33C42
+              8914B72445556A3EAE8CFAD0E8FBA0C8313525FA4077858FD7ECA82DD71BF33C
+              4AB3FBC6247A84A9F23CE7AF44CDB1082E7C4E08F9B1819327B7BADCB8DB7E6C
+              E063D457C9B4753984CA9A7B2157AE00E0C18C2535E3F5D10000000049454E44
+              AE426082}
+            OnClick = Panel5Click
+          end
+        end
+      end
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1007
+    Height = 50
+    Align = alTop
+    Caption = 'CLIENTES'
+    Color = clBlack
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -15
+    Font.Name = 'Roboto Cn'
+    Font.Style = []
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 1
+    object Image3: TImage
+      Left = 544
+      Top = 4
+      Width = 53
+      Height = 42
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000300000
+        003008060000005702F9870000000473424954080808087C0864880000000970
+        48597300000EC400000EC401952B0E1B00000A394944415478DAD5997954D357
+        16C7EF2F3B21090102912D80B2873D0844405B9545A58EDA33B6475B9D1915AC
+        76ECB4B6A547CF8C325DC45A3B759CBAB54347AB8EAD53C7B1B6055CA8A2EC01
+        14648B2C2104046216B240F6F9FDF04875044212A6CBF79F40DEFDBD773FEF77
+        DF7DEFBE20F00B17F2630EF6EA3B877D4824FC0A029198EC44A170F0781C5937
+        AA1FD28E8E969934867FECCFDF32F8B30478EBBD83EE388AF35E2F36FB454F36
+        8B44A3D100411E0C6DB15840A3D1428F58AC900EC8D617E46DBCF0B30278B3E0
+        9370A69B4B51684810C7C98932A91D06D2D9D96D9048EEA515BCB1A1EA4703F8
+        6CFD02268E4AF442CC3892110732D1E112493E80196BDBBEEF90A73B8325888A
+        0AF7C5E3F156FB329BCD2014768C8EEA741D4AF9F059B266747F7EFECBEA1907
+        389EB324014F266CF49AE591C1A0D303A85427048FC3814EA703994239D0DBD7
+        FFC5A876E4BD9EC8751FC6F362D690C9649BC750AB35D0D62E6CD2C80D4F15EC
+        587F7F46004E6C4EF77472661C0A0F9BB32A784E0042229126B4C362BA4A706B
+        A873D602371F6E82F5A99F44D884D4D5DD3EF5F61FD6BFE030C0E7B959116C9F
+        59C5A9FC04DFA962F9A1B070B856751B34096B014F7599D6180683110804FCF8
+        02C7D4D1D165E896887CF7BF3171869A16C0E90D0BD91E019CDAA7E7F3A715CB
+        0FA5D18E4065431B8C10E8A073F507A7103E2004E2C4B61A0D4825CD6026B802
+        C73F101E8E2395CAA0B9A9F99982BC9C8B76039CDDFEECB9654B9E5E89E6EE69
+        3BFFA8B00C735F2687EAB63E3027AC06BC33F3B1B6A12129508C225895022053
+        59E05C0505FC66478C410C0FABA0BEAE71C3DEBC8D85760114BE943537891753
+        151116EC70C6D2E9F570A9F62E1812D7A07F1B41A55281452785A4601D44CFC6
+        8D87CEA0C20CFFAA6442C0EC20502A87A1BEA171CDBEBC9C7FDA05707ADB3347
+        9E5DB1349744225A339D967A7AFB40A001E07039E0C34280ED8A3C16F30F55DA
+        6004A92512CD466A686D694F79FFADDC72BB00AEBCFBBBCE850BE605DAEA2816
+        1A32B902DC5C998F39882DEEAAB646E03F9B38E5F358287D59C54617B6C1206C
+        EF601DCC7F65D86680CF7F9FC5080B099127C445E36C75BEA1B119F4CE664094
+        66888FE6A2D98530DE5E515F0FFC35C9538E6E46FBF8DB77AEA056696A77BEF4
+        FCDCC9ECA604F8644B4650726CAC30322264DACEEB747AA86F6A066F9E377022
+        FC40D62F87A6A23B308F17370E5121A887E41792260C9D47F5FE3927A08FD489
+        39C8CDC4EC97AFDDB319E0040A101F1727E486075B9D7105BAD84462099A32F5
+        10F93417E86EB4F176F98002DA8A5B2189173BE674657D0324AD49B40AB0A350
+        0FCB235B41D9736B7D564EC9099B018E6F5DE41E191E35141F1B396687C56FAF
+        A41FEE0D4AC184438F3B7864AC0784880083CD00BF70DFC71C7F542DE56DE0AA
+        7386596C0FA8B8DD00FCE793ACBECDF7CFA860797823883BBA16676C2CBA6233
+        00D67E7D6FCE505A4AA2BB16DD946A9A1AC13FC11F7C42BC814822802D32A269
+        B3F64C2DCC8D8B86EABB4DC05F9968F599CB576B816A94743629BBC272730506
+        7B00E0FC5BAB2F2F5F96BE088BDBB85571E044B36F33C3547EA612427D026088
+        A482B0A4A9C3127BDB57CF9F51984CA66559B925E593D9590538BE75C9EEECAC
+        C5BB3AE462989BCDB3DB794C1567AB808E50C13BC507DCBCDCA6B4D5AA5570B3
+        E83F3B33728ADF9BCACE2AC0B77FCDBEE689CC994FF02243CCC228870174C35A
+        F04D7285A0C8D8296D7B3B85D05457357F494E71994300955F3D2F92B5E038DE
+        61BE0E035C3B750370643DB8053A0197C79FD40E0B9F9AD2E296A45F9FE6A20E
+        5A1C02283DB1FC3CD1C4FA158DCE7218E0F2F1EFC12388002E2C570808E54E6A
+        D7D9DA68EEBCD3B02C7D534991B53EAD025C3A9AB998E9E15942A77B21A13CC7
+        006A2E97019E320ADC845420539C26B41177B45B5A1B6AFE98B1A9E8DDE9F439
+        AD1366F1B1CC3DB3C3A3F282B8310E9D48056557804024A1E1938C7EFE70381C
+        BB99500D4377FB1DE813757C99B9A9E4B9E9F6392D874A772D2078A4721568DC
+        3A3B02D0507E15186E0C900FC980ED1308DE0173C0A0D741FB6D01DA6A00574F
+        16340B6E1DCBDC549C3BA300986E9C595D3A2F3DFB296BDBFF641AD56AE08EE0
+        06F8CEF11F9BF161F4A4AA56AA0187C3813B9B0524CA83C2FF9B2BF71ACEF7AF
+        F8BB05F05517C95502C8CF37CF0840F1B1F40DBCB4F44FDDD95E760174343782
+        5C2A01BFA080496D2C660B5CBDED02EDE417D04A6CD82293C9247299FC28188D
+        072EEC5BA17208E0DB035964961FAB91373F3D189B35DB665F0BDFDE9481C142
+        82048E08680CFA93CEA36FA5B7AB1FAACD9B414B0E1DFF0EAB95BBBA447D28C8
+        86AF0BB29FC84A36C543D1D18C79FE21115743A3E3C9D30D2593D10895150D50
+        837F0D8C381A78ABBE80305A0DB8B1986826A28CE57C8D4A0D7D03466821AC03
+        0DE5C9F48A81887BC4269148FCCA853DCB3EB61B00D3774732570504879C0C8E
+        E63959BBA1D08D8E80A0F60E086023E8887EE3DF138D83E032520364F4D38C10
+        414B9A03C34E096041262F5B3108495F9FB9EBAE68DD8582A5A7EC06C074E9D3
+        AC536E9EEC35DEFE41E0E1ED07FF0BA2D7E9B0740803BDDDD06C5909F76919F6
+        0C332144BB50A8E9EF1F8CFEA620BBD36E80CB854B4F72E7C6AE55C995683651
+        82A77720787102C7C245246C068D5A0E4C74B7C5C2ACB4873F630098D012196A
+        05F567CFE567ACB61960DB47651C02C9129D46FE6C273FC93BF9E1ACA8952A50
+        2994632991C972030AF5C12E3BA2D14289301686A88BD0FA810238BC6D35C464
+        EAEAEC36F5F4F4CCBEB877798F5580D73E28652154C266168BB9D69D450F65BA
+        D211466F2144F9DD073C61EA35A0520C439B6131A8E87C90CBD420938D821947
+        010A0DBBA9B02D933D2AECAAA5AEEEF6B6AFF72C3D3829C0AE5DA5040D9BF0BA
+        2F87BD2328C49B4EA753C76B58B35A02943BBB8113E80193A5543D5ADC7749D0
+        3D88F70E20F8074510F6B6A4434A10B6F7A3FBAE3390A90CAB75F144C2FAA9A8
+        AC3EFDEF3F67AE9DF0E96D1F55B05D5D895FC5C407A5B8B3261EC43CDC0DF896
+        BF00DBCD043417C63888C96802855406437A1F40225F05843471CE17750FC0DD
+        0E39680C38F47FDBDF029A56CBCEEE4E9FFF8467AF1E2EF7716752BF4FE48707
+        5128A4293BB1980D60EE43EB0DA900086639FA0D0E0C443620B35201C78AB53A
+        BB72990ACAAE37B5DD95287F6B3098F4B60020084173714F56EB6323E41CADA5
+        FAD0F0E5F352B93164F2CC5C255A9342AE868AB2A6E37B72F8BFB1E7F9C700F2
+        8E561C4E7B2A6A33C3C5A143A7CD128B062DF5B5C2751F6C4D3D6937C0F64365
+        BCB0704E756838C7FEF460A7B035515DD13230289407EFCB4B55D9F2EC38C0CE
+        C2EA738BD2E357128876FF22E490B0F570FDEAADD7F7BF9CB6DF66806D1F5D66
+        8786078AA36266FF38813F81B0B770F37A63CB8EE762226C06D87EE8E68B2969
+        DC132C8FE9FD96F5FF527BABD872EB9630F8E02B8B3A6C0278F3C88D8FB3B293
+        B710083F4DF83C94744801E5654D6B3FD89276DA2680DD9F0B8A16A6C767FEA4
+        DEA31AD1EAE05251CD9F5080B76D02C83B5659C8643A3B76673203B258CC2095
+        AA4F7EB835E5804D00BF64FD172ED62D6D32C8F8030000000049454E44AE4260
+        82}
+    end
+  end
+  object qrCliente: TFDQuery
+    Active = True
+    AfterInsert = qrClienteAfterInsert
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'SELECT * FROM CLIENTE')
+    Left = 196
+    Top = 274
+    object qrClienteCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrClienteNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 100
+    end
+    object qrClienteENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 100
+    end
+    object qrClienteCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'CIDADE'
+      Size = 100
+    end
+    object qrClienteBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      Size = 50
+    end
+    object qrClienteUF: TStringField
+      FieldName = 'UF'
+      Origin = 'UF'
+      Size = 2
+    end
+    object qrClienteCPFCNPJ: TStringField
+      FieldName = 'CPF / CNPJ'
+      Origin = '"CPF / CNPJ"'
+    end
+  end
+  object dsCliente: TDataSource
+    DataSet = qrCliente
+    Left = 276
+    Top = 274
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 652
+    Top = 210
+    object GRAVAR1: TMenuItem
+      Caption = 'GRAVAR'
+      ShortCut = 112
+      OnClick = Panel4Click
+    end
+    object CANCELAR1: TMenuItem
+      Caption = 'CANCELAR'
+      ShortCut = 27
+      OnClick = Panel5Click
+    end
+  end
+end

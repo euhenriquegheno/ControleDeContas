@@ -1,0 +1,86 @@
+unit uConsEmpresa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.ExtCtrls, UDM,
+  Vcl.StdCtrls;
+
+type
+  TFrmConsEmpresa = class(TForm)
+    Panel1: TPanel;
+    qrConsEmpresa: TFDQuery;
+    dsConsulta: TDataSource;
+    DBGrid1: TDBGrid;
+    qrConsEmpresaCODIGO: TIntegerField;
+    qrConsEmpresaNOME: TStringField;
+    qrConsEmpresaENDERECO: TStringField;
+    qrConsEmpresaBAIRRO: TStringField;
+    qrConsEmpresaCIDADE: TStringField;
+    qrConsEmpresaUF: TStringField;
+    qrConsEmpresaCNPJ: TStringField;
+    Label1: TLabel;
+    edtConsulta: TEdit;
+    btConsultar: TButton;
+    rgOrdenacao: TRadioGroup;
+    procedure btConsultarClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+   Cod_Empresa : Integer;
+   nome_empresa : String;
+
+   Procedure ListarEmpresas;
+  end;
+
+var
+  FrmConsEmpresa: TFrmConsEmpresa;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmConsEmpresa }
+
+procedure TFrmConsEmpresa.btConsultarClick(Sender: TObject);
+begin
+  ListarEmpresas;
+end;
+
+procedure TFrmConsEmpresa.DBGrid1DblClick(Sender: TObject);
+begin
+  Cod_Empresa := qrConsEmpresaCODIGO.AsInteger;
+  nome_empresa := qrConsEmpresaNOME.AsString;
+
+  FrmConsEmpresa.Close;
+end;
+
+procedure TFrmConsEmpresa.ListarEmpresas;
+begin
+  qrConsEmpresa.Active := True;
+  qrConsEmpresa.SQL.Clear;
+  qrConsEmpresa.SQL.Add('SELECT * FROM EMPRESA');
+
+  if (edtConsulta.Text <> ' ') then
+    Begin
+      Try
+        StrToInt(edtConsulta.Text);
+        qrConsEmpresa.SQL.Add('WHERE (CODIGO = ' + edtConsulta.Text +')');
+      Except
+        qrConsEmpresa.SQL.Add('WHERE(UPPER(NOME) LIKE' + QuotedStr('%' + AnsiUpperCase(edtConsulta.Text) +'%')+ ')');
+      End;
+    End;
+
+    if (rgOrdenacao.ItemIndex = 0) then
+    qrConsEmpresa.SQL.Add('Order By CODIGO')
+    Else if (rgOrdenacao.ItemIndex = 1) then
+    qrConsEmpresa.SQL.Add('Order By NOME');
+    qrConsEmpresa.Active := True;
+end;
+
+end.

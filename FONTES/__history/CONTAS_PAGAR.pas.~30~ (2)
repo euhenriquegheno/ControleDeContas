@@ -1,0 +1,361 @@
+unit CONTAS_PAGAR;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UDM, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask, Vcl.DBCtrls, Data.FMTBcd, EFuncoes,
+  Data.SqlExpr, Vcl.Imaging.pngimage, Vcl.Menus;
+
+type
+  TFrmContasPagar = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Button1: TButton;
+    Button2: TButton;
+    qrContasPagar: TFDQuery;
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
+    pcContasPagar: TPageControl;
+    tsContasPagar: TTabSheet;
+    tsIncluir: TTabSheet;
+    Button5: TButton;
+    StaticText1: TStaticText;
+    Panel3: TPanel;
+    Button8: TButton;
+    Panel4: TPanel;
+    edtConsulta: TEdit;
+    Button9: TButton;
+    Label6: TLabel;
+    qrContasPagarCODIGO: TIntegerField;
+    qrContasPagarNUMERO_BOLETO: TIntegerField;
+    qrContasPagarEMITENTE: TStringField;
+    qrContasPagarVALOR: TFMTBCDField;
+    qrContasPagarDATA_VENCIMENTO: TDateField;
+    qrContasPagarSITUACAO: TStringField;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    Label4: TLabel;
+    DBEdit4: TDBEdit;
+    Label5: TLabel;
+    DBEdit5: TDBEdit;
+    Label7: TLabel;
+    DBComboBox1: TDBComboBox;
+    DateTimePicker1: TDateTimePicker;
+    Button3: TButton;
+    ComboBox1: TComboBox;
+    Label8: TLabel;
+    Panel5: TPanel;
+    Label9: TLabel;
+    Image1: TImage;
+    Panel6: TPanel;
+    Label10: TLabel;
+    Image2: TImage;
+    Label11: TLabel;
+    PopupMenu1: TPopupMenu;
+    EXCLUIR1: TMenuItem;
+    INCLUIR1: TMenuItem;
+    ALTERAR1: TMenuItem;
+    CANCELAR1: TMenuItem;
+    PAGAR1: TMenuItem;
+    Panel7: TPanel;
+    GRAVAR1: TMenuItem;
+    Image4: TImage;
+    Image3: TImage;
+    Panel8: TPanel;
+    Label12: TLabel;
+    Panel9: TPanel;
+    Label13: TLabel;
+    Image5: TImage;
+    ESTORNAR1: TMenuItem;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure edtConsultaKeyPress(Sender: TObject; var Key: Char);
+    procedure Button3Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Panel6Click(Sender: TObject);
+    procedure edtConsultaChange(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure EXCLUIR1Click(Sender: TObject);
+    procedure INCLUIR1Click(Sender: TObject);
+    procedure ALTERAR1Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure DBEdit5Change(Sender: TObject);
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure qrContasPagarAfterInsert(DataSet: TDataSet);
+    procedure pcContasPagarChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Panel8Click(Sender: TObject);
+    procedure Panel5Click(Sender: TObject);
+    procedure Panel9Click(Sender: TObject);
+  private
+    Procedure ListarContas;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmContasPagar: TFrmContasPagar;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmContasPagar.ALTERAR1Click(Sender: TObject);
+begin
+  Button8Click(Nil);
+end;
+
+procedure TFrmContasPagar.Button1Click(Sender: TObject);
+begin
+  Try
+  if Application.MessageBox('Deseja realmente excluir a conta?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
+  qrContasPagar.delete;
+  Except
+  ShowMessage('Nenhuma conta para excluir!');
+  End;
+  End;
+
+procedure TFrmContasPagar.Button2Click(Sender: TObject);
+begin
+ if Application.MessageBox('Deseja realmente sair?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
+  Close;
+end;
+
+procedure TFrmContasPagar.Button3Click(Sender: TObject);
+begin
+   ListarContas;
+end;
+
+procedure TFrmContasPagar.Button5Click(Sender: TObject);
+begin
+  qrContasPagar.Insert;
+   pcContasPagar.ActivePage := tsIncluir;
+end;
+
+procedure TFrmContasPagar.Button6Click(Sender: TObject);
+begin
+  qrContasPagar.Edit;
+  if Application.MessageBox('Deseja realmente estornar a conta?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
+  if qrContasPagar.FieldByName('SITUACAO').AsString = 'QUITADO' then
+  Begin
+  qrContasPagar.FieldByName('SITUACAO').AsString := 'ABERTO';
+  qrContasPagar.Post
+  End
+  Else
+    Application.MessageBox('Essa conta ja esta ABERTA!', 'ATENÇÃO', MB_ICONEXCLAMATION);
+end;
+
+procedure TFrmContasPagar.Button8Click(Sender: TObject);
+begin
+    qrContasPagar.Edit;
+     pcContasPagar.ActivePage := tsIncluir;
+end;
+
+procedure TFrmContasPagar.Button9Click(Sender: TObject);
+begin
+   ListarContas;
+end;
+
+procedure TFrmContasPagar.ComboBox1Change(Sender: TObject);
+begin
+  ListarContas;
+end;
+
+procedure TFrmContasPagar.DBEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+if (Key = #13) then
+  Self.Perform(WM_NEXTDLGCTL,0,0);
+
+end;
+
+procedure TFrmContasPagar.DBEdit5Change(Sender: TObject);
+begin
+  if Length(DBEdit5.Text) = 2 then begin
+  DBEdit5.Text := DBEdit5.Text + '/';
+  DBEdit5.SelStart := Length( DBEdit5.Text );
+  end;
+  if Length(DBEdit5.Text ) = 5 then begin
+  DBEdit5.Text := DBEdit5.Text + '/';
+  DBEdit5.SelStart := Length( DBEdit5.Text );
+  end;
+end;
+
+procedure TFrmContasPagar.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+ if (gdRowSelected in State) or (gdSelected in State) then
+  begin
+     (Sender as TDBGrid).Canvas.Brush.Style := bsSolid;
+     (Sender as TDBGrid).Canvas.Brush.Color := clblack;
+     (Sender as TDBGrid).Canvas.Font.Style := [fsbold];
+     (Sender as TDBGrid).Canvas.FillRect(Rect);
+     (Sender as TDBGrid).Canvas.Font.Color := clWhite;
+     (Sender as TDBGrid).DefaultDrawColumnCell(Rect,DataCol,Column,State);
+  end else begin
+     (Sender as TDBGrid).Canvas.Brush.Style := bsSolid;
+     (Sender as TDBGrid).Canvas.Brush.Color := clwhite;
+     (Sender as TDBGrid).Canvas.Font.Style := [fsbold];
+     (Sender as TDBGrid).Canvas.FillRect(Rect);
+     (Sender as TDBGrid).Canvas.Font.Color := clblack;
+     (Sender as TDBGrid).DefaultDrawColumnCell(Rect,DataCol,Column,State);
+  end;
+end;
+
+procedure TFrmContasPagar.edtConsultaChange(Sender: TObject);
+begin
+  ListarContas;
+end;
+
+procedure TFrmContasPagar.edtConsultaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key=#13 then
+  Button9Click(Nil);
+end;
+
+procedure TFrmContasPagar.EXCLUIR1Click(Sender: TObject);
+begin
+  Button1Click(Nil);
+end;
+
+procedure TFrmContasPagar.FormActivate(Sender: TObject);
+begin
+  DateTimePicker1.Date := Date;
+  Button3Click(Nil);
+end;
+
+procedure TFrmContasPagar.FormCreate(Sender: TObject);
+begin
+  pcContasPagar.ActivePage := tsContasPagar;
+end;
+
+procedure TFrmContasPagar.FormShow(Sender: TObject);
+begin
+   ListarContas;
+end;
+
+procedure TFrmContasPagar.INCLUIR1Click(Sender: TObject);
+begin
+  Button5Click(Nil);
+end;
+
+procedure TFrmContasPagar.ListarContas;
+begin
+  qrContasPagar.Active := false;
+  qrContasPagar.SQL.Clear;
+  qrContasPagar.SQL.Add('Select * from Contas_Pagar');
+
+  qrContasPagar.SQL.Add ('Where (DATA_VENCIMENTO = '''+
+  formataDataSql(DateTimePicker1.Date)+''')');
+
+  if (edtConsulta.Text <> ' ') then
+  Begin
+    qrContasPagar.SQL.Add('And (Upper(Emitente) like ''%' + AnsiUpperCase(edtConsulta.Text) + '%'')');
+  End;
+
+
+  if ComboBox1.ItemIndex = 1 then
+    qrContasPagar.SQL.Add('And Situacao = ''ABERTO''')
+  Else if ComboBox1.ItemIndex = 2 then
+    qrContasPagar.SQL.Add('And Situacao = ''QUITADO''');
+  qrContasPagar.Active := true;
+end;
+
+procedure TFrmContasPagar.pcContasPagarChange(Sender: TObject);
+begin
+ if (qrContasPagar.State = dsInsert) or
+        (qrContasPagar.State = dsEdit) then
+        Begin
+          Application.MessageBox('Grave ou cancele antes de voltar!', 'ATENÇÃO', MB_ICONEXCLAMATION);
+          pcContasPagar.ActivePage := tsIncluir;
+        End
+    Else
+        Begin
+           Application.MessageBox('Voce so pode acessar essa aba inserindo ou editando alguma conta!', 'ATENÇÃO', MB_ICONEXCLAMATION);
+           pcContasPagar.ActivePage := tsContasPagar;
+        End;
+end;
+
+procedure TFrmContasPagar.Panel5Click(Sender: TObject);
+begin
+    if Application.MessageBox('Deseja realmente cancelar?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
+    Begin
+    qrContasPagar.Cancel;
+    pcContasPagar.ActivePage := tsContasPagar;
+    End;
+end;
+
+procedure TFrmContasPagar.Panel6Click(Sender: TObject);
+begin
+  Try
+  qrContasPagar.Post;
+   pcContasPagar.ActivePage := tsContasPagar;
+  Except
+  if DBEdit1.Text = ' ' then
+  ShowMessage('Insira alguma registro antes de gravar!')
+  Else
+  ShowMessage('Codigo Duplicado');
+  End;
+end;
+
+procedure TFrmContasPagar.Panel8Click(Sender: TObject);
+begin
+    qrContasPagar.Edit;
+  if Application.MessageBox('Deseja realmente ESTORNAR essa conta?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
+  if qrContasPagar.FieldByName('SITUACAO').AsString = 'QUITADO' then
+  Begin
+  qrContasPagar.FieldByName('SITUACAO').AsString := 'ABERTO';
+  qrContasPagar.Post
+  End
+  Else
+  Application.MessageBox('Essa conta ja esta ABERTA!', 'ATENÇÃO', MB_ICONEXCLAMATION);
+end;
+
+procedure TFrmContasPagar.Panel9Click(Sender: TObject);
+begin
+  qrContasPagar.Edit;
+  if Application.MessageBox('Deseja realmente PAGAR essa conta?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
+  if qrContasPagar.FieldByName('SITUACAO').AsString = 'ABERTO' then
+  Begin
+  qrContasPagar.FieldByName('SITUACAO').AsString := 'QUITADO';
+  qrContasPagar.Post
+  End
+  Else
+  Application.MessageBox('Essa conta ja esta QUITADA!', 'ATENÇÃO', MB_ICONEXCLAMATION);
+end;
+
+procedure TFrmContasPagar.qrContasPagarAfterInsert(DataSet: TDataSet);
+var query : TFDQuery;
+    codigo : Integer;
+begin
+  query := TFDQuery.Create(self);//CRIA COMPONENTE NA MEMORIA
+  query.Connection := Dm.Conexao;//VINCULA O COMPONENTE DE CONEXAO COM A QUERY
+  query.Active := false;//DESATIVA CONEXAO DO QUERY COM O BANCO DE DADOS
+  query.SQL.Add('SELECT MAX (CODIGO) AS CODIGO FROM CONTAS_PAGAR');//SQL DE CONSULTA NO BANCO
+  query.Active := True;
+
+  if (query.FieldByName('CODIGO').IsNull) then //VALIDA SE A COLUNA CODIGO É NULL
+    Codigo := 1
+  else
+    codigo := query.FieldByName('CODIGO').AsInteger + 1;
+
+  query.Free;//LIMPA A VARIAVEL QUERY DA MEMÓRIA
+
+  qrContasPagarCODIGO.AsInteger := codigo;
+end;
+
+end.

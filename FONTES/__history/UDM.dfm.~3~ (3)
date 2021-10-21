@@ -1,0 +1,20 @@
+object Dm: TDm
+  OldCreateOrder = False
+  Height = 197
+  Width = 385
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'Database=C:\Sistema de Contas\BANCO\BANCO.FDB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'DriverID=FB')
+    Connected = True
+    LoginPrompt = False
+    Left = 72
+    Top = 56
+  end
+  object FDPhysFBDriverLink1: TFDPhysFBDriverLink
+    Left = 192
+    Top = 56
+  end
+end

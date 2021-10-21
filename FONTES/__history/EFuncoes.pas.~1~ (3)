@@ -1,0 +1,36 @@
+unit EFuncoes;
+
+interface
+
+Uses System.Classes, System.IOUtils;
+
+  Function Arquivo_Ler(CaminhoDoArquivo : String) : String;
+  Procedure Arquivo_Apagar(CaminhoDoArquivo : String);
+  Procedure Arquivo_Escrever(CaminhoDoArquivo, conteudo : String);
+
+implementation
+
+  Function Arquivo_Ler(CaminhoDoArquivo : String) : String;
+ var BlocoDeNotas : TStringList;
+    begin
+      BlocoDeNotas := TStringList.Create;
+      BlocoDeNotas.LoadFromFile(CaminhoDoArquivo);
+      result := BlocoDeNotas.Text;
+    End;
+
+  Procedure Arquivo_Escrever(CaminhoDoArquivo, conteudo : String);
+ var BlocoDeNotas : TStringList;
+    Begin
+      BlocoDeNotas := TStringList.Create;
+      BlocoDeNotas.Add(conteudo);
+      BlocoDeNotas.SaveToFile(CaminhoDoArquivo);
+    End;
+
+  Procedure Arquivo_Apagar(CaminhoDoArquivo : String);
+  begin
+    TFile.Delete(CaminhoDoArquivo);
+  end;
+
+
+
+end.

@@ -1,0 +1,169 @@
+object FrmConsEmpresa: TFrmConsEmpresa
+  Left = 0
+  Top = 0
+  Caption = 'EMPRESAS'
+  ClientHeight = 476
+  ClientWidth = 1065
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1065
+    Height = 57
+    Align = alTop
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 32
+      Top = 22
+      Width = 60
+      Height = 13
+      Caption = 'CONSULTAR'
+    end
+    object edtConsulta: TEdit
+      Left = 98
+      Top = 19
+      Width = 223
+      Height = 21
+      TabOrder = 0
+    end
+    object btConsultar: TButton
+      Left = 327
+      Top = 9
+      Width = 75
+      Height = 41
+      Caption = 'CONSULTAR'
+      TabOrder = 1
+      OnClick = btConsultarClick
+    end
+    object rgOrdenacao: TRadioGroup
+      Left = 464
+      Top = 6
+      Width = 249
+      Height = 45
+      Caption = 'Ordena'#231#227'o'
+      Columns = 2
+      Items.Strings = (
+        'CODIGO'
+        'NOME DA EMPRESA')
+      TabOrder = 2
+    end
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 57
+    Width = 1065
+    Height = 419
+    Align = alClient
+    DataSource = dsConsulta
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'CODIGO'
+        Title.Alignment = taCenter
+        Width = 50
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Title.Alignment = taCenter
+        Width = 250
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ENDERECO'
+        Title.Alignment = taCenter
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'BAIRRO'
+        Title.Alignment = taCenter
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CIDADE'
+        Title.Alignment = taCenter
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'UF'
+        Title.Alignment = taCenter
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CNPJ'
+        Title.Alignment = taCenter
+        Visible = True
+      end>
+  end
+  object qrConsEmpresa: TFDQuery
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'Select * from EMPRESA')
+    Left = 248
+    Top = 240
+    object qrConsEmpresaCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrConsEmpresaNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 100
+    end
+    object qrConsEmpresaENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 100
+    end
+    object qrConsEmpresaBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      Size = 100
+    end
+    object qrConsEmpresaCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'CIDADE'
+      Size = 100
+    end
+    object qrConsEmpresaUF: TStringField
+      FieldName = 'UF'
+      Origin = 'UF'
+      Size = 2
+    end
+    object qrConsEmpresaCNPJ: TStringField
+      FieldName = 'CNPJ'
+      Origin = 'CNPJ'
+    end
+  end
+  object dsConsulta: TDataSource
+    DataSet = qrConsEmpresa
+    Left = 336
+    Top = 240
+  end
+end

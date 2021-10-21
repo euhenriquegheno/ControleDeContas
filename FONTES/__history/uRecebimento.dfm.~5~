@@ -1,0 +1,8 @@
+inherited FrmRecebimento: TFrmRecebimento
+  Caption = 'RECEBIMENTO'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Button1: TButton
+    Caption = 'RECEBER | F2'
+  end
+end

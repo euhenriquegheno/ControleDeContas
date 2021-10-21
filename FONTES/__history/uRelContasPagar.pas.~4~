@@ -1,0 +1,37 @@
+unit uRelContasPagar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    btnGerarRel: TButton;
+    Button1: TButton;
+    Panel3: TPanel;
+    Label1: TLabel;
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.FormActivate(Sender: TObject);
+begin
+  label1.maximumSize = new Size(100, 0);
+  label1.autosize = true;
+end;
+
+end.

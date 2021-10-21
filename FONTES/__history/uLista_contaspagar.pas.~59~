@@ -1,0 +1,77 @@
+unit uLista_contaspagar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Vcl.ComCtrls, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, frxClass, frxExportBaseDialog, frxExportPDF, frxDBSet, UPrincipal;
+
+type
+  TfrmLista_contaspagar = class(TForm)
+    cbRelacao: TComboBox;
+    Label1: TLabel;
+    Button1: TButton;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    frxPDFExport1: TfrxPDFExport;
+    qrListaContasPagar: TFDQuery;
+    dtInicio: TDateTimePicker;
+    dtFim: TDateTimePicker;
+    Label2: TLabel;
+    Label3: TLabel;
+    Panel3: TPanel;
+    Label4: TLabel;
+    edtConsulta: TEdit;
+    Label5: TLabel;
+    edtConsultaFuncionario: TEdit;
+    edtConsultaCategoria: TEdit;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    cbSituacao: TComboBox;
+    Label9: TLabel;
+    cbBanco: TComboBox;
+    edtAno: TEdit;
+    Label10: TLabel;
+    Label11: TLabel;
+    qrListaTotalContasPagar: TFDQuery;
+    qrTotalContasPagar: TfrxDBDataset;
+    qrListaTotalContasPagarTOTAL_JANEIRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_FEVEREIRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_MARCO: TFloatField;
+    qrListaTotalContasPagarTOTAL_ABRIL: TFloatField;
+    qrListaTotalContasPagarTOTAL_MAIO: TFloatField;
+    qrListaTotalContasPagarTOTAL_JUNHO: TFloatField;
+    qrListaTotalContasPagarTOTAL_JULHO: TFloatField;
+    qrListaTotalContasPagarTOTAL_SETEMBRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_OUTUBRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_NOVEMBRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_DEZEMBRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_AGOSTO: TFloatField;
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmLista_contaspagar: TfrmLista_contaspagar;
+
+implementation
+
+{$R *.dfm}
+
+uses UDM, EFuncoes;
+
+procedure TfrmLista_contaspagar.FormActivate(Sender: TObject);
+begin
+  dtInicio.Date := Date;
+  dtFim.Date := Date;
+end;
+
+end.

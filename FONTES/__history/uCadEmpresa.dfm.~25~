@@ -1,0 +1,781 @@
+object FrmEmpresa: TFrmEmpresa
+  Left = 0
+  Top = 0
+  Caption = 'EMPRESAS'
+  ClientHeight = 623
+  ClientWidth = 1234
+  Color = clAppWorkSpace
+  CustomTitleBar.CaptionAlignment = taCenter
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PopupMenu = PopupMenu1
+  Position = poScreenCenter
+  WindowState = wsMaximized
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pcPrincipal: TPageControl
+    Left = 0
+    Top = 49
+    Width = 1234
+    Height = 574
+    ActivePage = tsConsulta
+    Align = alClient
+    TabOrder = 0
+    ExplicitHeight = 538
+    object tsConsulta: TTabSheet
+      Caption = 'CONSULTA'
+      ExplicitHeight = 510
+      object DBGrid1: TDBGrid
+        Left = 0
+        Top = 57
+        Width = 1226
+        Height = 489
+        Align = alClient
+        DataSource = dsEmpresa
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        ReadOnly = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDblClick = Button2Click
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'CODIGO'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NOME'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Width = 388
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ENDERECO'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Width = 250
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'BAIRRO'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Width = 150
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CIDADE'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Width = 200
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'UF'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CNPJ'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            Title.Alignment = taCenter
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = []
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DATA_CADASTRO'
+            Title.Caption = 'DATA DE CADASTRO'
+            Visible = True
+          end>
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 0
+        Width = 1226
+        Height = 57
+        Align = alTop
+        TabOrder = 1
+        object Label10: TLabel
+          Left = 32
+          Top = 21
+          Width = 60
+          Height = 13
+          Caption = 'CONSULTAR'
+        end
+        object Button1: TButton
+          AlignWithMargins = True
+          Left = 1112
+          Top = 4
+          Width = 110
+          Height = 49
+          Align = alRight
+          Caption = 'CADASTRAR | F2'
+          TabOrder = 0
+          OnClick = Button1Click
+        end
+        object Button2: TButton
+          AlignWithMargins = True
+          Left = 1000
+          Top = 4
+          Width = 106
+          Height = 49
+          Align = alRight
+          Caption = 'ALTERAR | F3'
+          TabOrder = 1
+          OnClick = Button2Click
+        end
+        object Button3: TButton
+          AlignWithMargins = True
+          Left = 888
+          Top = 4
+          Width = 106
+          Height = 49
+          Align = alRight
+          Caption = 'EXCLUIR | F4'
+          TabOrder = 2
+          OnClick = Button3Click
+        end
+        object edtConsulta: TEdit
+          Left = 98
+          Top = 18
+          Width = 223
+          Height = 21
+          TabOrder = 3
+        end
+        object Button4: TButton
+          Left = 327
+          Top = 6
+          Width = 81
+          Height = 41
+          Caption = 'BUSCAR'
+          TabOrder = 4
+          OnClick = Button4Click
+        end
+        object rgOrdenacao: TRadioGroup
+          Left = 448
+          Top = 10
+          Width = 241
+          Height = 41
+          Caption = 'Ordena'#231#227'o'
+          Columns = 2
+          ItemIndex = 0
+          Items.Strings = (
+            'CODIGO'
+            'NOME DA EMPRESA')
+          TabOrder = 5
+        end
+      end
+    end
+    object tsCadEmpresa: TTabSheet
+      Caption = 'CADASTRO'
+      ImageIndex = 1
+      ExplicitHeight = 510
+      object Label1: TLabel
+        Left = 22
+        Top = 24
+        Width = 41
+        Height = 13
+        Caption = 'CODIGO'
+        FocusControl = DBEdit1
+      end
+      object Label2: TLabel
+        Left = 23
+        Top = 78
+        Width = 29
+        Height = 13
+        Caption = 'NOME'
+        FocusControl = DBEdit2
+      end
+      object Label3: TLabel
+        Left = 23
+        Top = 140
+        Width = 54
+        Height = 13
+        Caption = 'ENDERECO'
+        FocusControl = DBEdit3
+      end
+      object Label4: TLabel
+        Left = 22
+        Top = 197
+        Width = 39
+        Height = 13
+        Caption = 'BAIRRO'
+        FocusControl = DBEdit4
+      end
+      object Label5: TLabel
+        Left = 23
+        Top = 255
+        Width = 38
+        Height = 13
+        Caption = 'CIDADE'
+        FocusControl = DBEdit5
+      end
+      object Label6: TLabel
+        Left = 24
+        Top = 317
+        Width = 13
+        Height = 13
+        Caption = 'UF'
+        FocusControl = DBEdit6
+      end
+      object Label7: TLabel
+        Left = 24
+        Top = 373
+        Width = 25
+        Height = 13
+        Caption = 'CNPJ'
+        FocusControl = DBEdit7
+      end
+      object Label11: TLabel
+        Left = 24
+        Top = 429
+        Width = 88
+        Height = 13
+        Caption = 'DATA_CADASTRO'
+        FocusControl = DBEdit8
+      end
+      object DBEdit1: TDBEdit
+        Left = 22
+        Top = 43
+        Width = 134
+        Height = 21
+        DataField = 'CODIGO'
+        DataSource = dsEmpresa
+        ReadOnly = True
+        TabOrder = 0
+      end
+      object DBEdit2: TDBEdit
+        Left = 22
+        Top = 97
+        Width = 500
+        Height = 21
+        DataField = 'NOME'
+        DataSource = dsEmpresa
+        TabOrder = 1
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object DBEdit3: TDBEdit
+        Left = 22
+        Top = 159
+        Width = 500
+        Height = 21
+        DataField = 'ENDERECO'
+        DataSource = dsEmpresa
+        TabOrder = 2
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object DBEdit4: TDBEdit
+        Left = 22
+        Top = 216
+        Width = 500
+        Height = 21
+        DataField = 'BAIRRO'
+        DataSource = dsEmpresa
+        TabOrder = 3
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object DBEdit5: TDBEdit
+        Left = 22
+        Top = 274
+        Width = 500
+        Height = 21
+        DataField = 'CIDADE'
+        DataSource = dsEmpresa
+        TabOrder = 4
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object DBEdit6: TDBEdit
+        Left = 22
+        Top = 336
+        Width = 30
+        Height = 21
+        DataField = 'UF'
+        DataSource = dsEmpresa
+        TabOrder = 5
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object DBEdit7: TDBEdit
+        Left = 22
+        Top = 392
+        Width = 264
+        Height = 21
+        DataField = 'CNPJ'
+        DataSource = dsEmpresa
+        TabOrder = 6
+        OnKeyPress = DBEdit2KeyPress
+      end
+      object Panel3: TPanel
+        Left = 0
+        Top = 484
+        Width = 1226
+        Height = 62
+        Align = alBottom
+        Color = clBlack
+        ParentBackground = False
+        TabOrder = 7
+        ExplicitTop = 448
+        object Panel4: TPanel
+          AlignWithMargins = True
+          Left = 1074
+          Top = 4
+          Width = 148
+          Height = 54
+          Cursor = crHandPoint
+          Align = alRight
+          Color = clWhite
+          ParentBackground = False
+          PopupMenu = PopupMenu1
+          TabOrder = 0
+          OnClick = Panel4Click
+          object Label8: TLabel
+            AlignWithMargins = True
+            Left = 64
+            Top = 16
+            Width = 65
+            Height = 15
+            Cursor = crHandPoint
+            Caption = 'GRAVAR | F1'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Roboto Cn'
+            Font.Style = []
+            ParentFont = False
+            PopupMenu = PopupMenu1
+            OnClick = Panel4Click
+          end
+          object Image1: TImage
+            Left = 10
+            Top = 7
+            Width = 48
+            Height = 33
+            Cursor = crHandPoint
+            Picture.Data = {
+              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000240000
+              00240806000000E1009898000002294944415478DAED983F2845511CC77FCA60
+              30180D0C8A62A32C8A4126138A643318948432189427064A61324926144546EA
+              2D94A218DFA028CA2B06C31B0CAFF87EBBE7E6BAEE79F7BC73EF7D24DFFA74EB
+              75FF7CDEB9E79CDFEFBD32F96529FB69813F2BD40C7AD4B15AC13C822CB80207
+              E03649A1723006A6418DE13519B004B6E316E268AC80FA62BFB1CA0D18076771
+              08CD8194A5883779300A366D85F88A76407F0C32DEAC81291BA105301BB38C9B
+              11D18C944E6810EC2624C3F0F5754AC09C0A12AA0077F2B994E3081FCCD774EC
+              B92F277A8B89505C93D82BD30D72A011A43D52C3E2DB12FC421C9D275095808C
+              2891B41263B84F351512EA02A7259271D3209E1DDD2FB421CE5E512A1966062C
+              EB842E416B0965987D30A0137A90EF758AC572488D9EEEA6B632EE351D3AA1F7
+              0019EE1719839BDBC830F7A0CE5428A384B2210FB19561D8B2D4EA849EE4FB86
+              1826154586B9006D3AA16B719A2E7F74522F11659843D0A713DA1267F70C4A90
+              542EA20C9302F33AA11E65AC8B5FCA8DAD0CC37A76A313AA04CFE2941053A928
+              325F26749010B30A26436EE44A49041951CF590F136261BD93F0029B51475B19
+              D62F16D67C981033214EAB99647AC191FFC3422D6CA115173529F1AC2C53214E
+              EC13D01EB3CC97625A8C902BC5A23A1C93CCA21A99BCEE04D31F8A9C5329B1EF
+              24B9457045ED859D58CC4F69CAB0DF6603576178CDAB388B830DD89BC905367F
+              3670F364ABCB5552E8CF06CE95735391284289E65F282C1F255D88258A22E776
+              0000000049454E44AE426082}
+            PopupMenu = PopupMenu1
+            OnClick = Panel4Click
+          end
+        end
+        object Panel5: TPanel
+          AlignWithMargins = True
+          Left = 882
+          Top = 4
+          Width = 186
+          Height = 54
+          Cursor = crHandPoint
+          Align = alRight
+          Color = clWhite
+          ParentBackground = False
+          PopupMenu = PopupMenu1
+          TabOrder = 1
+          OnClick = Panel5Click
+          object Label9: TLabel
+            Left = 55
+            Top = 16
+            Width = 84
+            Height = 15
+            Cursor = crHandPoint
+            Caption = 'CANCELAR | ESC'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Roboto Cn'
+            Font.Style = []
+            ParentFont = False
+            PopupMenu = PopupMenu1
+            OnClick = Panel5Click
+          end
+          object Image2: TImage
+            Left = 9
+            Top = 7
+            Width = 40
+            Height = 38
+            Cursor = crHandPoint
+            Picture.Data = {
+              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000240000
+              00240806000000E1009898000002614944415478DAED9831481C4114869F6061
+              61616161A185608A8082425208B1105B838A86585858084991100329022A0A2A
+              5A28D1C242AC24481414142C84A4341048A16520168242026952585804E2FFB3
+              BBB8B7CC9B991DF650C41F3ED0DBDBBD6FDFCD9B99BD0AB965A9B869813B2BD4
+              0AFA4133A88B61CEC16F700CB6C0493985AAC00BF00ED47B9EF303CC830DF0AF
+              48A11EB0009AF2DE711C56EC35382C42681A8C078AA4C30ABD02ABA14295E013
+              182840269D25F03644680EBC2F5826C94B512AA5093D079B659261F8F5758A61
+              4C9984AAC14FB96EE56C38405B3D3FD8F65E1E7B2C99EE33094D8229E522C9F7
+              FF018C3A64787C45ECE37018ACDB8438D7FC02358693F7C1D3D4FF3629BEBE1C
+              FFCDE6F8AE548AF3D4439B5017F8A27C084B3B08761C526919E64D5C592D0F24
+              35A36785D6C088E56497545E198673DCAC26C4D23E725C40933A0D9061B6C133
+              4DE84CFCD62993543ABE320C5BBF4313FAEF79119B541E19E614341621C464C7
+              0CE33325A4C32D4B8326C496AFF3BC90492644EA1B68D7848EC46F16367513EF
+              D4352598B20BFA34A18F6028408663C6779ECA66064C68423DB1715E99242152
+              6D12AD6B46212EAC7F245A42ACA515BD9B4C52DA502819D02621D71D251572B5
+              765ACA77CD53856A25DA7ED4281761A57AC51D4A1D806EE538D7AF1670E91212
+              8F0A1411DED45EF645DB16D6A7E34253D259BE421CD89FC19382654A16D33C42
+              8914B72445556A3EAE8CFAD0E8FBA0C8313525FA4077858FD7ECA82DD71BF33C
+              4AB3FBC6247A84A9F23CE7AF44CDB1082E7C4E08F9B1819327B7BADCB8DB7E6C
+              E063D457C9B4753984CA9A7B2157AE00E0C18C2535E3F5D10000000049454E44
+              AE426082}
+            PopupMenu = PopupMenu1
+            OnClick = Panel5Click
+          end
+        end
+      end
+      object DBEdit8: TDBEdit
+        Left = 23
+        Top = 448
+        Width = 134
+        Height = 21
+        DataField = 'DATA_CADASTRO'
+        DataSource = dsEmpresa
+        Enabled = False
+        ReadOnly = True
+        TabOrder = 8
+      end
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1234
+    Height = 49
+    Align = alTop
+    Caption = 'EMPRESAS'
+    Color = clBlack
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Roboto Cn'
+    Font.Style = []
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 1
+    object Image3: TImage
+      Left = 510
+      Top = 0
+      Width = 57
+      Height = 43
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000300000
+        003008060000005702F9870000000473424954080808087C0864880000000970
+        48597300000EC400000EC401952B0E1B000010FC4944415478DAED9A79905CD5
+        75C6CFDB7A5F677A5646831624162181B53030363B18FF8559AA48589C902097
+        CB09851072A0421903268EB14CA15261C706446C1C136257C015615000054530
+        484862734002318B348B46B3F5DEAFBBDF9EEFDCEE960481B15041A854E5154F
+        DDD3CB7BE77796EF9C7B1B89FE8F1FD2176DC0FF037C9617DBB87163341E0F2F
+        D164B5C71F0CF678AEDBE3F3074891E59DBA5EDA59D12B3B355D7FE78A55AB8A
+        5F38C0D6AD5BD56AB5BA801CE7AC7024DCA3284A4FA55A3D0D86868AC5226532
+        59CA6673F8A447F1789CDADADA2881C7502854F607027B71E39DF9627EA7E3D0
+        AE40203078E18517DA9F2BC0F6EDDB9B0C433F2B1A8DF7A830D634ADE5A55229
+        A5EBBA9C4E67289FCF91699A0410F2C3EB3E9F46B22CC37C66F0C8B66D022099
+        8641C16090128904A552298AC5622EA0667C7EFF1B9E63EF9AC9CCBCE6F78777
+        F5F6F6668E1B60D3A64D2178ECB470C0D7A3F9023DA665F69474FD24A35A95B2
+        B99C94CB66A952A9902449B0CD13C6C471F2C50C4058A605834D783E21A0F8E4
+        37838120A99A26800A8502229415C02EC200004A2693806AF110110F5003FE80
+        6F27C0917E959D9E7770EF8A1597976705D8B1E33F4F0D87121BE1B5D3F1466C
+        666686A6A6A6C880D738155445151EE59BB2E16C48341613E9313830408AAA8A
+        74716010D28BC2E1307B58C0BAAE2BA2C0E9C58FF3172CA0695CBB50C893B814
+        DEE78839FC08C7B878D1E7F38928757676F2350ABA5E7C373D31FDCD2BAEB966
+        EFC702C0F3DDBAAB0E7577B62B9DA918DE95299FCB1183F0A3851BB3F1AAAA88
+        9BF23F816080BABABA85370B4823364083972391887864984C260D2FBBE26E8A
+        ACC0D34D144F266874644480D6B2CC132783B2E1B1581C67145FF1A8542CD081
+        F1199A984A3B49C599FFAD5B6F1DF958800D1B36F847CDF8787F35D4B47C613B
+        AD9C97A2C55D098AC048CB3261488666A6A761685EA48AA2C8228D2480C66B05
+        2AFE6E18C4CF19A0F619A9E661FCCD11E1146263A150645A169CA252341A15E9
+        28CB128C2ED2C1A92CBD3356A43FECCFD0E0589A4E6FF5322D72B6F3A1871E32
+        3EB106BEBBFEF181774AC105DD1DCD34A7254E2735736E26A82B19A2965890FC
+        8A240CC8E5B2944664D88355FCCD9EE75C766BA1414A78E4D541F8754EAF0604
+        1BADC1CB1C21E43B8550D46C345F7734A3D381B4414338CBC53C1DCC9A887E81
+        0A385776C983BF587FF749B316F1F71FFAA7D7DEC8F97B1A00F39B7C148A2528
+        11F25138A051D033455E0734857C88802279E420B538AF2DDB121EE6935346A4
+        05D56AE5E8C3ADC31A28F6A94299260B064D95501FA5124D1A1A8ADEA672C520
+        C5F830C0595DD2CE7F5C7FCFD9B302FCE8E7BF7E7AFBB4EFCA06C089098436D1
+        7418407370E14018467864C208AB52224F0D0823D9608E84EA98A45B78DFB221
+        0026550D8B14CFA289BC41A5AA4985AA4DF9B24941C9A6B4A952C0AF914F5329
+        A6E03DE708800680D1A3002E5CA0FEEEA1FBEFBA6A56800D1B9FD8F8D2B87A53
+        77674A00CCE30844E3140DC2FB3E957C0C108C882F3A80B0AB3A19928F2A30B6
+        62D8A4C35817AF4DE828BE72156705FA6F5242B5E9601ED1118955BB6D5B8828
+        5D9545FAF02B51C5A022005CC72303D753CC221DCAD5008A382F5D203FF6E0FD
+        77AF9A15E0E9679EFBC9936FE7FEBAA5AD854E688ED1BC240CE7140AFB298208
+        30802F1CADA7020394C894FC54B19D1A00BCE7212A9350EC62D920BD52058001
+        EFDA345EACD588C7B7C57F2D018FB2A652030057842A94B554D147CAF89E6296
+        10358B4A259D2CBD40D7F5B4FC74ED9A5B6E9E15E03F5E7CF101F287D6E64D89
+        660C99C27E85E2CD2D146700845A05803F1C390CC02964290178CCA132BC5606
+        044760BA520780F11C81A86C89A870D4A8AE54CD3E8772B62A00383061B74C79
+        9142160A1A91AE66C986DACD83A2A7C2A837CF7CF0AF6EBE65EDAC009B376FBE
+        EAD76FE59E5A76F21CEA5DD842ADD100E54D8F2AAE24B4DDE722371B29046F9A
+        E51239A801832300880A22E054749AA9420A2B1C01530044645344C5F18EA450
+        52B5A8E0F944E3E208F81D9D4AAE469259A616CDA0F6804D93459BDEDC9FA5FD
+        A333F4272B9357AF59B3E6E959019EDBB4E9E2DFECD5B7C452ADA20616B50468
+        5E7B1364340C2F9B22AF3D2D8866E317C6187A913C5F10002E55613C43D8884A
+        C694F15914338CAFA02EF06D9A425484CC4AB59C8F014AA700FA25FEB60DEA50
+        CB94F079A2790DA42D1A9E2E42566B352057F374CDCAC4C5B7DC72DB4BB302BC
+        F0C20B0B7FF76E769F1A4B490C302786F1A0A9A642A9881FA1D4D00B642AA038
+        395DF4B20ED745C8413363088E0003642D45009419002911F20C9A46C1BA9E5B
+        03706D4AA9061428404D3E9B629A07293569202FE3D1112A245572740835C000
+        21A7E05DBD3279F2B7BF7D6BFFAC004F3DF55447DFB83B62079B5406E84EF828
+        1A8FA18803D07EE4AB55215F288C7A50290C550AAA12D9E8A465CC4B55133786
+        B10EFA41C922E179D3E6BEE052009269425D7C32C60F05CC8A271C303CA3D370
+        C6A0F18205158243A480681B5CF85EA54093F95A0452B26E7FA5DD9973FBBDF7
+        4ECC0AF0F0C30F6B07DCE69992968C75A5D0079A029820554A446174D0477E34
+        32AE011232EA92532D932DFBE05484BEDE0B34174568A3C0B90F7041A217A01A
+        E14D43E87F1667A6CC06A3885985945A0D84A94A79448EFB870587C8B84E1A9E
+        28168AD4A6168B2DCE78F3238F3C62CD0AB0E599674EA8F8C2C37BD28E62C01B
+        0B3A93A4E106ADCD0921A37E1700A188500DAE01078A5325ED70FA701F20A34C
+        8774B7A642E5AA28E2B85A9351A73E620815F27B94AFAB10E77DD0AB52D15644
+        23AB94505B88E454BA402D7E8BCEECD41C9FEC9EB876EDDA83B302F0F19327FE
+        EDF5F6F6F6E57353112ABB0ACDC05B2D2D29486AAD133764B4D6C8CA284F55A4
+        070394CD9A8C4E953D2A4281F48A21D281D363A2E41E51213C260150B015311F
+        89C91632AAD73BB151CAD1090193527E80A39915F3D9377EB6EEAE151FB5F563
+        01FEFED17FDD72484A5EBCA823412BE626A93B19A4BCE10A29F5730E371A9977
+        04C06200EE057580E98FCAA8C432EAD51A99540348A0708BAE5A935144C067A1
+        ABA3C65B95B228F0A19C4B7F38581551581829BDF0F8FABB2F3B2680071EFBED
+        2F87BDE63FE722EE688A503B9AC8896D4DD416F553010357D99149F507452A58
+        00C0604D36179EE988D341774ED7659455A85C850A21D166AA9C76541BB9513F
+        51D5A5B2A709190DBA159AA395C4B43B94F7209FF87CD9C5D8AD8B225E1C29FE
+        F2D1F5F7FCC531016CF8C5BF3C38E0B4AC61807600B406250A63020D62024D85
+        546A8E04C4FAB658B5C4086CA31393A251951B191760B926A3ECFD461FE0FC4E
+        1BF2E13EC0F99DD20006254BF92C14BC4503201CD5351121C98013380D8B2501
+        F0A578EEC73F7DE0BEDB8F0960E313BFB9F3ED72D30FBA5AB0F0C61AA00500C1
+        480C031D063B0563325655313C8FA226423E85B05616E9C229C4456C99501B08
+        4F0900A65593D1104609C361F9240AC1F31195C4F83134ADD350D6A2198CD341
+        D9A102BEC7A3846CEA54B064AC37D03CA1425F6E2DDCB1EE07F7AE3B2680575E
+        D9F6E040D659335656A8058B99CEB846E16803C01369C00B122E62C74404501B
+        3C0EF348C3FB10AA678B9AB0D10378B555858CDAE8E25398FBB3BA0163F97955
+        D453AD88F14507D1005C91C770AE23F48034A0AC12F23FE1602290D7AF5EF39D
+        DB8E09A06FDBD655E148E4512D10A271345A031E8C259B858C2283601CD6ADE8
+        A0621A0540C5C66B9E549751BE79498C0D2CA3DC51CB50A108223009693D3C8D
+        A223C77D2874A70E605B22BA455B161190CA19B13E981F4134B096C012F69BAB
+        6FBB63E331016CDDF2FC9FC613C92743E13085219992EAA3291DFAAE61F9A7C9
+        C270CDEF171170912E65F4009B01EA2A64A306D286541FA74D21A321A8104FA8
+        8D6954721D8AF86421D33500135D9AF07D97925E814EF09548C1C2886BC3065C
+        B1A45F77C79D773D794C002FBEB8F992A644D38B6C3C43048321B1FBC0A342B6
+        84949114F2631D0B2141E401C0CA83D71AD3A8552E6298538EC8285228C045FC
+        A159C811F553756521A398CBA949AE509B564127E7BD25536C2430009F6307C7
+        BF7EFF8F1FFC7798C73B78EEAC005BB66C599A8C45DF461A49A170A80680C5B7
+        860994770FB228AA1C24D253FDC290120AD79355A1421C0113132ACFF925913E
+        3515F23B1531A1BAF53E263B3605A0405CD809ACC4BAB432E652436C82D9C2E8
+        23C6F3F9FC0B2F5DF9FBCD9B77E3DBBCB9556105C7E9FC0F8033CEFFFA99A79C
+        76CA77FEE6C62BAE0B47A2124780B74BFC818018A119406C19229773006123D3
+        5898DB8A8F3C482903F0885D7054A142952A0F7A166936162B586D41C3C845BA
+        3469B6E82F31D5210DF3156F391E31B8B6BB27D2A70EB2F5E5ED7DEFECD9F3CF
+        0303033B60E60CCE3CC31C0D20DD78D34D97B8E1D6E7A7754BFADE4D5750229E
+        A8A550A81681A301F8686C46F1C9DB2BF9A25E0380170B702DCB240F660ED4C8
+        8F69943F179021A1D052CBAC8A053FA78A693552E628007EE468F09E2A7ACDF0
+        D821D234D5FBFDB3CFDEB56F5FFF6F71FB499CFA8722108FC793575C7EF9CD1D
+        F34F5A7BC6298BE2F3E776535B7B072210AE01F83F1E406C93E01C994C237590
+        D3168CE3DCF6306DA29356B9C88D2A6621783D60D1825408A96208B5B1EAC69B
+        87016ADE67284EA589C9499CD3503EA7FCDE7B7B1FDFB5EB8D7FC0E786EB6964
+        7F5C0D68BDBDBD8BCF39A7E7FEA54B967C75E1C2855277F78962AB6F760087FA
+        0F4ED328826A6292CCA209A900189EC89009988057119D7869B347A7774484A1
+        8D8DDF1A40C3F33580124696A1FDFBD1430C2F93CDEEEA7BF5B5FB4646465EC3
+        6D0BF542F63EB188EBAF876EB8E1DA6B962D5BF6FDE5CB969FD0DD3D576AEF68
+        47187D9F0830383E43C3E81B269A0F8F129CF1230030506A0D80335344A7B687
+        C5BC6F1EE5ED46143832A3A36334313189E7A599FFDAD3BFBEAF6FFBAF70BBA9
+        7AE17A1F3574B64339F5D453BBBEF6B54BBF77F6D9BDDF58BA74A9D6D5D5257A
+        C3110057F40506183A94A603254F006091858656A4B1A90C395A0400A650A12F
+        B5109DD25A4BA18F1ACF1BC4038343A4970A4EA198DFB4E5A5AD7F373272E83D
+        DCAAFA51C38F15A07104AEBCF2CA0B7A7B7BD69D77EEF9A7CF9D375F6AC23AB9
+        A6464700060F4ED1BEA91219850C1DCAE4C5A036952DA03B3B587E6A94B6343A
+        6B4E9816B5466A00C8717EE4596A647494464646697A6A72E883C1C1EFF6F5ED
+        7816F72D7E92E19F16800F39168B25FEF2C63F5B7D766FEF9A152B5646799B9C
+        7F0360100618183E48EF218DAC4A99B2982FFCAA2222C0BD80BB6E1A33D0D90B
+        9AE9A48E66219B551436FF0CC5BF41BCBFEFFDEA07FD831BB76D7BF987501D5E
+        F7BAC762D4F1FC46A65D76D9654BCE3DB7F787175C70D1A50B172E921A5BE97B
+        F7F5D3CBAFBF8D06E543B22A140E05E8D054560C740AD6B753991C5DB46231CD
+        ED6C15B2CB10FD8303B4FBF53776F5F70FFEED9B6FBEF92AAE6F7C1A638EF747
+        3EFE5EF85BAB565D7BDE055FB9F7BCF32FEA686E4ED15B7BDEA7E75E7D9B5C8C
+        0533481D19E975081268033016F4530693E8D517AEA4334E9E4B6328D457FAFA
+        F2EFEFDDBBEEF92D2FFD1CD7CBFEB174F92C011A8772CE39E7745D72C905F79C
+        7BEEF937C49ADBD5E75F7F4F6CB58C6319C8C3D9F0D838D9985EE3211F4DE0B5
+        CBBFBC84729323EEABAFEED8BC6FDF9E3B3FF8603FFF5C745CBF507E16008DC3
+        7FE38DDFB878F9F2653F52935D8B8BA62B8D4E66C4FA6168789CB59C9AB08AB3
+        CA39928A53A3C30786EEDEB6AD8FBB69F978BCFE7900F021777474345D7FFDB5
+        AB179DB6F8B6F18A1AE285CC018C00BCBF13AA4EDB9363C3BFDAB5FBCDFB2627
+        2747F179E7B3B8E9E7F1BF1A68D75F7FFD92E5CBCF58176FEBBE68FBCEDD941D
+        EB7F777474F4F6DDBBDFDA4A9FB248BF0880C675C3AB57DF7CD5E0607FDBCB2F
+        EF78AC50281C57917E5100FF6BC77F03B57AD1CD8646332D0000000049454E44
+        AE426082}
+    end
+  end
+  object qrEmpresa: TFDQuery
+    AfterInsert = qrEmpresaAfterInsert
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'SELECT * FROM EMPRESA')
+    Left = 244
+    Top = 256
+    object qrEmpresaCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrEmpresaNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 100
+    end
+    object qrEmpresaENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 100
+    end
+    object qrEmpresaBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      Size = 100
+    end
+    object qrEmpresaCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'CIDADE'
+      Size = 100
+    end
+    object qrEmpresaUF: TStringField
+      FieldName = 'UF'
+      Origin = 'UF'
+      Size = 2
+    end
+    object qrEmpresaCNPJ: TStringField
+      FieldName = 'CNPJ'
+      Origin = 'CNPJ'
+    end
+    object qrEmpresaDATA_CADASTRO: TDateField
+      FieldName = 'DATA_CADASTRO'
+      Origin = 'DATA_CADASTRO'
+    end
+  end
+  object dsEmpresa: TDataSource
+    DataSet = qrEmpresa
+    Left = 348
+    Top = 256
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 628
+    Top = 161
+    object CANCELAR: TMenuItem
+      Caption = 'CANCELAR'
+      ShortCut = 27
+      OnClick = Panel5Click
+    end
+    object GRAVAR1: TMenuItem
+      Caption = 'GRAVAR'
+      ShortCut = 112
+      OnClick = Panel4Click
+    end
+    object CADASTRAR1: TMenuItem
+      Caption = 'CADASTRAR'
+      ShortCut = 113
+      OnClick = Button1Click
+    end
+    object ALTERAR1: TMenuItem
+      Caption = 'ALTERAR'
+      ShortCut = 114
+      OnClick = Button2Click
+    end
+    object CANCELAR1: TMenuItem
+      Caption = 'CANCELAR'
+      ShortCut = 115
+      OnClick = Button3Click
+    end
+  end
+end

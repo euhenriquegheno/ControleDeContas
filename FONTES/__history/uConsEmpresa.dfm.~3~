@@ -1,0 +1,134 @@
+object FrmConsEmpresa: TFrmConsEmpresa
+  Left = 0
+  Top = 0
+  Caption = 'EMPRESAS'
+  ClientHeight = 476
+  ClientWidth = 1065
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1065
+    Height = 49
+    Align = alTop
+    TabOrder = 0
+    ExplicitWidth = 711
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 49
+    Width = 1065
+    Height = 427
+    Align = alClient
+    DataSource = dsConsulta
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'CODIGO'
+        Title.Alignment = taCenter
+        Width = 50
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Title.Alignment = taCenter
+        Width = 250
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ENDERECO'
+        Title.Alignment = taCenter
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'BAIRRO'
+        Title.Alignment = taCenter
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CIDADE'
+        Title.Alignment = taCenter
+        Width = 200
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'UF'
+        Title.Alignment = taCenter
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CNPJ'
+        Title.Alignment = taCenter
+        Visible = True
+      end>
+  end
+  object qrConsEmpresa: TFDQuery
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'Select * from EMPRESA')
+    Left = 248
+    Top = 240
+    object qrConsEmpresaCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrConsEmpresaNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 100
+    end
+    object qrConsEmpresaENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 100
+    end
+    object qrConsEmpresaBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      Size = 100
+    end
+    object qrConsEmpresaCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'CIDADE'
+      Size = 100
+    end
+    object qrConsEmpresaUF: TStringField
+      FieldName = 'UF'
+      Origin = 'UF'
+      Size = 2
+    end
+    object qrConsEmpresaCNPJ: TStringField
+      FieldName = 'CNPJ'
+      Origin = 'CNPJ'
+    end
+  end
+  object dsConsulta: TDataSource
+    DataSet = qrConsEmpresa
+    Left = 336
+    Top = 240
+  end
+end

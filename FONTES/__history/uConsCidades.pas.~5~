@@ -1,0 +1,59 @@
+unit uConsCidades;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UDM, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TFrmCidades = class(TForm)
+    Panel1: TPanel;
+    qrCidades: TFDQuery;
+    DBGrid1: TDBGrid;
+    dsCidades: TDataSource;
+    Label1: TLabel;
+    edtConsulta: TEdit;
+    btConsultar: TButton;
+    procedure FormActivate(Sender: TObject);
+    procedure btConsultarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    Procedure ListarCidades;
+  end;
+
+var
+  FrmCidades: TFrmCidades;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmCidades.btConsultarClick(Sender: TObject);
+begin
+  ListarCidades;
+end;
+
+procedure TFrmCidades.FormActivate(Sender: TObject);
+begin
+  qrCidades.Active := True;
+end;
+
+procedure TFrmCidades.ListarCidades;
+begin
+  qrCidades.Active := False;
+  qrCidades.SQL.Clear;
+  qrCidades.SQL.Add('SELECT * FROM CIDADES');
+
+  if (edtConsulta.Text <> ' ') then
+  Begin
+    qrCidades.SQL.Add('WHERE (UPPER(CIDADE) LIKE ''%' + AnsiUpperCase(edtConsulta.Text) + '%'')');
+  End;
+end;
+
+end.

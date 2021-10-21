@@ -1,0 +1,76 @@
+unit uConsCategorias2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uConsCategorias, Data.DB,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TFrmConsCategorias2 = class(TFrmConsCategorias)
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure btConsultarClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure edtConsultaChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+  cod_categoria : Integer;
+  categoria_nome : String;
+
+  Procedure ListarCategorias;
+  end;
+
+var
+  FrmConsCategorias2: TFrmConsCategorias2;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmConsCategorias2.btConsultarClick(Sender: TObject);
+begin
+  listarCategorias;
+end;
+
+procedure TFrmConsCategorias2.DBGrid1DblClick(Sender: TObject);
+begin
+  cod_categoria := qrConsCategoriasCODIGO.AsInteger;
+  categoria_nome := qrConsCategoriasCATEGORIA.AsString;
+
+  FrmConsCategorias2.Close;
+end;
+
+procedure TFrmConsCategorias2.edtConsultaChange(Sender: TObject);
+begin
+  ListarCategorias;
+end;
+
+procedure TFrmConsCategorias2.FormActivate(Sender: TObject);
+begin
+  qrConsCategorias.Active := True;
+end;
+
+procedure TFrmConsCategorias2.ListarCategorias;
+begin
+  qrConsCategorias.Active := False;
+  qrConsCategorias.SQL.Clear;
+  qrConsCategorias.SQL.Add('SELECT * FROM CATEGORIAS');
+
+  if (edtConsulta.Text <> ' ') then
+    Begin
+      qrConsCategorias.SQL.Add('WHERE (UPPER(CATEGORIA) LIKE ''%' + (AnsiUpperCase(edtConsulta.Text)) + '%'')');
+    End;
+
+  if (rgOrdenacao.ItemIndex = 0) then
+  qrConsCategorias.SQL.Add('ORDER BY CODIGO')
+  else if (rgOrdenacao.ItemIndex = 1) then
+  qrConsCategorias.SQL.Add('ORDER BY CATEGORIA');
+  qrConsCategorias.Active := True;
+end;
+
+end.

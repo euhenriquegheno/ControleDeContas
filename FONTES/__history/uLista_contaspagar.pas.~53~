@@ -1,0 +1,233 @@
+unit uLista_contaspagar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Vcl.ComCtrls, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, frxClass, frxExportBaseDialog, frxExportPDF, frxDBSet, UPrincipal;
+
+type
+  TfrmLista_contaspagar = class(TForm)
+    cbRelacao: TComboBox;
+    Label1: TLabel;
+    Button1: TButton;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    fxContasPagar: TfrxReport;
+    qrContasPagar: TfrxDBDataset;
+    frxPDFExport1: TfrxPDFExport;
+    qrListaContasPagar: TFDQuery;
+    dtInicio: TDateTimePicker;
+    dtFim: TDateTimePicker;
+    Label2: TLabel;
+    Label3: TLabel;
+    Panel3: TPanel;
+    Label4: TLabel;
+    edtConsulta: TEdit;
+    Label5: TLabel;
+    edtConsultaFuncionario: TEdit;
+    edtConsultaCategoria: TEdit;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    cbSituacao: TComboBox;
+    Label9: TLabel;
+    cbBanco: TComboBox;
+    edtAno: TEdit;
+    Label10: TLabel;
+    Label11: TLabel;
+    qrListaTotalContasPagar: TFDQuery;
+    qrTotalContasPagar: TfrxDBDataset;
+    qrListaTotalContasPagarTOTAL_JANEIRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_FEVEREIRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_MARCO: TFloatField;
+    qrListaTotalContasPagarTOTAL_ABRIL: TFloatField;
+    qrListaTotalContasPagarTOTAL_MAIO: TFloatField;
+    qrListaTotalContasPagarTOTAL_JUNHO: TFloatField;
+    qrListaTotalContasPagarTOTAL_JULHO: TFloatField;
+    qrListaTotalContasPagarTOTAL_SETEMBRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_OUTUBRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_NOVEMBRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_DEZEMBRO: TFloatField;
+    qrListaTotalContasPagarTOTAL_AGOSTO: TFloatField;
+    procedure Button1Click(Sender: TObject);
+    procedure cbRelacaoChange(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmLista_contaspagar: TfrmLista_contaspagar;
+
+implementation
+
+{$R *.dfm}
+
+uses UDM, EFuncoes;
+
+procedure TfrmLista_contaspagar.Button1Click(Sender: TObject);
+begin
+  if cbRelacao.ItemIndex = 0 then
+  begin
+    qrListaContasPagar.Active := false;
+    qrListaContasPagar.SQL.Clear;
+    qrListaContasPagar.sql.Add('SELECT * FROM CONTAS_PAGAR');
+
+    qrListaContasPagar.SQL.Add('WHERE (DATA_VENCIMENTO >= ''' +
+    formataDataSql(dtInicio.Date) + ''' AND DATA_VENCIMENTO <= ''' + formatadataSql(dtFim.Date) + ''')');
+
+  if (edtConsulta.Text <> '') then
+    qrListaContasPagar.SQL.Add('AND (Upper(EMPRESA_NOME) like ''%' + AnsiUpperCase(edtConsulta.Text) + '%'')');
+
+  if (edtConsultaFuncionario.Text <> '') then
+    qrListaContasPagar.SQL.Add('AND (UPPER(FUNCIONARIO_NOME) LIKE ''%' + AnsiUpperCase(edtConsultaFuncionario.Text) + '%'')');
+
+  if (edtConsultaCategoria.Text <> '') then
+    qrListaContasPagar.SQL.Add('AND (UPPER(CATEGORIA_NOME) LIKE ''%' + AnsiUpperCase(edtConsultaCategoria.Text) + '%'')');
+
+  if (cbBanco.Text <> '') then
+    qrListaContasPagar.SQL.Add('AND (UPPER(BANCO_PAGAMENTO) LIKE ''%' + AnsiUpperCase(cbBanco.Text) + '%'')');
+
+  if cbsituacao.ItemIndex = 1 then
+    qrListaContasPagar.SQL.Add('And Situacao = ''ABERTO''')
+  end
+  Else if cbSituacao.ItemIndex = 2 then
+  begin
+    qrListaContasPagar.SQL.Add('And Situacao = ''QUITADO''');
+  end;
+
+  qrListaContasPagar.SQL.Add('ORDER BY DATA_VENCIMENTO');
+  qrListaContasPagar.Open;
+
+  fxContasPagar.LoadFromFile(frmPrincipal.getRelatorioCaminho('relContasPagarDataVencimento.fr3'));
+  fxContasPagar.ShowReport();
+
+  if cbRelacao.ItemIndex = 1 then
+    if edtAno.text = '' then
+      showMessage('Colocar o ano que deseja verificar o TOTAL de vendas')
+    else
+    begin
+      qrListaTOTALContasPagar.SQL.Clear;
+      qrListaTOTALContasPagar.SQL.Add('SELECT');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-JAN-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('31-JAN-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_JANEIRO,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-FEB-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('28-FEB-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_FEVEREIRO,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-MAR-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('31-MAR-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_MARCO,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-APR-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('30-APR-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_ABRIL,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-MAY-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('31-MAY-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_MAIO,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-JUN-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('30-JUN-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_JUNHO,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-JUL-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('31-JUL-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_JULHO,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-AUG-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('31-AUG-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_AGOSTO,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-SEP-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('30-SEP-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_SETEMBRO,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-OCT-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('31-OCT-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_OUTUBRO,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-NOV-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('30-NOV-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_NOVEMBRO,');
+      qrListaTOTALContasPagar.SQL.add('(SELECT SUM(VALOR) FROM CONTAS_PAGAR');
+      qrListaTOTALContasPagar.SQL.Add('WHERE DATA_VENCIMENTO BETWEEN ' + quotedstr('01-DEC-' + edtAno.Text));
+      qrListaTOTALContasPagar.sql.add(' AND ' + quotedStr('31-DEC-' + edtAno.Text) + ')');
+      qrListaTOTALContasPagar.SQL.Add('AS TOTAL_DEZEMBRO');
+      qrListaTOTALContasPagar.SQL.add('FROM RDB$DATABASE');
+      qrListaTOTALContasPagar.Open;
+
+      fxContasPagar.LoadFromFile(frmPrincipal.getRelatorioCaminho('relTotalContasPagar.fr3'));
+      fxContasPagar.ShowReport();
+    end;
+end;
+
+procedure TfrmLista_contaspagar.cbRelacaoChange(Sender: TObject);
+begin
+  if (cbRelacao.ItemIndex = 0) then
+  begin
+    edtConsulta.Visible                      := true;
+    edtConsultaFuncionario.Visible           := true;
+    edtConsultaCategoria.Visible             := true;
+    cbBanco.Visible                          := true;
+    cbSituacao.Visible                       := true;
+    dtinicio.Visible                         := true;
+    dtfim.visible                            := true;
+    Label5.Visible                           := true;
+    Label6.Visible                           := true;
+    Label7.Visible                           := true;
+    Label8.Visible                           := true;
+    Label9.Visible                           := true;
+    Label2.Visible                           := true;
+    Label3.Visible                           := true;
+    edtAno.Visible                           := false;
+    Label10.Visible                          := false;
+    Label11.Visible                          := false;
+  end
+  else
+  begin
+    edtConsulta.Visible                      := false;
+    edtConsultaFuncionario.Visible           := false;
+    edtConsultaCategoria.Visible             := false;
+    cbBanco.Visible                          := false;
+    cbSituacao.Visible                       := false;
+    dtinicio.Visible                         := false;
+    dtfim.visible                            := false;
+    Label5.Visible                           := false;
+    Label6.Visible                           := false;
+    Label7.Visible                           := false;
+    Label8.Visible                           := false;
+    Label9.Visible                           := false;
+    Label2.Visible                           := false;
+    Label3.Visible                           := false;
+    edtAno.Visible                           := true;
+    Label10.Visible                          := true;
+    Label11.Visible                          := true;
+    Label11.Top                              := 130;
+    edtAno.Left                              := 112;
+    edtAno.top                               := 158;
+    edtAno.Width                             := 280;
+    Label10.left                             := 32;
+    Label10.Top                              := 158;
+    Label10.Width                            := 59;
+  end;
+
+end;
+
+procedure TfrmLista_contaspagar.FormActivate(Sender: TObject);
+begin
+  dtInicio.Date := Date;
+  dtFim.Date := Date;
+end;
+
+end.
