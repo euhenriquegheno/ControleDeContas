@@ -1,1 +1,1 @@
-C:\sistema_de_contas\Sistema de Contas\BANCO\BANCO.FDB
+C:\sistema-contas\BANCO\BANCO.FDB

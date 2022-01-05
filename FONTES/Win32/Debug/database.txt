@@ -1,1 +1,1 @@
-C:\Projetos\Sistema de Contas PRONTO\BANCO\BANCO.FDB 
+C:\sistema-contas\BANCO\BANCO.FDB 

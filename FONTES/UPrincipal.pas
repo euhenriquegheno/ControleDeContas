@@ -48,7 +48,7 @@ type
     Label5: TLabel;
     Image6: TImage;
     AGENDA1: TMenuItem;
-    Panel10: TPanel;
+    pnBotoes: TPanel;
     Panel11: TPanel;
     Label6: TLabel;
     Image7: TImage;
@@ -79,8 +79,14 @@ type
     Label12: TLabel;
     Button8: TButton;
     query3QTDEAGENDAMENTO: TIntegerField;
-    Image3: TImage;
     Label10: TLabel;
+    Panel17: TPanel;
+    Image3: TImage;
+    Image9: TImage;
+    Panel10: TPanel;
+    Label13: TLabel;
+    Image10: TImage;
+    CAIXA1: TMenuItem;
     procedure Button2Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -100,6 +106,7 @@ type
     procedure btnAtualizaDashBoardClick(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure Image9Click(Sender: TObject);
   private
 
   public
@@ -274,6 +281,14 @@ begin
       Abort;
     end;
   end;
+end;
+
+procedure TFrmPrincipal.Image9Click(Sender: TObject);
+begin
+  if pnBotoes.Visible then
+    pnBotoes.Visible := false
+  else
+    pnBotoes.Visible := true;
 end;
 
 procedure TFrmPrincipal.Panel11Click(Sender: TObject);
