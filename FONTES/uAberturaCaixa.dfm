@@ -109,6 +109,7 @@ object frmAberturaCaixa: TfrmAberturaCaixa
     object qrCaixaSALDO: TFMTBCDField
       FieldName = 'SALDO'
       Origin = 'SALDO'
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Size = 2
     end

@@ -107,6 +107,10 @@ begin
       frmcaixa.qrMovCaixa.fieldbyname('descricao').asstring := 'Acerto do Saldo Anterior';
       frmcaixa.qrMovCaixa.post;
     end;
+    dm.qrCaixa.Edit;
+    dm.qrCaixaSITUACAO.AsString := 'ABERTO';
+    dm.qrCaixa.post;
+
     Dm.Conexao.Commit;
     application.messagebox('Caixa aberto com sucesso!','Aviso',mb_ok+MB_ICONINFORMATION);
     close;

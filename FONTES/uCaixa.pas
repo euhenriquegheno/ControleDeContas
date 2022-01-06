@@ -26,10 +26,6 @@ type
     qrMovCaixa: TFDQuery;
     dsCaixa: TDataSource;
     dsMovCaixa: TDataSource;
-    qrCaixaCODIGO: TIntegerField;
-    qrCaixaDATA: TDateField;
-    qrCaixaSITUACAO: TStringField;
-    qrCaixaSALDO: TFMTBCDField;
     qrMovCaixaCODIGO: TIntegerField;
     qrMovCaixaDESCRICAO: TStringField;
     qrMovCaixaVALOR: TFMTBCDField;
@@ -42,7 +38,6 @@ type
     DBEdit2: TDBEdit;
     Panel5: TPanel;
     Label3: TLabel;
-    DBEdit3: TDBEdit;
     dtpDe: TDateTimePicker;
     dtpAte: TDateTimePicker;
     Label4: TLabel;
@@ -64,6 +59,11 @@ type
     qrMovCaixaDATA: TDateField;
     Label9: TLabel;
     DBEdit6: TDBEdit;
+    qrCaixaCODIGO: TIntegerField;
+    qrCaixaDATA: TDateField;
+    qrCaixaSITUACAO: TStringField;
+    qrCaixaSALDO: TFMTBCDField;
+    DBEdit3: TDBEdit;
     procedure btnIncluirClick(Sender: TObject);
     procedure pcPrincipalChange(Sender: TObject);
     procedure qrMovCaixaAfterInsert(DataSet: TDataSet);
@@ -73,10 +73,11 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnAberturaClick(Sender: TObject);
     procedure btnFechamentoClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
-    { Public declarations }
+    procedure CalcularSaldoCaixa;
   end;
 
 var
@@ -161,6 +162,35 @@ begin
     else
       ShowMessage('Insira alguma registro antes de gravar!');
   End;
+end;
+
+procedure TfrmCaixa.CalcularSaldoCaixa;
+ VAR V_SOMA : Currency;
+begin
+  v_soma := 0;
+  qrMovCaixa.First;
+  while not qrMovCaixa.EOF do
+  begin
+    if not (qrMovCaixa.FieldByName('VALOR').IsNull) then
+      v_soma := v_soma + qrMovCaixa.FieldByName('ENTRADA').Value;
+      qrMovCaixa.Next;
+  end;
+
+  qrMovCaixa.First;
+  while not qrMovCaixa.EOF do
+  begin
+    if not (qrMovCaixa.FieldByName('VALOR').IsNull) then
+      v_soma := v_soma - qrMovCaixa.FieldByName('SAIDA').Value;
+      qrMovCaixa.Next;
+  end;
+  qrCaixa.Edit;
+  qrCaixaSALDO.asFloat  := V_SOMA;
+  qrCaixa.post;
+end;
+
+procedure TfrmCaixa.FormActivate(Sender: TObject);
+begin
+  CalcularSaldoCaixa;
 end;
 
 procedure TfrmCaixa.FormCreate(Sender: TObject);

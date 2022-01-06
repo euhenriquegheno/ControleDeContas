@@ -12,6 +12,7 @@ object frmCaixa: TfrmCaixa
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnActivate = FormActivate
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -397,23 +398,20 @@ object frmCaixa: TfrmCaixa
         Width = 102
         Height = 13
         Caption = 'SALDO CAIXA ATUAL'
-        FocusControl = DBEdit3
       end
       object DBEdit3: TDBEdit
-        Left = 11
+        Left = 24
         Top = 27
-        Width = 120
+        Width = 100
         Height = 22
         DataField = 'SALDO'
         DataSource = dsCaixa
-        Enabled = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        ReadOnly = True
         TabOrder = 0
       end
     end
@@ -441,6 +439,7 @@ object frmCaixa: TfrmCaixa
     object qrCaixaSALDO: TFMTBCDField
       FieldName = 'SALDO'
       Origin = 'SALDO'
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Size = 2
     end

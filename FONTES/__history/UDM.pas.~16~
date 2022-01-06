@@ -1,0 +1,127 @@
+unit UDM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Phys.IBBase, Data.DB,
+  FireDAC.Comp.Client, EFuncoes, VCL.forms, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet;
+
+
+
+type
+  TSQLCommantType = (ctOpen, ctExecSql, ctPost, ctRefresh);
+
+  TDm = class(TDataModule)
+    Conexao: TFDConnection;
+    FDPhysFBDriverLink1: TFDPhysFBDriverLink;
+    qrCaixa: TFDQuery;
+    qrCaixaCODIGO: TIntegerField;
+    qrCaixaDATA: TDateField;
+    qrCaixaSITUACAO: TStringField;
+    qrCaixaSALDO: TFMTBCDField;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    class function ExecuteQuery(var pQr: TFDQuery; pCommand: TSQLCommantType): boolean;
+  end;
+
+var
+  Dm: TDm;
+
+function NewQuery(OpenSql : String = '') : TFDQuery;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDm.DataModuleCreate(Sender: TObject);
+Var caminhoTXT, caminhoBD : String;
+begin
+  //PEGA O CAMINHO EM QUE O PROGRAMA ESTA CONFIGURADO
+  caminhoTXT := ExtractFilePath(Application.ExeName);
+  caminhoTXT := caminhoTXT + 'database.txt';
+
+  //COMANDO PARA VERIFICAR SE EXISTE O ARQUIVO NA PASTA
+  if (FileExists (CaminhoTXT)) then
+    caminhoBD := Arquivo_Ler(caminhoTXT)
+  Else
+  Begin
+    Arquivo_Escrever(caminhoTXT, ' ');
+    Application.Terminate;
+  End;
+
+  Try
+    conexao.Params.Values['DataBase'] := Trim(caminhoBD);
+
+    conexao.Open;
+    conexao.Connected := True
+  Except
+    Application.Terminate
+  End;
+
+  qrCaixa.Active := true;
+end;
+
+class function Tdm.ExecuteQuery(var pQr: TFDQuery; pCommand: TSQLCommantType): boolean;
+var erro : string;
+begin
+  result := false;
+  if (pQr = nil) then
+    exit;
+
+  erro := '';
+  try
+    if (pCommand = ctExecSql) then
+      pQr.ExecSQL
+    else if (pCommand = ctPost) then
+      pQr.Post
+    else if (pCommand = ctOpen) or (pCommand = ctRefresh) then
+    begin
+      if (pQr.Active) then
+        pQr.Refresh
+      else
+        pQr.Open;
+    end;
+
+    result := true;
+  except
+    on E : Exception do
+    begin
+      if (E.Message.Contains('server has gone away')) then //MUITO TEMPO OCIOSO, APLICA NOVAMENTE O COMANDO
+      begin
+        result := ExecuteQuery(pQr, pCommand);
+        exit;
+      end
+      else
+        erro := E.Message;
+    end;
+  end;
+
+  if (erro <> '') then
+    raise Exception.Create(erro);
+end;
+
+function NewQuery(OpenSql : String = '') : TFDQuery;
+begin
+  result            := TFDQuery.Create(nil);
+  result.Connection := Dm.Conexao;
+
+  if (trim(OpenSql) <> '') then
+  begin
+    result.sql.Clear;
+    result.sql.Add(OpenSql);
+    if (OpenSql.ToUpper.Contains('SELECT')) then
+      TDm.ExecuteQuery(result, ctOpen)
+    else
+      TDm.ExecuteQuery(result, ctExecSql);
+  end;
+end;
+
+end.

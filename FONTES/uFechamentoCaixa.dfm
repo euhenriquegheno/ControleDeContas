@@ -11,6 +11,7 @@ object frmFechamentoCaixa: TfrmFechamentoCaixa
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -113,6 +114,7 @@ object frmFechamentoCaixa: TfrmFechamentoCaixa
     object qrCaixaSALDO: TFMTBCDField
       FieldName = 'SALDO'
       Origin = 'SALDO'
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Size = 2
     end
