@@ -1,0 +1,78 @@
+unit uFechamentoCaixa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, udm, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TfrmFechamentoCaixa = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Button1: TButton;
+    Button2: TButton;
+    qrCaixa: TFDQuery;
+    qrCaixaCODIGO: TIntegerField;
+    qrCaixaDATA: TDateField;
+    qrCaixaSITUACAO: TStringField;
+    qrCaixaSALDO: TFMTBCDField;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    DataSource1: TDataSource;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmFechamentoCaixa: TfrmFechamentoCaixa;
+
+implementation
+
+{$R *.dfm}
+
+uses uCaixa, UPrincipal;
+
+procedure TfrmFechamentoCaixa.Button1Click(Sender: TObject);
+begin
+  try
+    if rsangria.Value > 0 then
+      begin
+      frmcaixa.qrcaixa_mov.OPEN;
+      frmcaixa.qrcaixa_mov.insert;
+      frmcaixa.qrcaixa_mov.FieldByName('codigo').asstring      := frmprincipal.getCodigo('c000044', 10);
+      frmcaixa.qrcaixa_mov.fieldbyname('codoperador').asstring := '000099';
+      frmcaixa.qrcaixa_mov.fieldbyname('data').asstring        := frmmodulo.qrcaixa_operador.FIELDBYNAME('DATA').ASSTRING;
+      frmcaixa.qrcaixa_mov.fieldbyname('saida').asfloat        := rsangria.value;
+      frmcaixa.qrcaixa_mov.fieldbyname('valor').asfloat        := (rsangria.value)*(-1);
+      frmcaixa.qrcaixa_mov.fieldbyname('entrada').asfloat      := 0;
+      frmmodulo.qrconfig.open;
+      frmcaixa.qrcaixa_mov.fieldbyname('codconta').asstring    := frmmodulo.qrconfig.fieldbyname('PLANO_OUTRAS_SAIDAS').asstring;
+      frmcaixa.qrcaixa_mov.fieldbyname('movimento').asINTEGER  := 2;
+      frmcaixa.qrcaixa_mov.fieldbyname('historico').asstring   := '**RETIRADA** - Fechamento de Caixa';
+      frmcaixa.qrcaixa_mov.post;
+    end;
+    dm.qrcaixa.Edit;
+    dm.qrcaixa.fieldbyname('situacao').asinteger := 2;
+    dm.qrcaixa.fieldbyname('saldo').asfloat := strToFloat(dbedit2.Text);
+    dm.qrcaixa.Post;
+    dm.conexao.Commit;
+    frmcaixa.qrMovCaixa.Refresh;
+    application.MessageBox('Caixa Fechado com Sucesso!','Aviso',mb_ok+MB_ICONINFORMATION);
+  end;
+  except
+    application.MessageBox('Houve falha no fechamento do caixa... Este processamento foi cancelado!','Erro',mb_ok+MB_ICONERROR);
+    close;
+  end;
+end;
+
+end.

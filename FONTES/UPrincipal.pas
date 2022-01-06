@@ -107,6 +107,7 @@ type
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
     procedure Image9Click(Sender: TObject);
+    procedure Panel10Click(Sender: TObject);
   private
 
   public
@@ -121,7 +122,8 @@ implementation
 
 {$R *.dfm}
 
-uses SOBRE, uCadEmpresa, uCadCliente, UAgenda, uCadFuncionarios, uCadCategorias;
+uses SOBRE, uCadEmpresa, uCadCliente, UAgenda, uCadFuncionarios, uCadCategorias,
+  uCaixa;
 
 
 
@@ -289,6 +291,16 @@ begin
     pnBotoes.Visible := false
   else
     pnBotoes.Visible := true;
+end;
+
+procedure TFrmPrincipal.Panel10Click(Sender: TObject);
+begin
+  frmCaixa := TFrmCaixa.create(self);
+  try
+    frmCaixa.showModal;
+  finally
+    freeandnil(frmCaixa);
+  end;
 end;
 
 procedure TFrmPrincipal.Panel11Click(Sender: TObject);

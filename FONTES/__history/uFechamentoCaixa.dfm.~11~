@@ -1,0 +1,80 @@
+object frmFechamentoCaixa: TfrmFechamentoCaixa
+  Left = 0
+  Top = 0
+  Caption = 'Fechamento de caixa'
+  ClientHeight = 201
+  ClientWidth = 447
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 447
+    Height = 161
+    Align = alTop
+    TabOrder = 0
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 160
+    Width = 447
+    Height = 41
+    Align = alBottom
+    TabOrder = 1
+    ExplicitLeft = 168
+    ExplicitTop = 168
+    ExplicitWidth = 185
+    object Button1: TButton
+      Left = 147
+      Top = 7
+      Width = 75
+      Height = 25
+      Caption = 'Confirmar'
+      TabOrder = 0
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Left = 221
+      Top = 7
+      Width = 75
+      Height = 25
+      Caption = 'Cancelar'
+      TabOrder = 1
+      OnClick = Button1Click
+    end
+  end
+  object qrCaixa: TFDQuery
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'select * from caixa')
+    Left = 360
+    Top = 64
+    object qrCaixaCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      Required = True
+    end
+    object qrCaixaDATA: TDateField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+    end
+    object qrCaixaSITUACAO: TStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SITUACAO'
+      Size = 50
+    end
+    object qrCaixaSALDO: TFMTBCDField
+      FieldName = 'SALDO'
+      Origin = 'SALDO'
+      Precision = 18
+      Size = 2
+    end
+  end
+end

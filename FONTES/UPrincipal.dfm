@@ -831,7 +831,7 @@ object FrmPrincipal: TFrmPrincipal
           Color = clSkyBlue
           ParentBackground = False
           TabOrder = 7
-          OnClick = Panel9Click
+          OnClick = Panel10Click
           object Label13: TLabel
             Left = 68
             Top = 16
@@ -845,7 +845,7 @@ object FrmPrincipal: TFrmPrincipal
             Font.Name = 'Verdana'
             Font.Style = []
             ParentFont = False
-            OnClick = Panel9Click
+            OnClick = Panel10Click
           end
           object Image10: TImage
             Left = 183
@@ -867,7 +867,7 @@ object FrmPrincipal: TFrmPrincipal
               F2FC860EF02320263940558072402EACEF000EE0000E50DF8048E5002100B5FF
               5F54FB8098E4007500F8005F116931BAA67C8F0000000049454E44AE426082}
             Stretch = True
-            OnClick = Panel9Click
+            OnClick = Panel10Click
           end
         end
       end

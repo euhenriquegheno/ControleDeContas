@@ -172,6 +172,18 @@
             <Form>frmRelContasPagar</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uCaixa.pas">
+            <Form>frmCaixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uAberturaCaixa.pas">
+            <Form>frmAberturaCaixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uFechamentoCaixa.pas">
+            <Form>frmFechamentoCaixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

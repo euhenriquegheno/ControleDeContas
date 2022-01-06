@@ -19,7 +19,10 @@ uses
   uConsFuncionarios in 'uConsFuncionarios.pas' {FrmConsFuncionarios},
   uCadCategorias in 'uCadCategorias.pas' {FrmCategorias},
   uConsCategorias in 'uConsCategorias.pas' {FrmConsCategorias},
-  uRelContasPagar in 'uRelContasPagar.pas' {frmRelContasPagar};
+  uRelContasPagar in 'uRelContasPagar.pas' {frmRelContasPagar},
+  uCaixa in 'uCaixa.pas' {frmCaixa},
+  uAberturaCaixa in 'uAberturaCaixa.pas' {frmAberturaCaixa},
+  uFechamentoCaixa in 'uFechamentoCaixa.pas' {frmFechamentoCaixa};
 
 {$R *.res}
 
@@ -28,5 +31,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDm, Dm);
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+  Application.CreateForm(TfrmFechamentoCaixa, frmFechamentoCaixa);
   Application.Run;
 end.

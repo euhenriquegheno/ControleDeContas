@@ -1,0 +1,100 @@
+object frmAberturaCaixa: TfrmAberturaCaixa
+  Left = 0
+  Top = 0
+  Caption = 'Abertura do caixa'
+  ClientHeight = 189
+  ClientWidth = 420
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 420
+    Height = 153
+    Align = alTop
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 88
+      Top = 104
+      Width = 92
+      Height = 13
+      Caption = 'SALDO ANTERIOR:'
+      FocusControl = DBEdit1
+    end
+    object DBEdit1: TDBEdit
+      Left = 186
+      Top = 101
+      Width = 150
+      Height = 21
+      DataField = 'SALDO'
+      DataSource = DataSource1
+      TabOrder = 0
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 148
+    Width = 420
+    Height = 41
+    Align = alBottom
+    TabOrder = 1
+    ExplicitLeft = 72
+    ExplicitTop = 128
+    ExplicitWidth = 185
+    object Button3: TButton
+      Left = 135
+      Top = 11
+      Width = 75
+      Height = 25
+      Caption = 'Confirmar'
+      TabOrder = 0
+    end
+    object Button2: TButton
+      Left = 209
+      Top = 11
+      Width = 75
+      Height = 25
+      Caption = 'Cancelar'
+      TabOrder = 1
+    end
+  end
+  object qrCaixa: TFDQuery
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'select * from caixa')
+    Left = 264
+    Top = 64
+    object qrCaixaCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      Required = True
+    end
+    object qrCaixaDATA: TDateField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+    end
+    object qrCaixaSITUACAO: TStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SITUACAO'
+      Size = 50
+    end
+    object qrCaixaSALDO: TFMTBCDField
+      FieldName = 'SALDO'
+      Origin = 'SALDO'
+      Precision = 18
+      Size = 2
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = qrCaixa
+    Left = 208
+    Top = 104
+  end
+end

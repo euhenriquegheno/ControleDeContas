@@ -7,7 +7,8 @@ uses
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Phys.IBBase, Data.DB,
-  FireDAC.Comp.Client, EFuncoes, VCL.forms;
+  FireDAC.Comp.Client, EFuncoes, VCL.forms, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet;
 
 
 
@@ -17,6 +18,11 @@ type
   TDm = class(TDataModule)
     Conexao: TFDConnection;
     FDPhysFBDriverLink1: TFDPhysFBDriverLink;
+    qrCaixa: TFDQuery;
+    qrCaixaCODIGO: TIntegerField;
+    qrCaixaDATA: TDateField;
+    qrCaixaSITUACAO: TStringField;
+    qrCaixaSALDO: TFMTBCDField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -59,6 +65,8 @@ begin
   Except
     Application.Terminate
   End;
+
+  qrCaixa.Active := true;
 end;
 
 class function Tdm.ExecuteQuery(var pQr: TFDQuery; pCommand: TSQLCommantType): boolean;
