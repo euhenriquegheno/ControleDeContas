@@ -27,10 +27,6 @@ type
     dtpData: TDateTimePicker;
     Label2: TLabel;
     qrData: TFDQuery;
-    IntegerField1: TIntegerField;
-    DateField1: TDateField;
-    StringField1: TStringField;
-    FMTBCDField1: TFMTBCDField;
     procedure FormActivate(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -111,6 +107,11 @@ begin
       frmcaixa.qrMovCaixa.fieldbyname('descricao').asstring := 'Acerto do Saldo Anterior';
       frmcaixa.qrMovCaixa.post;
     end;
+    dm.qrCaixa.Edit;
+    dm.qrCaixaSITUACAO.AsString := 'ABERTO';
+    dm.qrCaixa.post;
+    frmcaixa.qrCaixa.Refresh;
+
     Dm.Conexao.Commit;
     application.messagebox('Caixa aberto com sucesso!','Aviso',mb_ok+MB_ICONINFORMATION);
     close;

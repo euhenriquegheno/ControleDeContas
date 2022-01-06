@@ -27,12 +27,9 @@ type
     dtpData: TDateTimePicker;
     Label2: TLabel;
     qrData: TFDQuery;
-    IntegerField1: TIntegerField;
-    DateField1: TDateField;
-    StringField1: TStringField;
-    FMTBCDField1: TFMTBCDField;
     procedure FormActivate(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -100,7 +97,7 @@ begin
       if strToFloat(dbedit1.Text) < saldo_anterior then
       begin
         frmcaixa.qrMovCaixa.fieldbyname('saida').asfloat := saldo_anterior - strToFloat(dbedit1.Text);
-        frmcaixa.qrMovCaixa.FieldByName('valor').asfloat := (saldo_anterior - strToFloat(dbedit1.Text)*(-1);
+        frmcaixa.qrMovCaixa.FieldByName('valor').asfloat := (saldo_anterior - strToFloat(dbedit1.Text)*(-1));
         frmcaixa.qrMovCaixa.fieldbyname('entrada').asfloat := 0;
       end else begin
         frmcaixa.qrMovCaixa.fieldbyname('saida').asfloat := 0;
@@ -110,6 +107,12 @@ begin
       frmcaixa.qrMovCaixa.fieldbyname('descricao').asstring := 'Acerto do Saldo Anterior';
       frmcaixa.qrMovCaixa.post;
     end;
+    dm.qrCaixa.Edit;
+    dm.qrCaixaSITUACAO.AsString := 'ABERTO';
+    dm.qrCaixa.post;
+    frmcaixa.qrCaixa.Refresh;
+    frmcaixa.qrMovCaixa.Refresh;
+
     Dm.Conexao.Commit;
     application.messagebox('Caixa aberto com sucesso!','Aviso',mb_ok+MB_ICONINFORMATION);
     close;
@@ -127,6 +130,11 @@ procedure TfrmAberturaCaixa.FormActivate(Sender: TObject);
 begin
   dtpData.Date := Date;
   saldo_anterior := StrToFloat(dbedit1.text);
+end;
+
+procedure TfrmAberturaCaixa.FormCreate(Sender: TObject);
+begin
+  qrCaixa.active := true;
 end;
 
 end.

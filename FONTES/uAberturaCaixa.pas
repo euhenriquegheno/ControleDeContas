@@ -109,7 +109,10 @@ begin
     end;
     dm.qrCaixa.Edit;
     dm.qrCaixaSITUACAO.AsString := 'ABERTO';
+    dm.qrCaixaDATA.AsDateTime := dtpData.Date;
     dm.qrCaixa.post;
+    frmcaixa.qrCaixa.Refresh;
+    frmcaixa.qrMovCaixa.Refresh;
 
     Dm.Conexao.Commit;
     application.messagebox('Caixa aberto com sucesso!','Aviso',mb_ok+MB_ICONINFORMATION);

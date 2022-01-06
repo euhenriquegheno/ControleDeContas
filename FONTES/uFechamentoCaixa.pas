@@ -53,6 +53,8 @@ begin
     dm.conexao.Commit;
     frmcaixa.qrMovCaixa.Refresh;
     application.MessageBox('Caixa Fechado com Sucesso!','Aviso',mb_ok+MB_ICONINFORMATION);
+    frmcaixa.qrCaixa.Refresh;
+    frmcaixa.qrMovCaixa.Refresh;
   except
     application.MessageBox('Houve falha no fechamento do caixa... Este processamento foi cancelado!','Erro',mb_ok+MB_ICONERROR);
     close;
