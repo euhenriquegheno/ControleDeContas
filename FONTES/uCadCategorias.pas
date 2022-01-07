@@ -47,6 +47,7 @@ type
     CADASTRAR1: TMenuItem;
     ALTERAR1: TMenuItem;
     CANCELAR2: TMenuItem;
+    Image3: TImage;
     procedure FormActivate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);

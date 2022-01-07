@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Menus,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, UDM;
 
 type
   TFrmPagamento = class(TForm)
@@ -20,6 +20,7 @@ type
     Label3: TLabel;
     Label4: TLabel;
     procedure Button1Click(Sender: TObject);
+    procedure cbPagamentoChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,6 +29,7 @@ type
 
 var
   FrmPagamento: TFrmPagamento;
+  dataAtual : TDateTime;
 
 implementation
 
@@ -45,12 +47,48 @@ begin
       FrmContasPagar.qrContasPagar.FieldByName('BANCO_PAGAMENTO').AsString := cbPagamento.Text;
       FrmContasPagar.qrContasPagar.FieldByName('FORMA_PAGAMENTO').AsString := edtFormapgto.Text;
       FrmContasPagar.qrContasPagar.Post;
+
+      if cbPagamento.ItemIndex = 0 then
+      begin
+        dm.qrMovCaixa.Insert;
+        dm.qrMovCaixaDESCRICAO.asString := 'PAGAMENTO CONTA COD: ' + IntToStr(FrmContasPagar.qrContasPagarCODIGO.AsInteger) + ' - ' + FrmContasPagar.qrContasPagarEMPRESA_NOME.AsString;
+        dm.qrMovCaixaVALOR.AsFloat := FrmContasPagar.qrContasPagarVALOR.AsFloat;
+        dm.qrMovCaixaSAIDA.AsFloat := FrmContasPagar.qrContasPagarVALOR.AsFloat;
+        dm.qrMovCaixaENTRADA.AsFloat := 0;
+        dm.qrMovCaixaTIPO.AsString := 'CAIXA';
+        dataAtual := Date;
+        dm.qrMovCaixaDATA.AsDateTime := dataAtual;
+        dm.qrMovCaixa.Post;
+
+        dm.qrCaixa.Edit;
+        dm.qrCaixaSALDO.AsFloat := dm.qrCaixaSALDO.AsFloat - FrmContasPagar.qrContasPagarVALOR.AsFloat;
+        dm.qrCaixa.Post;
+      end
+      else
+      begin
+        dm.qrMovCaixa.Insert;
+        dm.qrMovCaixaDESCRICAO.asString := 'PAGAMENTO CONTA COD: ' + IntToStr(FrmContasPagar.qrContasPagarCODIGO.AsInteger) + ' - ' + FrmContasPagar.qrContasPagarEMPRESA_NOME.AsString;
+        dm.qrMovCaixaVALOR.AsFloat := FrmContasPagar.qrContasPagarVALOR.AsFloat;
+        dm.qrMovCaixaSAIDA.AsFloat := 0;
+        dm.qrMovCaixaENTRADA.AsFloat := 0;
+        dm.qrMovCaixaTIPO.AsString := cbPagamento.Text;
+        dataAtual := Date;
+        dm.qrMovCaixaDATA.AsDateTime := dataAtual;
+        dm.qrMovCaixa.Post;
+      end;
+
       FrmPagamento.Close;
     End
     Else
       Application.MessageBox('Essa conta ja esta QUITADA!', 'ATENÇÃO', MB_ICONEXCLAMATION);
 
   FrmPagamento.Close;
+end;
+
+procedure TFrmPagamento.cbPagamentoChange(Sender: TObject);
+begin
+  if cbPagamento.ItemIndex = 0 then
+    edtFormapgto.Enabled := false;
 end;
 
 end.

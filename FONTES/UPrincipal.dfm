@@ -420,8 +420,6 @@ object FrmPrincipal: TFrmPrincipal
     ActivePage = tsContas
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 57
-    ExplicitHeight = 687
     object tsContas: TTabSheet
       Caption = 'CONTAS'
       object Panel3: TPanel
@@ -800,11 +798,10 @@ object FrmPrincipal: TFrmPrincipal
         Width = 254
         Height = 590
         Align = alLeft
-        BevelOuter = bvSpace
+        BevelOuter = bvNone
         BiDiMode = bdLeftToRight
         ParentBiDiMode = False
         TabOrder = 1
-        ExplicitHeight = 604
         object Image11: TImage
           Left = 4
           Top = 5
@@ -2983,9 +2980,8 @@ object FrmPrincipal: TFrmPrincipal
         Height = 590
         Align = alRight
         AutoSize = True
-        BevelOuter = bvLowered
+        BevelOuter = bvNone
         TabOrder = 2
-        ExplicitHeight = 604
         object Label8: TLabel
           Left = 96
           Top = 3
@@ -3005,7 +3001,7 @@ object FrmPrincipal: TFrmPrincipal
           Top = 27
           Width = 237
           Height = 86
-          Color = clYellow
+          Color = clSkyBlue
           ParentBackground = False
           TabOrder = 0
           object lblContaPagar: TLabel
@@ -3052,9 +3048,9 @@ object FrmPrincipal: TFrmPrincipal
         end
         object btnAtualizaDashBoard: TButton
           AlignWithMargins = True
-          Left = 4
-          Top = 558
-          Width = 250
+          Left = 3
+          Top = 559
+          Width = 252
           Height = 28
           Align = alBottom
           Caption = 'ATUALIZAR AVISOS'
@@ -3066,7 +3062,9 @@ object FrmPrincipal: TFrmPrincipal
           ParentFont = False
           TabOrder = 1
           OnClick = btnAtualizaDashBoardClick
-          ExplicitTop = 572
+          ExplicitLeft = 4
+          ExplicitTop = 558
+          ExplicitWidth = 250
         end
         object Panel15: TPanel
           AlignWithMargins = True
@@ -3074,7 +3072,7 @@ object FrmPrincipal: TFrmPrincipal
           Top = 119
           Width = 237
           Height = 86
-          Color = clYellow
+          Color = clSkyBlue
           ParentBackground = False
           TabOrder = 2
           object lblContaReceber: TLabel
@@ -3125,7 +3123,7 @@ object FrmPrincipal: TFrmPrincipal
           Top = 211
           Width = 237
           Height = 86
-          Color = clYellow
+          Color = clSkyBlue
           ParentBackground = False
           TabOrder = 3
           object lblAgendamento: TLabel

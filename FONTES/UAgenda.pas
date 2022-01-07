@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Vcl.DBCtrls, Vcl.Mask, FireDAC.Comp.DataSet, FireDAC.Comp.Client, EFuncoes,
-  Vcl.Menus;
+  Vcl.Menus, Vcl.Imaging.pngimage;
 
 type
   TFrmAgenda = class(TForm)
@@ -55,6 +55,7 @@ type
     EXCLUIR1: TMenuItem;
     CANCELAR1: TMenuItem;
     GRABAR1: TMenuItem;
+    Image1: TImage;
     procedure FormCreate(Sender: TObject);
     procedure Panel5Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);

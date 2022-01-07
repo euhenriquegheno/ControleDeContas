@@ -65,6 +65,7 @@ type
     CADASTRAR1: TMenuItem;
     ALTERAR1: TMenuItem;
     CANCELAR1: TMenuItem;
+    Image3: TImage;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);

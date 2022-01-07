@@ -53,18 +53,6 @@ type
     Label5: TLabel;
     DBComboBox1: TDBComboBox;
     Panel4: TPanel;
-    pnCancelar: TPanel;
-    Label9: TLabel;
-    Image1: TImage;
-    pnGravar: TPanel;
-    Label10: TLabel;
-    Image2: TImage;
-    pnReabrir: TPanel;
-    Image3: TImage;
-    Label12: TLabel;
-    pnReceber: TPanel;
-    Label13: TLabel;
-    Image5: TImage;
     GRAVAR1: TMenuItem;
     Panel7: TPanel;
     Label7: TLabel;
@@ -101,6 +89,11 @@ type
     fxContasReceber: TfrxReport;
     frxContasReceber: TfrxDBDataset;
     btnGerarRel: TButton;
+    Image7: TImage;
+    Image8: TImage;
+    Image9: TImage;
+    Image3: TImage;
+    Image10: TImage;
     procedure NKDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DBEdit4Change(Sender: TObject);
@@ -109,17 +102,13 @@ type
     procedure btnExcluirClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure Button6Click(Sender: TObject);
-    procedure pnGravarClick(Sender: TObject);
-    procedure pnCancelarClick(Sender: TObject);
     procedure pcPrincipalChange(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
-    procedure pnReabrirClick(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
-    procedure pnReceberClick(Sender: TObject);
     procedure DBEdit4KeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit5KeyPress(Sender: TObject; var Key: Char);
     procedure Image4Click(Sender: TObject);
@@ -130,14 +119,12 @@ type
     procedure DateTimePicker2Change(Sender: TObject);
     procedure edtConsultaBancoChange(Sender: TObject);
     procedure Button7Click(Sender: TObject);
-    procedure pnReabrirMouseMove(Sender: TObject; Shift: TShiftState; X,
-      Y: Integer);
-    procedure pnReabrirMouseLeave(Sender: TObject);
-    procedure pnReceberMouseMove(Sender: TObject; Shift: TShiftState; X,
-      Y: Integer);
-    procedure pnReceberMouseLeave(Sender: TObject);
     procedure btnCalcularClick(Sender: TObject);
     procedure btnGerarRelClick(Sender: TObject);
+    procedure Image9Click(Sender: TObject);
+    procedure Image8Click(Sender: TObject);
+    procedure Image10Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -353,6 +340,29 @@ begin
   AtualizaCalculo;
 end;
 
+procedure TFrmContasReceber.Image10Click(Sender: TObject);
+begin
+  Try
+    qrContasReceber.Post;
+    pcPrincipal.ActivePage := tsContasReceber;
+    AtualizaCalculo;
+  Except
+    if DBEdit1.Text = ' ' then
+      ShowMessage('Insira alguma registro antes de gravar!')
+    else
+      ShowMessage('CODIGO DUPLICADO!');
+  End;
+end;
+
+procedure TFrmContasReceber.Image3Click(Sender: TObject);
+begin
+  if Application.MessageBox('Deseja realmente cancelar?', 'ATEN플O', mb_iconquestion + mb_yesno) = idYes then
+  Begin
+    qrContasReceber.Cancel;
+    pcPrincipal.ActivePage := tsContasReceber;
+  End;
+end;
+
 procedure TFrmContasReceber.Image4Click(Sender: TObject);
 begin
   FrmConsCategorias := TFrmConsCategorias.Create(self);
@@ -374,6 +384,31 @@ begin
 
   FrmConsCliente.Free;
   DBEdit3.SetFocus;
+end;
+
+procedure TFrmContasReceber.Image8Click(Sender: TObject);
+begin
+  qrContasReceber.Edit;
+  if Application.MessageBox('Deseja realmente reabrir essa conta?', 'ATEN플O', mb_iconquestion + mb_yesno) = idYes then
+    if qrContasReceber.FieldByName('SITUACAO').AsString = 'RECEBIDA' then
+    Begin
+      qrContasReceber.FieldByName('SITUACAO').AsString := 'ABERTO';
+      FrmContasReceber.qrContasReceber.FieldByName('BANCO_PAGAMENTO').AsString := ' ';
+      FrmContasReceber.qrContasReceber.FieldByName('FORMA_PAGAMENTO').AsString := ' ';
+      qrContasReceber.Post
+    End
+    Else
+      Application.MessageBox('Essa conta ja esta ABERTA!', 'ATEN플O', MB_ICONEXCLAMATION);
+end;
+
+procedure TFrmContasReceber.Image9Click(Sender: TObject);
+begin
+  FrmRecebimento := TFrmRecebimento.Create(Self);
+  try
+    FrmRecebimento.ShowModal;
+  finally
+    freeandnil(frmRecebimento);
+  end;
 end;
 
 procedure TFrmContasReceber.ListarContas;
@@ -440,72 +475,6 @@ begin
 
   (Sender as TDBGrid).Canvas.FillRect(Rect);
   (Sender as TDBGrid).DefaultDrawDataCell(Rect, (Sender as   TDBGrid).columns[datacol].field, State);
-end;
-
-procedure TFrmContasReceber.pnCancelarClick(Sender: TObject);
-begin
-  if Application.MessageBox('Deseja realmente cancelar?', 'ATEN플O', mb_iconquestion + mb_yesno) = idYes then
-  Begin
-    qrContasReceber.Cancel;
-    pcPrincipal.ActivePage := tsContasReceber;
-  End;
-end;
-
-procedure TFrmContasReceber.pnGravarClick(Sender: TObject);
-begin
-  Try
-    qrContasReceber.Post;
-    pcPrincipal.ActivePage := tsContasReceber;
-    AtualizaCalculo;
-  Except
-    if DBEdit1.Text = ' ' then
-      ShowMessage('Insira alguma registro antes de gravar!')
-    else
-      ShowMessage('CODIGO DUPLICADO!');
-  End;
-end;
-
-procedure TFrmContasReceber.pnReabrirClick(Sender: TObject);
-begin
-  qrContasReceber.Edit;
-  if Application.MessageBox('Deseja realmente reabrir essa conta?', 'ATEN플O', mb_iconquestion + mb_yesno) = idYes then
-    if qrContasReceber.FieldByName('SITUACAO').AsString = 'RECEBIDA' then
-    Begin
-      qrContasReceber.FieldByName('SITUACAO').AsString := 'ABERTO';
-      FrmContasReceber.qrContasReceber.FieldByName('BANCO_PAGAMENTO').AsString := ' ';
-      FrmContasReceber.qrContasReceber.FieldByName('FORMA_PAGAMENTO').AsString := ' ';
-      qrContasReceber.Post
-    End
-    Else
-      Application.MessageBox('Essa conta ja esta ABERTA!', 'ATEN플O', MB_ICONEXCLAMATION);
-end;
-
-procedure TFrmContasReceber.pnReabrirMouseLeave(Sender: TObject);
-begin
-  pnReabrir.Color := cl3DLight;
-end;
-
-procedure TFrmContasReceber.pnReabrirMouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: Integer);
-begin
-  pnReabrir.Color := clSkyBlue;
-end;
-
-procedure TFrmContasReceber.pnReceberClick(Sender: TObject);
-begin
-  FrmRecebimento := TFrmRecebimento.Create(Self);
-  FrmRecebimento.ShowModal;
-end;
-
-procedure TFrmContasReceber.pnReceberMouseLeave(Sender: TObject);
-begin
-  pnReceber.Color := cl3DLight;
-end;
-
-procedure TFrmContasReceber.pnReceberMouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: Integer);
-begin
-  pnReceber.Color := clSkyBlue;
 end;
 
 procedure TFrmContasReceber.pcPrincipalChange(Sender: TObject);

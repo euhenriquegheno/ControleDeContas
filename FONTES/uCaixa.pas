@@ -32,17 +32,9 @@ type
     qrMovCaixaSAIDA: TFMTBCDField;
     qrMovCaixaENTRADA: TFMTBCDField;
     qrMovCaixaTIPO: TStringField;
-    Label1: TLabel;
-    DBEdit1: TDBEdit;
-    Label2: TLabel;
-    DBEdit2: TDBEdit;
     Panel5: TPanel;
     Label3: TLabel;
-    dtpDe: TDateTimePicker;
-    dtpAte: TDateTimePicker;
-    Label4: TLabel;
     Panel6: TPanel;
-    label5: TLabel;
     Button1: TButton;
     pcPrincipal: TPageControl;
     tsConsulta: TTabSheet;
@@ -67,6 +59,18 @@ type
     Label10: TLabel;
     Panel8: TPanel;
     edtValorTotal: TEdit;
+    Panel9: TPanel;
+    dtpDe: TDateTimePicker;
+    dtpAte: TDateTimePicker;
+    Panel10: TPanel;
+    Label4: TLabel;
+    label5: TLabel;
+    Panel11: TPanel;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Panel12: TPanel;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
     procedure btnIncluirClick(Sender: TObject);
     procedure pcPrincipalChange(Sender: TObject);
     procedure qrMovCaixaAfterInsert(DataSet: TDataSet);
@@ -79,6 +83,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure btnReaberturaClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -280,10 +285,6 @@ end;
 
 procedure TfrmCaixa.FormActivate(Sender: TObject);
 begin
-  CalcularSaldoCaixa;
-  DesabilitaBotao;
-  FiltraCaixa;
-
   dtpDe.Date := qrCaixaDATA.AsDateTime;
   dtpAte.Date := qrCaixaDATA.AsDateTime;
 end;
@@ -292,6 +293,13 @@ procedure TfrmCaixa.FormCreate(Sender: TObject);
 begin
   qrCaixa.active := true;
   qrMovCaixa.active := true;
+end;
+
+procedure TfrmCaixa.FormShow(Sender: TObject);
+begin
+  CalcularSaldoCaixa;
+  DesabilitaBotao;
+  FiltraCaixa;
 end;
 
 procedure TfrmCaixa.pcPrincipalChange(Sender: TObject);

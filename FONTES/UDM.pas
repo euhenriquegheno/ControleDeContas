@@ -23,7 +23,16 @@ type
     qrCaixaDATA: TDateField;
     qrCaixaSITUACAO: TStringField;
     qrCaixaSALDO: TFMTBCDField;
+    qrMovCaixa: TFDQuery;
+    qrMovCaixaCODIGO: TIntegerField;
+    qrMovCaixaDESCRICAO: TStringField;
+    qrMovCaixaVALOR: TFMTBCDField;
+    qrMovCaixaSAIDA: TFMTBCDField;
+    qrMovCaixaENTRADA: TFMTBCDField;
+    qrMovCaixaTIPO: TStringField;
+    qrMovCaixaDATA: TDateField;
     procedure DataModuleCreate(Sender: TObject);
+    procedure qrMovCaixaAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -67,6 +76,7 @@ begin
   End;
 
   qrCaixa.Active := true;
+  qrMovCaixa.active := true;
 end;
 
 class function Tdm.ExecuteQuery(var pQr: TFDQuery; pCommand: TSQLCommantType): boolean;
@@ -106,6 +116,26 @@ begin
 
   if (erro <> '') then
     raise Exception.Create(erro);
+end;
+
+procedure TDm.qrMovCaixaAfterInsert(DataSet: TDataSet);
+var query : TFDQuery;
+    codigo : Integer;
+begin
+  query := TFDQuery.Create(self);//CRIA COMPONENTE NA MEMORIA
+  query.Connection := Dm.Conexao;//VINCULA O COMPONENTE DE CONEXAO COM A QUERY
+  query.Active := false;//DESATIVA CONEXAO DO QUERY COM O BANCO DE DADOS
+  query.SQL.Add('SELECT MAX (CODIGO) AS CODIGO FROM MOVIMENTACAO_CAIXA');//SQL DE CONSULTA NO BANCO
+  query.Active := True;
+
+  if (query.FieldByName('CODIGO').IsNull) then //VALIDA SE A COLUNA CODIGO É NULL
+    Codigo := 1
+  else
+    codigo := query.FieldByName('CODIGO').AsInteger + 1;
+
+  query.Free;//LIMPA A VARIAVEL QUERY DA MEMÓRIA
+
+  qrMovCaixaCODIGO.AsInteger := codigo;
 end;
 
 function NewQuery(OpenSql : String = '') : TFDQuery;

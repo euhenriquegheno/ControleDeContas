@@ -45,4 +45,50 @@ object Dm: TDm
       Size = 2
     end
   end
+  object qrMovCaixa: TFDQuery
+    AfterInsert = qrMovCaixaAfterInsert
+    Connection = Conexao
+    SQL.Strings = (
+      'select * from movimentacao_caixa')
+    Left = 176
+    Top = 128
+    object qrMovCaixaCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrMovCaixaDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Size = 100
+    end
+    object qrMovCaixaVALOR: TFMTBCDField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      Precision = 18
+      Size = 2
+    end
+    object qrMovCaixaSAIDA: TFMTBCDField
+      FieldName = 'SAIDA'
+      Origin = 'SAIDA'
+      Precision = 18
+      Size = 2
+    end
+    object qrMovCaixaENTRADA: TFMTBCDField
+      FieldName = 'ENTRADA'
+      Origin = 'ENTRADA'
+      Precision = 18
+      Size = 2
+    end
+    object qrMovCaixaTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      Size = 50
+    end
+    object qrMovCaixaDATA: TDateField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+    end
+  end
 end

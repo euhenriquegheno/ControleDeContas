@@ -65,6 +65,7 @@ type
     qrEmpresaDATA_CADASTRO: TDateField;
     Label11: TLabel;
     DBEdit8: TDBEdit;
+    Image3: TImage;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);

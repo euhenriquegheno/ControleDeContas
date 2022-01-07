@@ -42,12 +42,6 @@ type
     btnBuscar: TButton;
     ComboBox1: TComboBox;
     Label8: TLabel;
-    pnCancelar: TPanel;
-    Label9: TLabel;
-    Image1: TImage;
-    pnGravar: TPanel;
-    Label10: TLabel;
-    Image2: TImage;
     Label11: TLabel;
     PopupMenu1: TPopupMenu;
     EXCLUIR1: TMenuItem;
@@ -56,12 +50,6 @@ type
     CANCELAR1: TMenuItem;
     PAGAR1: TMenuItem;
     GRAVAR1: TMenuItem;
-    Image3: TImage;
-    pnEstornar: TPanel;
-    Label12: TLabel;
-    pnPagar: TPanel;
-    Label13: TLabel;
-    Image5: TImage;
     ESTORNAR1: TMenuItem;
     Label14: TLabel;
     DBEdit6: TDBEdit;
@@ -123,6 +111,11 @@ type
     frxContasPagar: TfrxDBDataset;
     fxContasPagar: TfrxReport;
     btnGerarRel: TButton;
+    Image4: TImage;
+    Image9: TImage;
+    Image5: TImage;
+    Image3: TImage;
+    Image10: TImage;
     procedure btnExcluirClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnIncluirClick(Sender: TObject);
@@ -132,7 +125,6 @@ type
     procedure btnBuscarClick(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure pnGravarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure DBEdit5Change(Sender: TObject);
@@ -141,9 +133,6 @@ type
     procedure qrContasPagarAfterInsert(DataSet: TDataSet);
     procedure pcPrincipalChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure pnEstornarClick(Sender: TObject);
-    procedure pnCancelarClick(Sender: TObject);
-    procedure pnPagarClick(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure btnCalcularClick(Sender: TObject);
     procedure DBEdit7KeyPress(Sender: TObject; var Key: Char);
@@ -156,14 +145,12 @@ type
     procedure DateTimePicker1Change(Sender: TObject);
     procedure Button10Click(Sender: TObject);
     procedure Button11Click(Sender: TObject);
-    procedure pnEstornarMouseMove(Sender: TObject; Shift: TShiftState; X,
-      Y: Integer);
-    procedure pnEstornarMouseLeave(Sender: TObject);
-    procedure pnPagarMouseMove(Sender: TObject; Shift: TShiftState; X,
-      Y: Integer);
-    procedure pnPagarMouseLeave(Sender: TObject);
     procedure DBEdit12KeyPress(Sender: TObject; var Key: Char);
     procedure btnGerarRelClick(Sender: TObject);
+    procedure Image9Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure Image10Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
   private
 
   public
@@ -455,6 +442,44 @@ begin
    CalcularTotal;
 end;
 
+procedure TFrmContasPagar.Image10Click(Sender: TObject);
+begin
+  Try
+    qrContasPagar.Post;
+    pcPrincipal.ActivePage := tsConsulta;
+    ListarContas;
+  Except
+    if DBEdit5.Text = '' then
+      ShowMessage('Insira alguma registro antes de gravar!')
+    else
+      ShowMessage('Insira alguma registro antes de gravar!');
+  End;
+end;
+
+procedure TFrmContasPagar.Image3Click(Sender: TObject);
+begin
+  if Application.MessageBox('Deseja realmente cancelar?', 'ATEN플O', mb_iconquestion + mb_yesno) = idYes then
+  Begin
+    qrContasPagar.Cancel;
+    pcPrincipal.ActivePage := tsConsulta;
+  End;
+end;
+
+procedure TFrmContasPagar.Image5Click(Sender: TObject);
+begin
+  qrContasPagar.Edit;
+  if application.MessageBox('Deseja realmente ESTORNAR essa conta?', 'ATEN플O', mb_iconquestion + mb_yesno) = idYes then
+    if qrContasPagar.FieldByName('SITUACAO').AsString = 'QUITADO' then
+    begin
+      qrContasPagar.FieldByName('SITUACAO').AsString := 'ABERTO';
+      frmContasPagar.qrContasPagar.FieldByName('BANCO_PAGAMENTO').AsString := '';
+      frmContasPagar.qrContasPagar.FieldByName('FORMA_PAGAMENTO').AsString := '';
+      qrContasPagar.Post
+    end
+    else
+      application.MessageBox('Essa conta ja esta ABERTA!', 'ATEN플O', MB_ICONEXCLAMATION);
+end;
+
 procedure TFrmContasPagar.Image6Click(Sender: TObject);
 begin
   FrmConsEmpresa := TFrmConsEmpresa.Create(self);
@@ -492,6 +517,16 @@ begin
     DBEdit4.SetFocus;
   finally
     freeandnil(frmConsFuncionarios);
+  end;
+end;
+
+procedure TFrmContasPagar.Image9Click(Sender: TObject);
+begin
+  frmPagamento := TFrmPagamento.Create(Self);
+  try
+    frmPagamento.ShowModal;
+  finally
+    freeandnil(frmPagamento);
   end;
 end;
 
@@ -543,75 +578,6 @@ begin
     Application.MessageBox('Voce so pode acessar essa aba inserindo ou editando alguma conta!', 'ATEN플O', MB_ICONEXCLAMATION);
     pcPrincipal.ActivePage := tsConsulta;
   End;
-end;
-
-procedure TFrmContasPagar.pnCancelarClick(Sender: TObject);
-begin
-  if Application.MessageBox('Deseja realmente cancelar?', 'ATEN플O', mb_iconquestion + mb_yesno) = idYes then
-  Begin
-    qrContasPagar.Cancel;
-    pcPrincipal.ActivePage := tsConsulta;
-  End;
-end;
-
-procedure TFrmContasPagar.pnGravarClick(Sender: TObject);
-begin
-  Try
-    qrContasPagar.Post;
-    pcPrincipal.ActivePage := tsConsulta;
-    ListarContas;
-  Except
-    if DBEdit5.Text = '' then
-      ShowMessage('Insira alguma registro antes de gravar!')
-    else
-      ShowMessage('Insira alguma registro antes de gravar!');
-  End;
-end;
-
-procedure TFrmContasPagar.pnEstornarClick(Sender: TObject);
-begin
-  qrContasPagar.Edit;
-  if application.MessageBox('Deseja realmente ESTORNAR essa conta?', 'ATEN플O', mb_iconquestion + mb_yesno) = idYes then
-    if qrContasPagar.FieldByName('SITUACAO').AsString = 'QUITADO' then
-    begin
-      qrContasPagar.FieldByName('SITUACAO').AsString := 'ABERTO';
-      frmContasPagar.qrContasPagar.FieldByName('BANCO_PAGAMENTO').AsString := '';
-      frmContasPagar.qrContasPagar.FieldByName('FORMA_PAGAMENTO').AsString := '';
-      qrContasPagar.Post
-    end
-    else
-      application.MessageBox('Essa conta ja esta ABERTA!', 'ATEN플O', MB_ICONEXCLAMATION);
-end;
-procedure TFrmContasPagar.pnEstornarMouseLeave(Sender: TObject);
-begin
-  pnEstornar.Color := cl3DLight;
-end;
-
-procedure TFrmContasPagar.pnEstornarMouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: Integer);
-begin
-  pnEstornar.Color := clSkyBlue;
-end;
-
-procedure TFrmContasPagar.pnPagarClick(Sender: TObject);
-begin
-  frmPagamento := TFrmPagamento.Create(Self);
-  try
-    frmPagamento.ShowModal;
-  finally
-    freeandnil(frmPagamento);
-  end;
-end;
-
-procedure TFrmContasPagar.pnPagarMouseLeave(Sender: TObject);
-begin
-  pnPagar.Color := cl3DLight;
-end;
-
-procedure TFrmContasPagar.pnPagarMouseMove(Sender: TObject; Shift: TShiftState;
-  X, Y: Integer);
-begin
-  pnPagar.Color := clskyblue;
 end;
 
 procedure TFrmContasPagar.qrContasPagarAfterInsert(DataSet: TDataSet);
