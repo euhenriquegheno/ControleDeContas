@@ -27,34 +27,13 @@ type
     Button5: TButton;
     Panel4: TPanel;
     Button6: TButton;
-    Panel5: TPanel;
-    Label1: TLabel;
-    Image1: TImage;
-    Panel6: TPanel;
-    Label2: TLabel;
-    Image2: TImage;
-    Panel7: TPanel;
-    Label3: TLabel;
-    Image4: TImage;
-    Panel8: TPanel;
-    Label4: TLabel;
-    Image5: TImage;
     MainMenu1: TMainMenu;
     CONTASAPAGAR1: TMenuItem;
     CONTASARECEBER1: TMenuItem;
     EMPRESA1: TMenuItem;
     CLIENTES1: TMenuItem;
-    Panel9: TPanel;
-    Label5: TLabel;
-    Image6: TImage;
     AGENDA1: TMenuItem;
     pnBotoes: TPanel;
-    Panel11: TPanel;
-    Label6: TLabel;
-    Image7: TImage;
-    Panel12: TPanel;
-    Label7: TLabel;
-    Image8: TImage;
     FUNCIONRIOS1: TMenuItem;
     CATEGORIAS1: TMenuItem;
     Panel13: TPanel;
@@ -83,31 +62,37 @@ type
     Panel17: TPanel;
     Image3: TImage;
     Image9: TImage;
-    Panel10: TPanel;
-    Label13: TLabel;
-    Image10: TImage;
     CAIXA1: TMenuItem;
+    Image11: TImage;
+    Image1: TImage;
+    Image12: TImage;
+    Image2: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image7: TImage;
+    Image8: TImage;
+    Image6: TImage;
     procedure Button2Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
-    procedure Panel5Click(Sender: TObject);
-    procedure Panel6Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Panel7Click(Sender: TObject);
-    procedure Panel8Click(Sender: TObject);
-    procedure Panel9Click(Sender: TObject);
-    procedure Panel11Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
-    procedure Panel12Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnAtualizaDashBoardClick(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
     procedure Image9Click(Sender: TObject);
-    procedure Panel10Click(Sender: TObject);
+    procedure Image11Click(Sender: TObject);
+    procedure Image12Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure Image7Click(Sender: TObject);
+    procedure Image8Click(Sender: TObject);
+    procedure Image6Click(Sender: TObject);
   private
 
   public
@@ -285,45 +270,7 @@ begin
   end;
 end;
 
-procedure TFrmPrincipal.Image9Click(Sender: TObject);
-begin
-  if pnBotoes.Visible then
-    pnBotoes.Visible := false
-  else
-    pnBotoes.Visible := true;
-end;
-
-procedure TFrmPrincipal.Panel10Click(Sender: TObject);
-begin
-  frmCaixa := TFrmCaixa.create(self);
-  try
-    frmCaixa.showModal;
-  finally
-    freeandnil(frmCaixa);
-  end;
-end;
-
-procedure TFrmPrincipal.Panel11Click(Sender: TObject);
-begin
-  FrmCadFuncionarios := TFrmCadFuncionarios.Create(self);
-  try
-    FrmCadFuncionarios.ShowModal;
-  finally
-    freeandnil(frmCadFuncionarios);
-  end;
-end;
-
-procedure TFrmPrincipal.Panel12Click(Sender: TObject);
-begin
-  FrmCategorias := TFrmCategorias.Create(Self);
-  try
-    FrmCategorias.ShowModal;
-  finally
-    freeandnil(frmCategorias);
-  end;
-end;
-
-procedure TFrmPrincipal.Panel5Click(Sender: TObject);
+procedure TFrmPrincipal.Image11Click(Sender: TObject);
 begin
   FrmContasPagar := TFrmContasPagar.Create(Self);
   try
@@ -334,7 +281,7 @@ begin
   end;
 end;
 
-procedure TFrmPrincipal.Panel6Click(Sender: TObject);
+procedure TFrmPrincipal.Image12Click(Sender: TObject);
 begin
   FrmContasReceber :=TFrmContasReceber.Create(Self);
   try
@@ -345,7 +292,7 @@ begin
   end;
 end;
 
-procedure TFrmPrincipal.Panel7Click(Sender: TObject);
+procedure TFrmPrincipal.Image2Click(Sender: TObject);
 begin
   FrmEmpresa := TFrmEmpresa.Create(Self);
   try
@@ -355,7 +302,7 @@ begin
   end;
 end;
 
-procedure TFrmPrincipal.Panel8Click(Sender: TObject);
+procedure TFrmPrincipal.Image4Click(Sender: TObject);
 begin
   FrmCadCliente := TFrmCadCliente.Create(Self);
   try
@@ -365,7 +312,37 @@ begin
   end;
 end;
 
-procedure TFrmPrincipal.Panel9Click(Sender: TObject);
+procedure TFrmPrincipal.Image5Click(Sender: TObject);
+begin
+  FrmCadFuncionarios := TFrmCadFuncionarios.Create(self);
+  try
+    FrmCadFuncionarios.ShowModal;
+  finally
+    freeandnil(frmCadFuncionarios);
+  end;
+end;
+
+procedure TFrmPrincipal.Image6Click(Sender: TObject);
+begin
+  frmCaixa := TFrmCaixa.create(self);
+  try
+    frmCaixa.showModal;
+  finally
+    freeandnil(frmCaixa);
+  end;
+end;
+
+procedure TFrmPrincipal.Image7Click(Sender: TObject);
+begin
+  FrmCategorias := TFrmCategorias.Create(Self);
+  try
+    FrmCategorias.ShowModal;
+  finally
+    freeandnil(frmCategorias);
+  end;
+end;
+
+procedure TFrmPrincipal.Image8Click(Sender: TObject);
 begin
   FrmAgenda := TFrmAgenda.Create(Self);
   try
@@ -373,6 +350,14 @@ begin
   finally
     freeandnil(frmAgenda);
   end;
+end;
+
+procedure TFrmPrincipal.Image9Click(Sender: TObject);
+begin
+  if pnBotoes.Visible then
+    pnBotoes.Visible := false
+  else
+    pnBotoes.Visible := true;
 end;
 
 end.
