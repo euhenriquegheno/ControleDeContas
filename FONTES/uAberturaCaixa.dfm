@@ -23,7 +23,6 @@ object frmAberturaCaixa: TfrmAberturaCaixa
     Height = 153
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 420
     object Label1: TLabel
       Left = 37
       Top = 64
@@ -65,9 +64,6 @@ object frmAberturaCaixa: TfrmAberturaCaixa
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 72
-    ExplicitTop = 128
-    ExplicitWidth = 185
     object Button3: TButton
       Left = 103
       Top = 8
@@ -84,6 +80,7 @@ object frmAberturaCaixa: TfrmAberturaCaixa
       Height = 25
       Caption = 'Cancelar'
       TabOrder = 1
+      OnClick = Button2Click
     end
   end
   object qrCaixa: TFDQuery

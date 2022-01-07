@@ -84,7 +84,7 @@ object frmFechamentoCaixa: TfrmFechamentoCaixa
       Height = 25
       Caption = 'Cancelar'
       TabOrder = 1
-      OnClick = Button2Click
+      OnClick = Button1Click
     end
   end
   object qrCaixa: TFDQuery

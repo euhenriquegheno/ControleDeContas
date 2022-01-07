@@ -115,14 +115,10 @@ begin
       begin
         qrCaixa.Edit;
         qrCaixaSALDO.AsFloat := qrCaixaSALDO.AsFloat + qrMovCaixaSAIDA.AsFloat;
-        qrCaixa.Post;
+
       end
       else if (qrMovCaixaENTRADA.AsFloat <> 0) then
-      begin
-        qrCaixa.Edit;
         qrCaixaSALDO.AsFloat := qrCaixaSALDO.AsFloat - qrMovCaixaENTRADA.AsFloat;
-        qrCaixa.Post;
-      end;
 
       qrCaixa.Refresh;
       qrMovCaixa.delete;
@@ -282,7 +278,6 @@ procedure TfrmCaixa.FormActivate(Sender: TObject);
 begin
   CalcularSaldoCaixa;
   DesabilitaBotao;
-  FiltraCaixa;
 
   dtpDe.Date := qrCaixaDATA.AsDateTime;
   dtpAte.Date := qrCaixaDATA.AsDateTime;

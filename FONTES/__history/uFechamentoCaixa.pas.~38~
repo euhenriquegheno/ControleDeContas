@@ -28,7 +28,6 @@ type
     DBEdit2: TDBEdit;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,10 +46,9 @@ uses uCaixa, UPrincipal;
 procedure TfrmFechamentoCaixa.Button1Click(Sender: TObject);
 begin
   try
-    dm.qrcaixa.Refresh;
     dm.qrcaixa.Edit;
     dm.qrcaixa.fieldbyname('situacao').AsString := 'FECHADO';
-    dm.qrcaixa.fieldbyname('saldo').asfloat := qrCaixaSALDO.AsFloat;
+    dm.qrcaixa.fieldbyname('saldo').asfloat := strToFloat(dbedit2.Text);
     dm.qrcaixa.Post;
     dm.conexao.Commit;
     frmcaixa.qrMovCaixa.Refresh;
@@ -66,11 +64,6 @@ begin
     application.MessageBox('Houve falha no fechamento do caixa... Este processamento foi cancelado!','Erro',mb_ok+MB_ICONERROR);
     close;
   end;
-end;
-
-procedure TfrmFechamentoCaixa.Button2Click(Sender: TObject);
-begin
-  close;
 end;
 
 procedure TfrmFechamentoCaixa.FormCreate(Sender: TObject);

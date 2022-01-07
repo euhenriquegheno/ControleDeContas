@@ -30,7 +30,6 @@ type
     procedure FormActivate(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,11 +45,6 @@ implementation
 {$R *.dfm}
 
 uses uCaixa;
-
-procedure TfrmAberturaCaixa.Button2Click(Sender: TObject);
-begin
-  close;
-end;
 
 procedure TfrmAberturaCaixa.Button3Click(Sender: TObject);
 var lanca_valor_anterior : boolean;

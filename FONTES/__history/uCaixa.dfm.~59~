@@ -186,12 +186,6 @@ object frmCaixa: TfrmCaixa
               Title.Caption = 'Tipo'
               Width = 100
               Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'DATA'
-              Title.Caption = 'Data'
-              Visible = True
             end>
         end
       end
@@ -374,32 +368,24 @@ object frmCaixa: TfrmCaixa
       Align = alLeft
       Caption = 'Reabertura'
       TabOrder = 5
-      OnClick = btnReaberturaClick
     end
     object Panel5: TPanel
-      Left = 512
+      Left = 616
       Top = 1
-      Width = 248
+      Width = 144
       Height = 55
       Align = alRight
       TabOrder = 6
       object Label3: TLabel
-        Left = 135
-        Top = 5
+        Left = 23
+        Top = 8
         Width = 102
         Height = 13
         Caption = 'SALDO CAIXA ATUAL'
       end
-      object Label10: TLabel
-        Left = 48
-        Top = 5
-        Width = 32
-        Height = 13
-        Caption = 'TOTAL'
-      end
       object DBEdit3: TDBEdit
-        Left = 136
-        Top = 24
+        Left = 24
+        Top = 27
         Width = 100
         Height = 22
         DataField = 'SALDO'
@@ -411,20 +397,6 @@ object frmCaixa: TfrmCaixa
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 0
-      end
-      object Panel8: TPanel
-        Left = 119
-        Top = 4
-        Width = 7
-        Height = 53
-        TabOrder = 1
-      end
-      object edtValorTotal: TEdit
-        Left = 9
-        Top = 25
-        Width = 104
-        Height = 21
-        TabOrder = 2
       end
     end
   end

@@ -282,7 +282,6 @@ procedure TfrmCaixa.FormActivate(Sender: TObject);
 begin
   CalcularSaldoCaixa;
   DesabilitaBotao;
-  FiltraCaixa;
 
   dtpDe.Date := qrCaixaDATA.AsDateTime;
   dtpAte.Date := qrCaixaDATA.AsDateTime;

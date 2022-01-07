@@ -412,18 +412,19 @@ object frmCaixa: TfrmCaixa
         ParentFont = False
         TabOrder = 0
       end
+      object MaskEdit1: TMaskEdit
+        Left = 9
+        Top = 24
+        Width = 101
+        Height = 21
+        TabOrder = 1
+        Text = ''
+      end
       object Panel8: TPanel
         Left = 119
         Top = 4
         Width = 7
         Height = 53
-        TabOrder = 1
-      end
-      object edtValorTotal: TEdit
-        Left = 9
-        Top = 25
-        Width = 104
-        Height = 21
         TabOrder = 2
       end
     end

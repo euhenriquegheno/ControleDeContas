@@ -390,13 +390,6 @@ object frmCaixa: TfrmCaixa
         Height = 13
         Caption = 'SALDO CAIXA ATUAL'
       end
-      object Label10: TLabel
-        Left = 48
-        Top = 5
-        Width = 32
-        Height = 13
-        Caption = 'TOTAL'
-      end
       object DBEdit3: TDBEdit
         Left = 136
         Top = 24
@@ -411,20 +404,6 @@ object frmCaixa: TfrmCaixa
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 0
-      end
-      object Panel8: TPanel
-        Left = 119
-        Top = 4
-        Width = 7
-        Height = 53
-        TabOrder = 1
-      end
-      object edtValorTotal: TEdit
-        Left = 9
-        Top = 25
-        Width = 104
-        Height = 21
-        TabOrder = 2
       end
     end
   end

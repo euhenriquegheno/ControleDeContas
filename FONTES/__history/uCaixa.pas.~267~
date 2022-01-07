@@ -112,19 +112,11 @@ begin
     if Application.MessageBox('Deseja realmente excluir a movimentação?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
     begin
       if (qrMovCaixaSAIDA.AsFloat <> 0) then
-      begin
-        qrCaixa.Edit;
-        qrCaixaSALDO.AsFloat := qrCaixaSALDO.AsFloat + qrMovCaixaSAIDA.AsFloat;
-        qrCaixa.Post;
-      end
+        qrCaixaSALDO.AsFloat := qrCaixaSALDO.AsFloat + qrMovCaixaSAIDA.AsFloat
       else if (qrMovCaixaENTRADA.AsFloat <> 0) then
-      begin
-        qrCaixa.Edit;
         qrCaixaSALDO.AsFloat := qrCaixaSALDO.AsFloat - qrMovCaixaENTRADA.AsFloat;
-        qrCaixa.Post;
-      end;
 
-      qrCaixa.Refresh;
+
       qrMovCaixa.delete;
     end;
   Except
@@ -282,7 +274,6 @@ procedure TfrmCaixa.FormActivate(Sender: TObject);
 begin
   CalcularSaldoCaixa;
   DesabilitaBotao;
-  FiltraCaixa;
 
   dtpDe.Date := qrCaixaDATA.AsDateTime;
   dtpAte.Date := qrCaixaDATA.AsDateTime;

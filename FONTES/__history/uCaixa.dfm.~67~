@@ -419,12 +419,13 @@ object frmCaixa: TfrmCaixa
         Height = 53
         TabOrder = 1
       end
-      object edtValorTotal: TEdit
+      object Edit1: TEdit
         Left = 9
         Top = 25
         Width = 104
         Height = 21
         TabOrder = 2
+        Text = 'Edit1'
       end
     end
   end

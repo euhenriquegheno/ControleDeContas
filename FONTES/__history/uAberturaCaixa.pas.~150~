@@ -30,7 +30,6 @@ type
     procedure FormActivate(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,11 +45,6 @@ implementation
 {$R *.dfm}
 
 uses uCaixa;
-
-procedure TfrmAberturaCaixa.Button2Click(Sender: TObject);
-begin
-  close;
-end;
 
 procedure TfrmAberturaCaixa.Button3Click(Sender: TObject);
 var lanca_valor_anterior : boolean;
@@ -105,7 +99,7 @@ begin
       if saldo_atualizado < saldo_anterior then
       begin
         frmcaixa.qrMovCaixa.fieldbyname('saida').asfloat := saldo_anterior - saldo_atualizado;
-        frmcaixa.qrMovCaixa.FieldByName('valor').asfloat := saldo_anterior - saldo_atualizado;
+        frmcaixa.qrMovCaixa.FieldByName('valor').asfloat := (saldo_anterior - saldo_atualizado *(-1));
         frmcaixa.qrMovCaixa.fieldbyname('entrada').asfloat := 0;
       end else begin
         frmcaixa.qrMovCaixa.fieldbyname('saida').asfloat := 0;
@@ -128,7 +122,7 @@ begin
     else if saldo_atualizado > saldo_anterior then
     begin
       diferenca :=  saldo_atualizado - saldo_anterior;
-      dm.qrCaixaSALDO.AsFloat := saldo_anterior + diferenca;
+      dm.qrCaixaSALDO.AsFloat := saldo_anterior
     end
     else if saldo_atualizado = saldo_anterior then
       dm.qrCaixaSALDO.AsFloat := saldo_anterior;

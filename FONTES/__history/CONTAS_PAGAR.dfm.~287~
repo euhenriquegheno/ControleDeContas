@@ -33,7 +33,7 @@ object FrmContasPagar: TFrmContasPagar
     Top = 49
     Width = 1350
     Height = 670
-    ActivePage = tsConsulta
+    ActivePage = tsCadastro
     Align = alClient
     TabOrder = 0
     OnChange = pcPrincipalChange
