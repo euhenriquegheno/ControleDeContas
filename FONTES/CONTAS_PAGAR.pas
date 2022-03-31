@@ -471,10 +471,27 @@ begin
   if application.MessageBox('Deseja realmente ESTORNAR essa conta?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
     if qrContasPagar.FieldByName('SITUACAO').AsString = 'QUITADO' then
     begin
+      if qrContasPagarBANCO_PAGAMENTO.AsString = 'CAIXA' then
+      begin
+        dm.qrMovCaixa.Insert;
+        dm.qrMovCaixaDESCRICAO.asString := 'ESTORNO CONTA COD: ' + IntToStr(qrContasPagarCODIGO.AsInteger) + ' - ' + qrContasPagarEMPRESA_NOME.AsString;
+        dm.qrMovCaixaVALOR.AsFloat := qrContasPagarVALOR.AsFloat;
+        dm.qrMovCaixaSAIDA.AsFloat := 0;
+        dm.qrMovCaixaENTRADA.AsFloat := qrContasPagarVALOR.AsFloat;
+        dm.qrMovCaixaTIPO.AsString := 'CAIXA';
+        dataAtual := Date;
+        dm.qrMovCaixaDATA.AsDateTime := dataAtual;
+        dm.qrMovCaixa.Post;
+
+        dm.qrCaixa.Edit;
+        dm.qrCaixaSALDO.AsFloat := dm.qrCaixaSALDO.AsFloat + FrmContasPagar.qrContasPagarVALOR.AsFloat;
+        dm.qrCaixa.Post;
+      end;
+
       qrContasPagar.FieldByName('SITUACAO').AsString := 'ABERTO';
       frmContasPagar.qrContasPagar.FieldByName('BANCO_PAGAMENTO').AsString := '';
       frmContasPagar.qrContasPagar.FieldByName('FORMA_PAGAMENTO').AsString := '';
-      qrContasPagar.Post
+      qrContasPagar.Post;
     end
     else
       application.MessageBox('Essa conta ja esta ABERTA!', 'ATENÇÃO', MB_ICONEXCLAMATION);

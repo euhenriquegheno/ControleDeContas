@@ -15,7 +15,7 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
-    DBGrid1: TDBGrid;
+    gridCaixa: TDBGrid;
     btnAbertura: TButton;
     btnExcluir: TButton;
     btnIncluir: TButton;
@@ -35,7 +35,7 @@ type
     Panel5: TPanel;
     Label3: TLabel;
     Panel6: TPanel;
-    Button1: TButton;
+    btnFiltrar: TButton;
     pcPrincipal: TPageControl;
     tsConsulta: TTabSheet;
     tsMovManual: TTabSheet;
@@ -71,6 +71,16 @@ type
     Panel12: TPanel;
     Label2: TLabel;
     DBEdit2: TDBEdit;
+    qrContasPagar: TFDQuery;
+    IntegerField1: TIntegerField;
+    DateField1: TDateField;
+    StringField1: TStringField;
+    FMTBCDField1: TFMTBCDField;
+    qrContasReceber: TFDQuery;
+    IntegerField2: TIntegerField;
+    DateField2: TDateField;
+    StringField2: TStringField;
+    FMTBCDField2: TFMTBCDField;
     procedure btnIncluirClick(Sender: TObject);
     procedure pcPrincipalChange(Sender: TObject);
     procedure qrMovCaixaAfterInsert(DataSet: TDataSet);
@@ -83,7 +93,10 @@ type
     procedure FormActivate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure btnReaberturaClick(Sender: TObject);
+    procedure btnFiltrarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure gridCaixaDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
   public
@@ -145,6 +158,12 @@ begin
   finally
     freeandnil(frmFechamentoCaixa);
   end;
+end;
+
+procedure TfrmCaixa.btnFiltrarClick(Sender: TObject);
+begin
+  FiltraCaixa;
+  CalcularSaldoCaixa;
 end;
 
 procedure TfrmCaixa.btnIncluirClick(Sender: TObject);
@@ -293,13 +312,24 @@ procedure TfrmCaixa.FormCreate(Sender: TObject);
 begin
   qrCaixa.active := true;
   qrMovCaixa.active := true;
+
+  CalcularSaldoCaixa;
+  DesabilitaBotao;
+  FiltraCaixa;
 end;
 
 procedure TfrmCaixa.FormShow(Sender: TObject);
 begin
-  CalcularSaldoCaixa;
-  DesabilitaBotao;
-  FiltraCaixa;
+  btnFiltrarClick(sender);
+end;
+
+procedure TfrmCaixa.gridCaixaDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  if qrMovCaixaSAIDA.AsFloat > 0 then
+    gridCaixa.Canvas.Font.Color := clRed;
+
+  gridCaixa.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
 procedure TfrmCaixa.pcPrincipalChange(Sender: TObject);

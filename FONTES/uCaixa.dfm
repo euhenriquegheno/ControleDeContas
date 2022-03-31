@@ -3,7 +3,7 @@ object frmCaixa: TfrmCaixa
   Top = 0
   Caption = 'Caixa'
   ClientHeight = 458
-  ClientWidth = 1350
+  ClientWidth = 865
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,11 +21,11 @@ object frmCaixa: TfrmCaixa
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1350
+    Width = 865
     Height = 57
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 1366
+    ExplicitWidth = 1350
     object Panel6: TPanel
       Left = 305
       Top = 1
@@ -33,29 +33,28 @@ object frmCaixa: TfrmCaixa
       Height = 55
       TabOrder = 0
     end
-    object Button1: TButton
+    object btnFiltrar: TButton
       AlignWithMargins = True
-      Left = 1274
+      Left = 789
       Top = 4
       Width = 72
       Height = 49
       Align = alRight
       Caption = 'Filtrar'
       TabOrder = 1
-      OnClick = Button1Click
-      ExplicitLeft = 1268
-      ExplicitTop = 32
-      ExplicitHeight = 21
+      OnClick = btnFiltrarClick
+      ExplicitLeft = 1274
     end
     object Panel9: TPanel
       AlignWithMargins = True
-      Left = 1101
+      Left = 616
       Top = 4
       Width = 167
       Height = 49
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 2
+      ExplicitLeft = 1101
       object dtpDe: TDateTimePicker
         Left = 0
         Top = 0
@@ -71,9 +70,6 @@ object frmCaixa: TfrmCaixa
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        ExplicitLeft = 1
-        ExplicitTop = 1
-        ExplicitWidth = 165
       end
       object dtpAte: TDateTimePicker
         Left = 0
@@ -90,19 +86,18 @@ object frmCaixa: TfrmCaixa
         Font.Style = []
         ParentFont = False
         TabOrder = 1
-        ExplicitLeft = 1
-        ExplicitWidth = 165
       end
     end
     object Panel10: TPanel
       AlignWithMargins = True
-      Left = 944
+      Left = 459
       Top = 4
       Width = 151
       Height = 49
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 3
+      ExplicitLeft = 944
       object Label4: TLabel
         AlignWithMargins = True
         Left = 3
@@ -118,8 +113,7 @@ object frmCaixa: TfrmCaixa
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 29
-        ExplicitTop = 11
+        ExplicitLeft = 26
         ExplicitWidth = 122
       end
       object label5: TLabel
@@ -137,8 +131,7 @@ object frmCaixa: TfrmCaixa
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 129
-        ExplicitTop = 35
+        ExplicitLeft = 126
         ExplicitWidth = 22
       end
     end
@@ -161,8 +154,6 @@ object frmCaixa: TfrmCaixa
         Alignment = taCenter
         Caption = 'DATA CAIXA:'
         FocusControl = DBEdit1
-        ExplicitLeft = 51
-        ExplicitTop = 11
         ExplicitWidth = 65
       end
       object DBEdit1: TDBEdit
@@ -184,9 +175,6 @@ object frmCaixa: TfrmCaixa
         ParentFont = False
         ReadOnly = True
         TabOrder = 0
-        ExplicitLeft = 7
-        ExplicitTop = 27
-        ExplicitWidth = 134
       end
     end
     object Panel12: TPanel
@@ -208,8 +196,6 @@ object frmCaixa: TfrmCaixa
         Alignment = taCenter
         Caption = 'SITUA'#199#195'O'
         FocusControl = DBEdit2
-        ExplicitLeft = -2
-        ExplicitTop = 12
         ExplicitWidth = 52
       end
       object DBEdit2: TDBEdit
@@ -224,36 +210,33 @@ object frmCaixa: TfrmCaixa
         Enabled = False
         ReadOnly = True
         TabOrder = 0
-        ExplicitLeft = -70
-        ExplicitTop = 28
-        ExplicitWidth = 120
       end
     end
   end
   object Panel2: TPanel
     Left = 0
     Top = 57
-    Width = 1350
+    Width = 865
     Height = 344
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 761
+    ExplicitWidth = 1350
     object pcPrincipal: TPageControl
       Left = 1
       Top = 1
-      Width = 1348
+      Width = 863
       Height = 342
       ActivePage = tsConsulta
       Align = alClient
       TabOrder = 0
       OnChange = pcPrincipalChange
-      ExplicitWidth = 759
+      ExplicitWidth = 1348
       object tsConsulta: TTabSheet
         Caption = 'Rela'#231#227'o de lan'#231'amentos'
-        object DBGrid1: TDBGrid
+        object gridCaixa: TDBGrid
           Left = 0
           Top = 0
-          Width = 1340
+          Width = 855
           Height = 314
           Align = alClient
           DataSource = dsMovCaixa
@@ -271,15 +254,11 @@ object frmCaixa: TfrmCaixa
           TitleFont.Height = -11
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
+          OnDrawColumnCell = gridCaixaDrawColumnCell
           Columns = <
             item
               Expanded = False
               FieldName = 'DESCRICAO'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Tahoma'
-              Font.Style = []
               Title.Caption = 'Descri'#231#227'o'
               Width = 400
               Visible = True
@@ -395,11 +374,11 @@ object frmCaixa: TfrmCaixa
         object Panel7: TPanel
           Left = 0
           Top = 273
-          Width = 1340
+          Width = 855
           Height = 41
           Align = alBottom
           TabOrder = 3
-          ExplicitWidth = 751
+          ExplicitWidth = 1340
           object Button2: TButton
             Left = 364
             Top = 8
@@ -436,14 +415,15 @@ object frmCaixa: TfrmCaixa
   object Panel3: TPanel
     Left = 0
     Top = 401
-    Width = 1350
+    Width = 865
     Height = 57
     Align = alBottom
+    ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 761
+    ExplicitWidth = 1350
     object btnAbertura: TButton
       AlignWithMargins = True
-      Left = 193
+      Left = 191
       Top = 4
       Width = 85
       Height = 49
@@ -451,6 +431,7 @@ object frmCaixa: TfrmCaixa
       Caption = 'Abertura'
       TabOrder = 0
       OnClick = btnAberturaClick
+      ExplicitLeft = 193
     end
     object btnExcluir: TButton
       AlignWithMargins = True
@@ -477,14 +458,14 @@ object frmCaixa: TfrmCaixa
     object Panel4: TPanel
       Left = 183
       Top = 1
-      Width = 7
+      Width = 5
       Height = 55
       Align = alLeft
       TabOrder = 3
     end
     object btnFechamento: TButton
       AlignWithMargins = True
-      Left = 375
+      Left = 373
       Top = 4
       Width = 85
       Height = 49
@@ -492,10 +473,11 @@ object frmCaixa: TfrmCaixa
       Caption = 'Fechamento'
       TabOrder = 4
       OnClick = btnFechamentoClick
+      ExplicitLeft = 375
     end
     object btnReabertura: TButton
       AlignWithMargins = True
-      Left = 284
+      Left = 282
       Top = 4
       Width = 85
       Height = 49
@@ -503,15 +485,16 @@ object frmCaixa: TfrmCaixa
       Caption = 'Reabertura'
       TabOrder = 5
       OnClick = btnReaberturaClick
+      ExplicitLeft = 284
     end
     object Panel5: TPanel
-      Left = 1101
+      Left = 616
       Top = 1
       Width = 248
       Height = 55
       Align = alRight
       TabOrder = 6
-      ExplicitLeft = 512
+      ExplicitLeft = 1101
       object Label3: TLabel
         Left = 135
         Top = 5
@@ -539,6 +522,7 @@ object frmCaixa: TfrmCaixa
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
+        ReadOnly = True
         TabOrder = 0
       end
       object Panel8: TPanel
@@ -553,6 +537,7 @@ object frmCaixa: TfrmCaixa
         Top = 25
         Width = 104
         Height = 21
+        ReadOnly = True
         TabOrder = 2
       end
     end
@@ -643,5 +628,61 @@ object frmCaixa: TfrmCaixa
     DataSet = qrMovCaixa
     Left = 552
     Top = 145
+  end
+  object qrContasPagar: TFDQuery
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'select * from contas_pagar')
+    Left = 384
+    Top = 289
+    object IntegerField1: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      Required = True
+    end
+    object DateField1: TDateField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+    end
+    object StringField1: TStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SITUACAO'
+      Size = 50
+    end
+    object FMTBCDField1: TFMTBCDField
+      FieldName = 'SALDO'
+      Origin = 'SALDO'
+      DisplayFormat = '###,###,##0.00'
+      Precision = 18
+      Size = 2
+    end
+  end
+  object qrContasReceber: TFDQuery
+    Connection = Dm.Conexao
+    SQL.Strings = (
+      'select * from contas_receber')
+    Left = 472
+    Top = 289
+    object IntegerField2: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      Required = True
+    end
+    object DateField2: TDateField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+    end
+    object StringField2: TStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SITUACAO'
+      Size = 50
+    end
+    object FMTBCDField2: TFMTBCDField
+      FieldName = 'SALDO'
+      Origin = 'SALDO'
+      DisplayFormat = '###,###,##0.00'
+      Precision = 18
+      Size = 2
+    end
   end
 end

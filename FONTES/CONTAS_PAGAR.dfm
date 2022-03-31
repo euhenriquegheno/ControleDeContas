@@ -37,8 +37,6 @@ object FrmContasPagar: TFrmContasPagar
     Align = alClient
     TabOrder = 0
     OnChange = pcPrincipalChange
-    ExplicitTop = 49
-    ExplicitHeight = 670
     object tsConsulta: TTabSheet
       Caption = 'CONTAS A PAGAR'
       object Panel2: TPanel
@@ -545,8 +543,6 @@ object FrmContasPagar: TFrmContasPagar
           ParentFont = False
           TabOrder = 0
           OnClick = btnExcluirClick
-          ExplicitLeft = 768
-          ExplicitHeight = 49
         end
         object btnSair: TButton
           AlignWithMargins = True
@@ -564,7 +560,6 @@ object FrmContasPagar: TFrmContasPagar
           ParentFont = False
           TabOrder = 1
           OnClick = btnSairClick
-          ExplicitHeight = 49
         end
         object btnIncluir: TButton
           AlignWithMargins = True
@@ -582,8 +577,6 @@ object FrmContasPagar: TFrmContasPagar
           ParentFont = False
           TabOrder = 2
           OnClick = btnIncluirClick
-          ExplicitLeft = 866
-          ExplicitHeight = 49
         end
         object btnAlterar: TButton
           AlignWithMargins = True
@@ -601,8 +594,6 @@ object FrmContasPagar: TFrmContasPagar
           ParentFont = False
           TabOrder = 3
           OnClick = btnAlterarClick
-          ExplicitLeft = 670
-          ExplicitHeight = 49
         end
         object btnGerarRel: TButton
           AlignWithMargins = True
@@ -620,7 +611,6 @@ object FrmContasPagar: TFrmContasPagar
           ParentFont = False
           TabOrder = 4
           OnClick = btnGerarRelClick
-          ExplicitHeight = 49
         end
       end
       object Panel4: TPanel
@@ -631,8 +621,6 @@ object FrmContasPagar: TFrmContasPagar
         Align = alClient
         Caption = 'Panel4'
         TabOrder = 1
-        ExplicitTop = 57
-        ExplicitHeight = 585
         object DBGrid1: TDBGrid
           Left = 289
           Top = 1
@@ -734,7 +722,6 @@ object FrmContasPagar: TFrmContasPagar
           Height = 36
           Align = alBottom
           TabOrder = 1
-          ExplicitTop = 548
           object Label3: TLabel
             AlignWithMargins = True
             Left = 773
@@ -802,7 +789,6 @@ object FrmContasPagar: TFrmContasPagar
           Height = 536
           Align = alLeft
           TabOrder = 2
-          ExplicitHeight = 547
           object Label6: TLabel
             Left = 75
             Top = 125
@@ -935,7 +921,6 @@ object FrmContasPagar: TFrmContasPagar
             Font.Name = 'Verdana'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitTop = 530
             ExplicitWidth = 85
           end
           object edtConsulta: TEdit

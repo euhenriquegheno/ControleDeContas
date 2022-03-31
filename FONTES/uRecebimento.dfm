@@ -17,4 +17,7 @@ inherited FrmRecebimento: TFrmRecebimento
   inherited Button1: TButton
     Caption = 'RECEBER | F2'
   end
+  inherited cbPagamento: TComboBox
+    ItemIndex = -1
+  end
 end

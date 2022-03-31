@@ -925,7 +925,6 @@ object FrmContasReceber: TFrmContasReceber
           ParentFont = False
           TabOrder = 0
           OnClick = btnSairClick
-          ExplicitHeight = 49
         end
         object btnExcluir: TButton
           AlignWithMargins = True
@@ -943,8 +942,6 @@ object FrmContasReceber: TFrmContasReceber
           ParentFont = False
           TabOrder = 1
           OnClick = btnExcluirClick
-          ExplicitLeft = 772
-          ExplicitHeight = 49
         end
         object btnIncluir: TButton
           AlignWithMargins = True
@@ -962,8 +959,6 @@ object FrmContasReceber: TFrmContasReceber
           ParentFont = False
           TabOrder = 2
           OnClick = btnIncluirClick
-          ExplicitLeft = 859
-          ExplicitHeight = 49
         end
         object btnAlterar: TButton
           AlignWithMargins = True
@@ -981,8 +976,6 @@ object FrmContasReceber: TFrmContasReceber
           ParentFont = False
           TabOrder = 3
           OnClick = btnAlterarClick
-          ExplicitLeft = 674
-          ExplicitHeight = 49
         end
         object btnGerarRel: TButton
           AlignWithMargins = True
@@ -1000,7 +993,6 @@ object FrmContasReceber: TFrmContasReceber
           ParentFont = False
           TabOrder = 4
           OnClick = btnGerarRelClick
-          ExplicitHeight = 49
         end
       end
       object NK: TDBGrid
@@ -1173,8 +1165,6 @@ object FrmContasReceber: TFrmContasReceber
         Height = 548
         Align = alLeft
         TabOrder = 3
-        ExplicitTop = 57
-        ExplicitHeight = 545
         object Label11: TLabel
           Left = 43
           Top = 18
@@ -1281,7 +1271,6 @@ object FrmContasReceber: TFrmContasReceber
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentFont = False
-          ExplicitTop = 528
           ExplicitWidth = 85
         end
         object btnBuscar: TButton

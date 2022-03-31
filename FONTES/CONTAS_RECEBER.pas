@@ -134,6 +134,7 @@ type
 
 var
   FrmContasReceber: TFrmContasReceber;
+  dataAtual : TDateTime;
 
 implementation
 
@@ -392,6 +393,23 @@ begin
   if Application.MessageBox('Deseja realmente reabrir essa conta?', 'ATENÇÃO', mb_iconquestion + mb_yesno) = idYes then
     if qrContasReceber.FieldByName('SITUACAO').AsString = 'RECEBIDA' then
     Begin
+      if qrContasReceberBANCO_PAGAMENTO.AsString = 'CAIXA' then
+      begin
+        dm.qrMovCaixa.Insert;
+        dm.qrMovCaixaDESCRICAO.asString := 'ESTORNO CONTA COD: ' + IntToStr(qrContasReceberCODIGO.AsInteger) + ' - ' + qrContasReceberCLIENTE_NOME.AsString;
+        dm.qrMovCaixaVALOR.AsFloat := qrContasReceberVALOR.AsFloat;
+        dm.qrMovCaixaSAIDA.AsFloat := qrContasReceberVALOR.AsFloat;
+        dm.qrMovCaixaENTRADA.AsFloat := 0;
+        dm.qrMovCaixaTIPO.AsString := 'CAIXA';
+        dataAtual := Date;
+        dm.qrMovCaixaDATA.AsDateTime := dataAtual;
+        dm.qrMovCaixa.Post;
+
+        dm.qrCaixa.Edit;
+        dm.qrCaixaSALDO.AsFloat := dm.qrCaixaSALDO.AsFloat - FrmContasReceber.qrContasReceberVALOR.AsFloat;
+        dm.qrCaixa.Post;
+      end;
+
       qrContasReceber.FieldByName('SITUACAO').AsString := 'ABERTO';
       FrmContasReceber.qrContasReceber.FieldByName('BANCO_PAGAMENTO').AsString := ' ';
       FrmContasReceber.qrContasReceber.FieldByName('FORMA_PAGAMENTO').AsString := ' ';
