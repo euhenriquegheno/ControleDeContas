@@ -12,13 +12,11 @@ object FrmPrincipal: TFrmPrincipal
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = MainMenu1
-  OldCreateOrder = False
   Position = poScreenCenter
   WindowState = wsMaximized
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
@@ -37,6 +35,7 @@ object FrmPrincipal: TFrmPrincipal
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1358
     object Image1: TImage
       Left = 1
       Top = 1
@@ -409,6 +408,7 @@ object FrmPrincipal: TFrmPrincipal
         85C3958BFAFAF8C0966047647808B6BCD3033EB283D4EEB397D07FEE5AECFDFD
         327C7D199C121111111111111111D1BF536AAA03150BE6C1E82E0D51A5505EFC
         0F17D24AC949B6F8290000000049454E44AE426082}
+      Stretch = True
       ExplicitHeight = 42
     end
   end
@@ -420,6 +420,8 @@ object FrmPrincipal: TFrmPrincipal
     ActivePage = tsContas
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 1358
+    ExplicitHeight = 680
     object tsContas: TTabSheet
       Caption = 'CONTAS'
       object Panel3: TPanel
@@ -431,6 +433,7 @@ object FrmPrincipal: TFrmPrincipal
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 1350
         object Button5: TButton
           AlignWithMargins = True
           Left = 1267
@@ -447,6 +450,7 @@ object FrmPrincipal: TFrmPrincipal
           ParentFont = False
           TabOrder = 0
           OnClick = Button5Click
+          ExplicitLeft = 1263
         end
         object Panel17: TPanel
           Left = 1
@@ -802,6 +806,7 @@ object FrmPrincipal: TFrmPrincipal
         BiDiMode = bdLeftToRight
         ParentBiDiMode = False
         TabOrder = 1
+        ExplicitHeight = 589
         object Image11: TImage
           Left = 4
           Top = 5
@@ -2982,6 +2987,8 @@ object FrmPrincipal: TFrmPrincipal
         AutoSize = True
         BevelOuter = bvNone
         TabOrder = 2
+        ExplicitLeft = 1089
+        ExplicitHeight = 589
         object Label8: TLabel
           Left = 96
           Top = 3
@@ -2995,15 +3002,16 @@ object FrmPrincipal: TFrmPrincipal
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object Panel14: TPanel
+        object PnAvisoContasPagar: TPanel
           AlignWithMargins = True
           Left = 12
           Top = 27
           Width = 237
           Height = 86
-          Color = clSkyBlue
+          Color = clYellow
           ParentBackground = False
           TabOrder = 0
+          Visible = False
           object lblContaPagar: TLabel
             Left = 17
             Top = 26
@@ -3062,19 +3070,18 @@ object FrmPrincipal: TFrmPrincipal
           ParentFont = False
           TabOrder = 1
           OnClick = btnAtualizaDashBoardClick
-          ExplicitLeft = 4
           ExplicitTop = 558
-          ExplicitWidth = 250
         end
-        object Panel15: TPanel
+        object PnAvisoContasReceber: TPanel
           AlignWithMargins = True
           Left = 12
           Top = 119
           Width = 237
           Height = 86
-          Color = clSkyBlue
+          Color = clYellow
           ParentBackground = False
           TabOrder = 2
+          Visible = False
           object lblContaReceber: TLabel
             Left = 17
             Top = 26
@@ -3117,15 +3124,16 @@ object FrmPrincipal: TFrmPrincipal
             OnClick = Button7Click
           end
         end
-        object Panel16: TPanel
+        object PnAvisoAgendamentos: TPanel
           AlignWithMargins = True
           Left = 12
           Top = 211
           Width = 237
           Height = 86
-          Color = clSkyBlue
+          Color = clYellow
           ParentBackground = False
           TabOrder = 3
+          Visible = False
           object lblAgendamento: TLabel
             Left = 9
             Top = 28
@@ -3239,6 +3247,8 @@ object FrmPrincipal: TFrmPrincipal
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
+    ExplicitTop = 743
+    ExplicitWidth = 1358
     object Label10: TLabel
       AlignWithMargins = True
       Left = 4
@@ -3273,6 +3283,7 @@ object FrmPrincipal: TFrmPrincipal
       ParentFont = False
       TabOrder = 0
       OnClick = Button6Click
+      ExplicitLeft = 1271
     end
     object DatePicker1: TDatePicker
       AlignWithMargins = True

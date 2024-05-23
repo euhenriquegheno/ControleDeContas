@@ -2,8 +2,8 @@ object frmRelContasPagar: TfrmRelContasPagar
   Left = 0
   Top = 0
   Caption = 'RELATORIO CONTAS A PAGAR'
-  ClientHeight = 140
-  ClientWidth = 406
+  ClientHeight = 138
+  ClientWidth = 398
   Color = clBtnFace
   CustomTitleBar.CaptionAlignment = taCenter
   Font.Charset = DEFAULT_CHARSET
@@ -11,19 +11,18 @@ object frmRelContasPagar: TfrmRelContasPagar
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 400
-    Height = 87
+    Width = 392
+    Height = 85
     Align = alClient
     TabOrder = 0
     ExplicitWidth = 372
+    ExplicitHeight = 87
     object Label1: TLabel
       Left = 22
       Top = 37
@@ -41,11 +40,12 @@ object frmRelContasPagar: TfrmRelContasPagar
   object Panel2: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 96
-    Width = 400
+    Top = 94
+    Width = 392
     Height = 41
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 96
     ExplicitWidth = 372
     object btnGerarRel: TButton
       AlignWithMargins = True

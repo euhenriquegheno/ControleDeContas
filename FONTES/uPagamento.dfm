@@ -3,8 +3,8 @@ object FrmPagamento: TFrmPagamento
   Top = 0
   BorderIcons = []
   Caption = 'PAGAMENTO'
-  ClientHeight = 225
-  ClientWidth = 439
+  ClientHeight = 224
+  ClientWidth = 435
   Color = clWhite
   CustomTitleBar.CaptionAlignment = taCenter
   Font.Charset = DEFAULT_CHARSET
@@ -12,10 +12,8 @@ object FrmPagamento: TFrmPagamento
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   PopupMenu = PopupMenu1
   Position = poScreenCenter
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 190

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uPagamento, Vcl.Menus, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, CONTAS_RECEBER, UDM;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, form.contas.receber, UDM;
 
 type
   TFrmRecebimento = class(TFrmPagamento)

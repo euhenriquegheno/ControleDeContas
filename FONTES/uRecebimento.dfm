@@ -1,6 +1,7 @@
 inherited FrmRecebimento: TFrmRecebimento
   Caption = 'RECEBIMENTO'
-  PixelsPerInch = 96
+  ExplicitWidth = 447
+  ExplicitHeight = 262
   TextHeight = 13
   inherited Label3: TLabel
     Width = 49

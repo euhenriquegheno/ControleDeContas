@@ -21,7 +21,7 @@ type
     dsCategorias: TDataSource;
     DBGrid1: TDBGrid;
     qrConsCategoriasCODIGO: TIntegerField;
-    qrConsCategoriasCATEGORIA: TStringField;
+    qrConsCategoriasNOME: TStringField;
     procedure FormActivate(Sender: TObject);
     procedure btConsultarClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
@@ -51,7 +51,7 @@ end;
 procedure TFrmConsCategorias.DBGrid1DblClick(Sender: TObject);
 begin
   cod_categoria := qrConsCategoriasCODIGO.AsInteger;
-  categoria_nome := qrConsCategoriasCATEGORIA.AsString;
+  categoria_nome := qrConsCategoriasNOME.AsString;
 
   FrmConsCategorias.Close;
 end;
@@ -73,12 +73,12 @@ begin
   qrConsCategorias.SQL.Add('SELECT * FROM CATEGORIAS');
 
   if (edtConsulta.Text <> ' ') then
-    qrConsCategorias.SQL.Add('WHERE (UPPER(CATEGORIA) LIKE ''%' + (AnsiUpperCase(edtConsulta.Text)) + '%'')');
+    qrConsCategorias.SQL.Add('WHERE (UPPER(NOME) LIKE ''%' + (AnsiUpperCase(edtConsulta.Text)) + '%'')');
 
   if (rgOrdenacao.ItemIndex = 0) then
     qrConsCategorias.SQL.Add('ORDER BY CODIGO')
   else if (rgOrdenacao.ItemIndex = 1) then
-    qrConsCategorias.SQL.Add('ORDER BY CATEGORIA');
+    qrConsCategorias.SQL.Add('ORDER BY NOME');
 
   qrConsCategorias.Open;
 end;

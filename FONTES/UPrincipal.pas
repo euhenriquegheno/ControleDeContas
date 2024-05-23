@@ -8,8 +8,8 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, CONTAS_PAGAR, EFuncoes,
-  Vcl.Imaging.pngimage, Vcl.Menus, CONTAS_RECEBER, Vcl.WinXPickers;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, form.contas.receber, EFuncoes,
+  Vcl.Imaging.pngimage, Vcl.Menus, form.contas.pagar, Vcl.WinXPickers;
 type
   TFrmPrincipal = class(TForm)
     Panel1: TPanel;
@@ -37,7 +37,7 @@ type
     FUNCIONRIOS1: TMenuItem;
     CATEGORIAS1: TMenuItem;
     Panel13: TPanel;
-    Panel14: TPanel;
+    PnAvisoContasPagar: TPanel;
     Label8: TLabel;
     lblContaPagar: TLabel;
     Button1: TButton;
@@ -46,14 +46,14 @@ type
     DatePicker1: TDatePicker;
     btnAtualizaDashBoard: TButton;
     Label9: TLabel;
-    Panel15: TPanel;
+    PnAvisoContasReceber: TPanel;
     lblContaReceber: TLabel;
     Label11: TLabel;
     Button7: TButton;
     query2: TFDQuery;
     query2QTDECONTASRECEBER: TIntegerField;
     query3: TFDQuery;
-    Panel16: TPanel;
+    PnAvisoAgendamentos: TPanel;
     lblAgendamento: TLabel;
     Label12: TLabel;
     Button8: TButton;
@@ -110,34 +110,46 @@ implementation
 uses SOBRE, uCadEmpresa, uCadCliente, UAgenda, uCadFuncionarios, uCadCategorias,
   uCaixa;
 
-
-
 procedure TFrmPrincipal.AtualizarDashBoard;
 var qr : TFDQuery;
 begin
   qr := NewQuery();
-  qr.sql.Clear;
-  qr.SQL.Add('select count(*) as qtdeContasPagar from contas_pagar');
-  qr.sql.Add('where (data_vencimento = ''' + formatadataSql(DatePicker1.Date) + ''') and situacao = ''ABERTO''');
-  dm.ExecuteQuery(qr, ctOpen);
+  try
+    qr.Open('select count(*) as qtdeContasPagar from contas_pagar ' +
+      'where (data_vencimento = ''' + formatadataSql(DatePicker1.Date) + ''') and situacao = ''ABERTO''');
 
-  lblContaPagar.Caption := 'Vencem hoje ' + qr.Fields[0].AsString +
-    ' contas a pagar!';
+    if (qr.Fields[0].AsInteger > 0) then
+    begin
+      PnAvisoContasPagar.Visible := True;
 
-  qr.sql.Clear;
-  qr.SQL.Add('select count(*) as qtdeContasReceber from contas_receber');
-  qr.sql.Add('where (data_vencimento = ''' + formatadataSql(DatePicker1.Date) + ''') and situacao = ''ABERTO''');
-  dm.ExecuteQuery(qr, ctOpen);
+      lblContaPagar.Caption := 'Vencem hoje ' + qr.Fields[0].AsString +
+        ' contas a pagar!';
+    end;
 
-  lblContaReceber.Caption := 'Vencem hoje ' + qr.Fields[0].AsString +
-    ' contas a receber!';
+    qr.Open('select count(*) as qtdeContasReceber from contas_receber ' +
+      'where (data_vencimento = ''' + formatadataSql(DatePicker1.Date) + ''') and situacao = ''ABERTO''');
 
-  qr.sql.Clear;
-  qr.SQL.Add('select count(*) as qtdeAgendamento from agendamentos');
-  qr.sql.Add('where (data = ''' + formatadataSql(DatePicker1.Date) + ''')');
-  dm.ExecuteQuery(qr, ctOpen);
+    if (qr.Fields[0].AsInteger > 0) then
+    begin
+      PnAvisoContasReceber.Visible := True;
 
-  lblAgendamento.Caption := 'Voce tem ' + qr.Fields[0].AsString + ' agendamento(s) para hoje!';
+      lblContaReceber.Caption := 'Vencem hoje ' + qr.Fields[0].AsString +
+        ' contas a receber!';
+    end;
+
+    qr.Open('select count(*) as qtdeAgendamento from agendamentos ' +
+      'where (data = ''' + formatadataSql(DatePicker1.Date) + ''')');
+
+    if (qr.Fields[0].AsInteger > 0) then
+    begin
+      PnAvisoAgendamentos.Visible := True;
+
+      lblAgendamento.Caption := 'Voce tem ' + qr.Fields[0].AsString + ' agendamento(s) para hoje!';
+    end;
+
+  finally
+    FreeAndNil(qr);
+  end;
 end;
 
 procedure TFrmPrincipal.Button1Click(Sender: TObject);
@@ -199,7 +211,7 @@ begin
   try
     frmContasReceber.DateTimePicker1.Date := date;
     frmContasReceber.DateTimePicker2.Date := date;
-    frmContasReceber.ComboBox1.ItemIndex := 1;
+    frmContasReceber.CbSituacao.ItemIndex := 1;
     frmContasReceber.ListarContas;
     frmContasReceber.ShowModal;
   finally
@@ -223,7 +235,7 @@ end;
 
 procedure TFrmPrincipal.btnAtualizaDashBoardClick(Sender: TObject);
 begin
-  AtualizarDashBoard
+  AtualizarDashBoard;
 end;
 
 procedure TFrmPrincipal.FormActivate(Sender: TObject);

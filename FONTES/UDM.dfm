@@ -1,5 +1,4 @@
 object Dm: TDm
-  OldCreateOrder = False
   OnCreate = DataModuleCreate
   Height = 197
   Width = 385
@@ -7,7 +6,7 @@ object Dm: TDm
     Params.Strings = (
       'User_Name=SYSDBA'
       'Password=masterkey'
-      'Database=C:\sistema-contas\BANCO\BANCO.FDB'
+      'Database=C:\Github\sistema-contas\BANCO\BANCO.FDB'
       'DriverID=FB')
     Connected = True
     LoginPrompt = False

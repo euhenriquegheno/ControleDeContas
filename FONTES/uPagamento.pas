@@ -35,7 +35,7 @@ implementation
 
 {$R *.dfm}
 
-uses CONTAS_PAGAR;
+uses form.contas.pagar;
 
 procedure TFrmPagamento.Button1Click(Sender: TObject);
 begin

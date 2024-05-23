@@ -29,18 +29,18 @@ implementation
 
 {$R *.dfm}
 
-uses CONTAS_PAGAR, UPrincipal;
+uses form.contas.pagar, UPrincipal;
 
 procedure TfrmRelContasPagar.btnGerarRelClick(Sender: TObject);
 begin
-  frmContasPagar.fxContasPagar.LoadFromFile(frmPrincipal.getRelatorioCaminho('relContasPagarDataVencimento.fr3'));
-  frmContasPagar.fxContasPagar.ShowReport();
+//  frmContasPagar.fxContasPagar.LoadFromFile(frmPrincipal.getRelatorioCaminho('relContasPagarDataVencimento.fr3'));
+//  frmContasPagar.fxContasPagar.ShowReport();
 end;
 
 procedure TfrmRelContasPagar.Button1Click(Sender: TObject);
 begin
-  frmContasPagar.fxContasPagar.LoadFromFile(frmPrincipal.getRelatorioCaminho('relContasPagarDataVencimentoDetalhado.fr3'));
-  frmContasPagar.fxContasPagar.ShowReport();
+//  frmContasPagar.fxContasPagar.LoadFromFile(frmPrincipal.getRelatorioCaminho('relContasPagarDataVencimentoDetalhado.fr3'));
+//  frmContasPagar.fxContasPagar.ShowReport();
 end;
 
 end.
