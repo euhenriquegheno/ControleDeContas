@@ -91,6 +91,9 @@ type
     qrContasReceberCOD_CATEGORIA: TIntegerField;
     qrContasReceberCLIENTE_NOME: TStringField;
     qrContasReceberCATEGORIA_NOME: TStringField;
+    qrContasReceberOBSERVACAO: TStringField;
+    DBMemo1: TDBMemo;
+    Label9: TLabel;
     procedure NKDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DBEdit4Change(Sender: TObject);
@@ -213,6 +216,8 @@ begin
   pcPrincipal.ActivePage := tsCadastro;
   qrContasReceberSITUACAO.AsString := 'ABERTO';
   EdtCliente.SetFocus;
+  EdtCliente.Text := '';
+  EdtCategoria.Text := '';
 end;
 
 procedure TFrmContasReceber.BtnLimparClienteClick(Sender: TObject);
@@ -231,6 +236,8 @@ procedure TFrmContasReceber.BtnAlterarClick(Sender: TObject);
 begin
   qrContasReceber.Edit;
   pcPrincipal.ActivePage := tsCadastro;
+  EdtCliente.Text := qrContasReceberCLIENTE_NOME.AsString;
+  EdtCategoria.Text := qrContasReceberCATEGORIA_NOME.AsString;
 end;
 
 procedure TFrmContasReceber.Button9Click(Sender: TObject);
@@ -282,7 +289,7 @@ begin
   begin
     Qr := NewQuery();
     try
-      Qr.Open('select codigo, nome from categoria where nome = ' + QuotedStr(EdtCategoria.Text));
+      Qr.Open('select codigo, nome from categorias where nome = ' + QuotedStr(EdtCategoria.Text));
 
       if (Qr.RecordCount > 1) then
       begin
@@ -292,8 +299,16 @@ begin
           FrmConsCategorias.ListarCategorias;
           FrmConsCategorias.ShowModal;
         finally
-          qrContasReceberCOD_CATEGORIA.AsInteger := FrmConsCategorias.cod_categoria;
-          EdtCategoria.Text := FrmConsCategorias.categoria_nome;
+          if (FrmConsCategorias.cod_categoria <> 0) then
+          begin
+            qrContasReceberCOD_CATEGORIA.AsInteger := FrmConsCategorias.cod_categoria;
+            EdtCategoria.Text := FrmConsCategorias.categoria_nome;
+          end
+          else
+          begin
+            qrContasReceberCOD_CATEGORIA.AsString := '';
+            EdtCategoria.Text := '';
+          end;
           FreeAndNil(FrmConsCategorias);
         end;
       end
@@ -333,8 +348,16 @@ begin
           FrmConsCliente.ListarClientes;
           FrmConsCliente.ShowModal;
         finally
-          qrContasReceberCOD_CLIENTE.AsInteger := FrmConsCliente.Cod_Cliente;
-          EdtCliente.Text := FrmConsCliente.nome_cliente;
+          if (FrmConsCliente.Cod_Cliente <> 0) then
+          begin
+            qrContasReceberCOD_CLIENTE.AsInteger := FrmConsCliente.Cod_Cliente;
+            EdtCliente.Text := FrmConsCliente.nome_cliente;
+          end
+          else
+          begin
+            qrContasReceberCOD_CLIENTE.AsString := '';
+            EdtCliente.Text := '';
+          end;
           FreeAndNil(FrmConsCliente);
         end;
       end
@@ -383,11 +406,17 @@ end;
 procedure TFrmContasReceber.BtnGravarClick(Sender: TObject);
 begin
   Try
+    if (qrContasReceberDATA_VENCIMENTO.AsString = '') then
+    begin
+      ShowMessage('Obrigatório preencher a data de vencimento!');
+      Exit;
+    end;
+
     qrContasReceber.Post;
     pcPrincipal.ActivePage := tsContasReceber;
-    AtualizarCalculo;
+    ListarContas;
   Except
-    on e: Exception do
+    on E: Exception do
     begin
       if (qrContasReceberCODIGO.AsString = '') then
         ShowMessage('Conta a receber sem código, tente cancelar e inserir novamente!')

@@ -11,22 +11,22 @@ object FrmEmpresa: TFrmEmpresa
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   PopupMenu = PopupMenu1
   Position = poScreenCenter
   WindowState = wsMaximized
   OnActivate = FormActivate
-  PixelsPerInch = 96
   TextHeight = 13
   object pcPrincipal: TPageControl
     Left = 0
     Top = 63
     Width = 1234
     Height = 560
-    ActivePage = tsConsulta
+    ActivePage = tsCadEmpresa
     Align = alClient
     TabOrder = 0
     OnChange = pcPrincipalChange
+    ExplicitWidth = 1230
+    ExplicitHeight = 559
     object tsConsulta: TTabSheet
       Caption = 'CONSULTA'
       object DBGrid1: TDBGrid
@@ -182,6 +182,7 @@ object FrmEmpresa: TFrmEmpresa
         Height = 57
         Align = alTop
         TabOrder = 1
+        ExplicitWidth = 1222
         object Label10: TLabel
           Left = 23
           Top = 21
@@ -211,6 +212,7 @@ object FrmEmpresa: TFrmEmpresa
           ParentFont = False
           TabOrder = 0
           OnClick = Button1Click
+          ExplicitLeft = 1108
         end
         object Button2: TButton
           AlignWithMargins = True
@@ -228,6 +230,7 @@ object FrmEmpresa: TFrmEmpresa
           ParentFont = False
           TabOrder = 1
           OnClick = Button2Click
+          ExplicitLeft = 996
         end
         object Button3: TButton
           AlignWithMargins = True
@@ -245,6 +248,7 @@ object FrmEmpresa: TFrmEmpresa
           ParentFont = False
           TabOrder = 2
           OnClick = Button3Click
+          ExplicitLeft = 884
         end
         object edtConsulta: TEdit
           Left = 98
@@ -512,9 +516,9 @@ object FrmEmpresa: TFrmEmpresa
       end
       object Panel3: TPanel
         Left = 0
-        Top = 470
+        Top = 480
         Width = 1226
-        Height = 62
+        Height = 52
         Align = alBottom
         Color = clSkyBlue
         ParentBackground = False
@@ -524,7 +528,7 @@ object FrmEmpresa: TFrmEmpresa
           Left = 1056
           Top = 4
           Width = 166
-          Height = 54
+          Height = 44
           Cursor = crHandPoint
           Align = alRight
           Color = clWhite
@@ -532,6 +536,7 @@ object FrmEmpresa: TFrmEmpresa
           PopupMenu = PopupMenu1
           TabOrder = 0
           OnClick = Panel4Click
+          ExplicitHeight = 54
           object Label8: TLabel
             AlignWithMargins = True
             Left = 53
@@ -551,9 +556,9 @@ object FrmEmpresa: TFrmEmpresa
           end
           object Image1: TImage
             Left = 8
-            Top = 1
-            Width = 48
-            Height = 42
+            Top = 2
+            Width = 40
+            Height = 38
             Cursor = crHandPoint
             Picture.Data = {
               0954506E67496D61676589504E470D0A1A0A0000000D49484452000000300000
@@ -567,6 +572,7 @@ object FrmEmpresa: TFrmEmpresa
               88F29CC36E228479DE69DA9B4B98FFBB7F53051450C0396F76214B315D293414
               0000000049454E44AE426082}
             PopupMenu = PopupMenu1
+            Stretch = True
             OnClick = Panel4Click
           end
         end
@@ -575,7 +581,7 @@ object FrmEmpresa: TFrmEmpresa
           Left = 856
           Top = 4
           Width = 194
-          Height = 54
+          Height = 44
           Cursor = crHandPoint
           Align = alRight
           Color = clWhite
@@ -583,6 +589,7 @@ object FrmEmpresa: TFrmEmpresa
           PopupMenu = PopupMenu1
           TabOrder = 1
           OnClick = Panel5Click
+          ExplicitHeight = 54
           object Label9: TLabel
             Left = 48
             Top = 18
@@ -620,6 +627,7 @@ object FrmEmpresa: TFrmEmpresa
               EF43BCABB7CD3350408BF8549FC0F15D4415323E06F0EF9201DEC900EF648077
               32C03B670FF8014A798E31E4A32A930000000049454E44AE426082}
             PopupMenu = PopupMenu1
+            Stretch = True
             OnClick = Panel5Click
           end
         end
@@ -659,6 +667,7 @@ object FrmEmpresa: TFrmEmpresa
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
+    ExplicitWidth = 1230
     object Image3: TImage
       Left = 1
       Top = 1

@@ -11,22 +11,22 @@ object FrmCategorias: TFrmCategorias
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   PopupMenu = PopupMenu1
   Position = poScreenCenter
   WindowState = wsMaximized
   OnActivate = FormActivate
-  PixelsPerInch = 96
   TextHeight = 13
   object pcPrincipal: TPageControl
     Left = 0
     Top = 63
     Width = 1025
     Height = 499
-    ActivePage = tsConsulta
+    ActivePage = tsCadastro
     Align = alClient
     TabOrder = 0
     OnChange = pcPrincipalChange
+    ExplicitWidth = 1021
+    ExplicitHeight = 498
     object tsConsulta: TTabSheet
       Caption = 'CONSULTA'
       object Panel1: TPanel
@@ -36,6 +36,7 @@ object FrmCategorias: TFrmCategorias
         Height = 57
         Align = alTop
         TabOrder = 0
+        ExplicitWidth = 1013
         object Label1: TLabel
           Left = 24
           Top = 19
@@ -113,6 +114,7 @@ object FrmCategorias: TFrmCategorias
           ParentFont = False
           TabOrder = 3
           OnClick = Button3Click
+          ExplicitLeft = 692
         end
         object Button2: TButton
           AlignWithMargins = True
@@ -130,6 +132,7 @@ object FrmCategorias: TFrmCategorias
           ParentFont = False
           TabOrder = 4
           OnClick = Button2Click
+          ExplicitLeft = 796
         end
         object Button1: TButton
           AlignWithMargins = True
@@ -147,6 +150,7 @@ object FrmCategorias: TFrmCategorias
           ParentFont = False
           TabOrder = 5
           OnClick = Button1Click
+          ExplicitLeft = 900
         end
       end
       object DBGrid1: TDBGrid
@@ -236,7 +240,7 @@ object FrmCategorias: TFrmCategorias
         Top = 120
         Width = 500
         Height = 21
-        DataField = 'CATEGORIA'
+        DataField = 'NOME'
         DataSource = dsCategorias
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -285,7 +289,7 @@ object FrmCategorias: TFrmCategorias
           end
           object Image1: TImage
             Left = 5
-            Top = -2
+            Top = 0
             Width = 47
             Height = 42
             Cursor = crHandPoint
@@ -300,6 +304,7 @@ object FrmCategorias: TFrmCategorias
               09619EDE07360169DEB7D17E0948F3FE9D3C13DF89CE878E0A9B10E4C367D14C
               88F29CC36E228479DE69DA9B4B98FFBB7F53051450C0396F76214B315D293414
               0000000049454E44AE426082}
+            Stretch = True
             OnClick = Panel4Click
           end
         end
@@ -332,7 +337,7 @@ object FrmCategorias: TFrmCategorias
           end
           object Image2: TImage
             Left = 5
-            Top = -1
+            Top = 3
             Width = 40
             Height = 38
             Cursor = crHandPoint
@@ -350,6 +355,7 @@ object FrmCategorias: TFrmCategorias
               860805905725820801589CC4C98810C097BA04C78F21F6EA1D0DB8500F6A058E
               EF43BCABB7CD3350408BF8549FC0F15D4415323E06F0EF9201DEC900EF648077
               32C03B670FF8014A798E31E4A32A930000000049454E44AE426082}
+            Stretch = True
             OnClick = Panel5Click
           end
         end
@@ -372,6 +378,7 @@ object FrmCategorias: TFrmCategorias
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
+    ExplicitWidth = 1021
     object Image3: TImage
       Left = 1
       Top = 1
@@ -674,9 +681,9 @@ object FrmCategorias: TFrmCategorias
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object qrCategoriasCATEGORIA: TStringField
-      FieldName = 'CATEGORIA'
-      Origin = 'CATEGORIA'
+    object qrCategoriasNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
       Required = True
       Size = 100
     end

@@ -6,7 +6,7 @@ object Dm: TDm
     Params.Strings = (
       'User_Name=SYSDBA'
       'Password=masterkey'
-      'Database=C:\Github\sistema-contas\BANCO\BANCO.FDB'
+      'Database=C:\Github\ControleDeContas\BANCO\BANCO.FDB'
       'DriverID=FB')
     Connected = True
     LoginPrompt = False

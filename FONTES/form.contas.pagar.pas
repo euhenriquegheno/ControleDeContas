@@ -114,6 +114,9 @@ type
     qrContasPagarEMPRESA_NOME: TStringField;
     qrContasPagarFUNCIONARIO_NOME: TStringField;
     qrContasPagarCATEGORIA_NOME: TStringField;
+    qrContasPagarOBSERVACAO: TStringField;
+    DBMemo1: TDBMemo;
+    Label9: TLabel;
     procedure btnExcluirClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnIncluirClick(Sender: TObject);
@@ -222,20 +225,25 @@ begin
   pcPrincipal.ActivePage := tsCadastro;
   DBEdit12.SetFocus;
   qrContasPagarSITUACAO.AsString := 'ABERTO';
+  EdtEmpresa.Text := '';
+  EdtCategoria.Text := '';
+  EdtFuncionario.Text := '';
 end;
 
 procedure TFrmContasPagar.Button6Click(Sender: TObject);
-var Arq : String;
 begin
   if OpenDialog1.Execute = True then
-    Arq := OpenDialog1.FileName;
-    qrContasPagar.FieldByName('CAMINHO_ARQUIVOS').asString := Arq;
+    qrContasPagar.FieldByName('CAMINHO_ARQUIVOS').asString := OpenDialog1.FileName;
+
 end;
 
 procedure TFrmContasPagar.btnAlterarClick(Sender: TObject);
 begin
   qrContasPagar.Edit;
   pcPrincipal.ActivePage := tsCadastro;
+  EdtEmpresa.Text := qrContasPagarEMPRESA_NOME.AsString;
+  EdtFuncionario.Text := qrContasPagarFUNCIONARIO_NOME.AsString;
+  EdtCategoria.Text := qrContasPagarCATEGORIA_NOME.AsString;
 end;
 
 procedure TFrmContasPagar.Button9Click(Sender: TObject);
@@ -368,7 +376,7 @@ begin
   begin
     Qr := NewQuery();
     try
-      Qr.Open('select codigo, nome from categoria where nome = ' + QuotedStr(EdtCategoria.Text));
+      Qr.Open('select codigo, nome from categorias where nome = ' + QuotedStr(EdtCategoria.Text));
 
       if (Qr.RecordCount > 1) then
       begin
@@ -378,8 +386,16 @@ begin
           FrmConsCategorias.ListarCategorias;
           FrmConsCategorias.ShowModal;
         finally
-          qrContasPagarCOD_CATEGORIA.AsInteger := FrmConsCategorias.cod_categoria;
-          EdtCategoria.Text := FrmConsCategorias.categoria_nome;
+          if (FrmConsCategorias.cod_categoria <> 0) then
+          begin
+            qrContasPagarCOD_CATEGORIA.AsInteger := FrmConsCategorias.cod_categoria;
+            EdtCategoria.Text := FrmConsCategorias.categoria_nome;
+          end
+          else
+          begin
+            qrContasPagarCOD_CATEGORIA.AsString := '';
+            EdtCategoria.Text := '';
+          end;
           FreeAndNil(FrmConsCategorias);
         end;
       end
@@ -406,7 +422,7 @@ end;
 procedure TFrmContasPagar.edtConsultaKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key=#13 then
-  Button9Click(Nil);
+    Button9Click(Nil);
 end;
 
 procedure TFrmContasPagar.EdtEmpresaKeyPress(Sender: TObject; var Key: Char);
@@ -426,8 +442,16 @@ begin
           FrmConsEmpresa.ListarEmpresas;
           FrmConsEmpresa.ShowModal;
         finally
-          qrContasPagarCOD_EMPRESA.AsInteger := FrmConsEmpresa.COD_EMPRESA;
-          EdtEmpresa.Text := FrmConsEmpresa.NOME_EMPRESA;
+          if (FrmConsEmpresa.COD_EMPRESA <> 0) then
+          begin
+            qrContasPagarCOD_EMPRESA.AsInteger := FrmConsEmpresa.COD_EMPRESA;
+            EdtEmpresa.Text := FrmConsEmpresa.NOME_EMPRESA;
+          end
+          else
+          begin
+            qrContasPagarCOD_EMPRESA.AsString := '';
+            EdtEmpresa.Text := '';
+          end;
           FreeAndNil(FrmConsEmpresa);
         end;
       end
@@ -467,8 +491,16 @@ begin
           FrmConsFuncionarios.ListarFuncionarios;
           FrmConsFuncionarios.ShowModal;
         finally
-          qrContasPagarCOD_FUNCIONARIO.AsInteger := FrmConsFuncionarios.COD_FUNCIONARIO;
-          EdtFuncionario.Text := FrmConsFuncionarios.NOME_FUNCIONARIO;
+          if (FrmConsFuncionarios.COD_FUNCIONARIO <> 0) then
+          begin
+            qrContasPagarCOD_FUNCIONARIO.AsInteger := FrmConsFuncionarios.COD_FUNCIONARIO;
+            EdtFuncionario.Text := FrmConsFuncionarios.NOME_FUNCIONARIO;
+          end
+          else
+          begin
+            qrContasPagarCOD_FUNCIONARIO.AsString := '';
+            EdtFuncionario.Text := '';
+          end;
           FreeAndNil(FrmConsFuncionarios);
         end;
       end
@@ -511,14 +543,23 @@ end;
 procedure TFrmContasPagar.Image10Click(Sender: TObject);
 begin
   Try
+    if (qrContasPagarDATA_VENCIMENTO.AsString = '') then
+    begin
+      ShowMessage('Obrigatório preencher a data de vencimento!');
+      Exit;
+    end;
+
     qrContasPagar.Post;
     pcPrincipal.ActivePage := tsConsulta;
     ListarContas;
   Except
-    if DBEdit5.Text = '' then
-      ShowMessage('Insira alguma registro antes de gravar!')
-    else
-      ShowMessage('Insira alguma registro antes de gravar!');
+    on E: Exception do
+    begin
+      if (qrContasPagarCODIGO.AsString = '') then
+        ShowMessage('Conta a receber sem código, tente cancelar e inserir novamente!')
+      else
+        ShowMessage('Erro:' + e.Message);
+    end;
   End;
 end;
 

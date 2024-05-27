@@ -12,13 +12,10 @@ object FrmAgenda: TFrmAgenda
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   PopupMenu = PopupMenu1
   Position = poScreenCenter
-  WindowState = wsMaximized
   OnActivate = FormActivate
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
@@ -36,6 +33,7 @@ object FrmAgenda: TFrmAgenda
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1034
     object Image1: TImage
       Left = 1
       Top = 1
@@ -266,10 +264,12 @@ object FrmAgenda: TFrmAgenda
     Top = 63
     Width = 1038
     Height = 499
-    ActivePage = tsAgenda
+    ActivePage = tsCadastro
     Align = alClient
     TabOrder = 1
     OnChange = pcAgendaChange
+    ExplicitWidth = 1034
+    ExplicitHeight = 498
     object tsAgenda: TTabSheet
       Caption = 'CONSULTA'
       object Panel2: TPanel
@@ -279,6 +279,7 @@ object FrmAgenda: TFrmAgenda
         Height = 49
         Align = alTop
         TabOrder = 0
+        ExplicitWidth = 1026
         object Label1: TLabel
           Left = 13
           Top = 17
@@ -315,6 +316,7 @@ object FrmAgenda: TFrmAgenda
           Caption = 'INCLUIR | F2'
           TabOrder = 0
           OnClick = Button1Click
+          ExplicitLeft = 930
         end
         object Button2: TButton
           AlignWithMargins = True
@@ -332,6 +334,7 @@ object FrmAgenda: TFrmAgenda
           ParentFont = False
           TabOrder = 1
           OnClick = Button2Click
+          ExplicitLeft = 834
         end
         object DateTimePicker1: TDateTimePicker
           Left = 84

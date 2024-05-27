@@ -28,7 +28,6 @@ type
     qrCategorias: TFDQuery;
     dsCategorias: TDataSource;
     qrCategoriasCODIGO: TIntegerField;
-    qrCategoriasCATEGORIA: TStringField;
     Label2: TLabel;
     DBEdit1: TDBEdit;
     Label3: TLabel;
@@ -48,6 +47,7 @@ type
     ALTERAR1: TMenuItem;
     CANCELAR2: TMenuItem;
     Image3: TImage;
+    qrCategoriasNOME: TStringField;
     procedure FormActivate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -112,12 +112,12 @@ begin
   qrCategorias.SQL.Add('SELECT * FROM CATEGORIAS');
 
   if (edtConsulta.Text <> '') then
-    qrCategorias.SQL.Add('WHERE (UPPER(CATEGORIA) LIKE ''%' + (AnsiUpperCase(edtConsulta.Text)) + '%'')');
+    qrCategorias.SQL.Add('WHERE (UPPER(NOME) LIKE ''%' + (AnsiUpperCase(edtConsulta.Text)) + '%'')');
 
   if (rgOrdenacao.ItemIndex = 0) then
   qrCategorias.SQL.Add('ORDER BY CODIGO')
   else if (rgOrdenacao.ItemIndex = 1) then
-  qrCategorias.SQL.Add('ORDER BY CATEGORIA');
+  qrCategorias.SQL.Add('ORDER BY NOME');
 
   qrCategorias.Open;
 end;

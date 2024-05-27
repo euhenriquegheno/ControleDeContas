@@ -11,12 +11,10 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   PopupMenu = PopupMenu1
   Position = poScreenCenter
   WindowState = wsMaximized
   OnActivate = FormActivate
-  PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
@@ -34,6 +32,7 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1116
     object Image3: TImage
       Left = 1
       Top = 1
@@ -373,10 +372,12 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
     Top = 63
     Width = 1120
     Height = 520
-    ActivePage = tsConsulta
+    ActivePage = tsCadastro
     Align = alClient
     TabOrder = 1
     OnChange = pcPrincipalChange
+    ExplicitWidth = 1116
+    ExplicitHeight = 519
     object tsConsulta: TTabSheet
       Caption = 'CONSULTA'
       object DBGrid1: TDBGrid
@@ -433,6 +434,7 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
         Height = 57
         Align = alTop
         TabOrder = 1
+        ExplicitWidth = 1108
         object Label10: TLabel
           Left = 26
           Top = 21
@@ -462,6 +464,7 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
           ParentFont = False
           TabOrder = 0
           OnClick = Button1Click
+          ExplicitLeft = 994
         end
         object Button2: TButton
           AlignWithMargins = True
@@ -479,6 +482,7 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
           ParentFont = False
           TabOrder = 1
           OnClick = Button2Click
+          ExplicitLeft = 882
         end
         object Button3: TButton
           AlignWithMargins = True
@@ -496,6 +500,7 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
           ParentFont = False
           TabOrder = 2
           OnClick = Button3Click
+          ExplicitLeft = 770
         end
         object edtConsulta: TEdit
           Left = 98
@@ -784,9 +789,9 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
       end
       object Panel3: TPanel
         Left = 0
-        Top = 430
+        Top = 440
         Width = 1112
-        Height = 62
+        Height = 52
         Align = alBottom
         Color = clSkyBlue
         ParentBackground = False
@@ -796,13 +801,14 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
           Left = 952
           Top = 4
           Width = 156
-          Height = 54
+          Height = 44
           Cursor = crHandPoint
           Align = alRight
           Color = clWhite
           ParentBackground = False
           TabOrder = 0
           OnClick = Panel4Click
+          ExplicitHeight = 54
           object Label9: TLabel
             AlignWithMargins = True
             Left = 52
@@ -821,9 +827,9 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
           end
           object Image1: TImage
             Left = 5
-            Top = 4
-            Width = 48
-            Height = 42
+            Top = 3
+            Width = 43
+            Height = 38
             Cursor = crHandPoint
             Picture.Data = {
               0954506E67496D61676589504E470D0A1A0A0000000D49484452000000300000
@@ -836,6 +842,7 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
               09619EDE07360169DEB7D17E0948F3FE9D3C13DF89CE878E0A9B10E4C367D14C
               88F29CC36E228479DE69DA9B4B98FFBB7F53051450C0396F76214B315D293414
               0000000049454E44AE426082}
+            Stretch = True
             OnClick = Panel4Click
           end
         end
@@ -844,13 +851,14 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
           Left = 760
           Top = 4
           Width = 186
-          Height = 54
+          Height = 44
           Cursor = crHandPoint
           Align = alRight
           Color = clWhite
           ParentBackground = False
           TabOrder = 1
           OnClick = Panel5Click
+          ExplicitHeight = 54
           object Label11: TLabel
             Left = 52
             Top = 19
@@ -886,6 +894,7 @@ object FrmCadFuncionarios: TFrmCadFuncionarios
               860805905725820801589CC4C98810C097BA04C78F21F6EA1D0DB8500F6A058E
               EF43BCABB7CD3350408BF8549FC0F15D4415323E06F0EF9201DEC900EF648077
               32C03B670FF8014A798E31E4A32A930000000049454E44AE426082}
+            Stretch = True
             OnClick = Panel5Click
           end
         end
